@@ -1,0 +1,49 @@
+package com.prolagos.sispcbackend.domain;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@NoArgsConstructor 
+@EqualsAndHashCode(of = "contratacaoId")
+public class Cad_Projetos_Contratacao implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Getter @Setter private Integer contratacaoId;
+	@Getter @Setter private String npedido;
+	@Getter @Setter private String requisicao;
+	@Getter @Setter private String escopo;
+	@Getter @Setter private String contratosistemico;
+	@Getter @Setter private String contratofisico;
+	@Getter @Setter private String nomeempresa;
+	@Getter @Setter private String responsavel;
+	@Getter @Setter private LocalDate inicio;
+	@Getter @Setter private LocalDate termino;
+	@Column(scale=2,precision=12)
+	@Getter @Setter private Double valorcontratado;
+	@Getter @Setter private LocalDate inicioaditivo;
+	@Getter @Setter private LocalDate terminoaditivo;
+	@Column(scale=2,precision=12)
+	@Getter @Setter private Double valorcontratadoaditivo;
+	
+	@OneToOne
+	@JoinColumn(name="fk_projetoId" ,foreignKey = @ForeignKey(name="fk_projeto_regulatorio"))
+	@MapsId
+	private Cad_SisPC_Projetos projeto;
+	
+	
+}

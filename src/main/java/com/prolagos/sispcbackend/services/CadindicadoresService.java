@@ -24,6 +24,10 @@ public class CadindicadoresService {
 	public List<Cad_Ind_Indicadores> findAll() {
 		return repo.findAll();
 	}
+	
+	public List<Cad_Ind_Indicadores> classIndicadores(final Integer gerencia) {
+	    return (List<Cad_Ind_Indicadores>)this.repo.classIndicadores(gerencia);
+	}
 
 	public Page<Cad_Ind_Indicadores> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);

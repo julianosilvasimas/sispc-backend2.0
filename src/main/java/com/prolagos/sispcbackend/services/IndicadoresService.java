@@ -1,5 +1,6 @@
 package com.prolagos.sispcbackend.services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.prolagos.sispcbackend.domain.AppWeb_Ind_ExeIndicadores;
+import com.prolagos.sispcbackend.domain.Cad_Ind_Indicadores;
 import com.prolagos.sispcbackend.repositories.IndicadoresRepository;
 import com.prolagos.sispcbackend.services.exceptions.DataIntegrityException;
 
@@ -38,6 +40,12 @@ public class IndicadoresService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " +
 		AppWeb_Ind_ExeIndicadores.class.getName(), null));
 	}
+	
+	public AppWeb_Ind_ExeIndicadores findDiario(final List<Cad_Ind_Indicadores> indicador, final LocalDate data) {
+        final Optional<AppWeb_Ind_ExeIndicadores> obj = this.repo.findIndDiario(indicador, data.plusDays(1));
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + indicador + ", Tipo: " +
+        		AppWeb_Ind_ExeIndicadores.class.getName(), null));
+    }
 	
 	public AppWeb_Ind_ExeIndicadores insert(AppWeb_Ind_ExeIndicadores obj) {
 		obj.setExeindicadorId(null);  //Utilizado em Entidade Com auto incremento

@@ -42,6 +42,8 @@ public class Cad_SisPC_Usuarios implements UserDetails {
 	@JsonIgnore
 	@Getter @Setter private String senha;
 	@Getter @Setter private Boolean ativo;
+	@Getter @Setter private String cargo;
+	@Getter @Setter private String foto;
 	
 	@ManyToOne
 	@JoinColumn(name="fk_emp_codigo",foreignKey = @ForeignKey(name="fk_unidade_usuarios"))

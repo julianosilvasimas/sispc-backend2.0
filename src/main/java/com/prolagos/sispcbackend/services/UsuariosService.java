@@ -34,12 +34,18 @@ public class UsuariosService {
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Cad_SisPC_Usuarios.class.getName()));
 	}
 	
+	public Cad_SisPC_Usuarios findByEmail(String email) {
+        final Cad_SisPC_Usuarios obj = this.repo.findByEmail(email);
+        return obj;
+    }
+	
 	@Transactional
 	public Cad_SisPC_Usuarios insert(Cad_SisPC_Usuarios obj) {
 		obj.setUsuarioId(null);
 		obj = repo.save(obj);
 		return obj;
 	}
+	
 	
 	public Cad_SisPC_Usuarios update(Cad_SisPC_Usuarios obj) {
 		Cad_SisPC_Usuarios newObj = find(obj.getUsuarioId());

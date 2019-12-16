@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,19 +27,26 @@ public class Cad_SisPC_Gerencias implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Getter @Setter private Integer gerenciaId;
-	@Getter @Setter private String gerencia;
+	@Column(name = "gerencia")
+	@Getter @Setter private String label;
 	@Getter @Setter private String tag;
+	@Getter @Setter private String icon;
+    @Column(name = "routerlink")
+    @Getter @Setter private String routerLink;
+    @Column(name = "escopoindicador")
+    @Getter @Setter private String escopoIndicador;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="gerenciaId")
 	@Getter @Setter private List<Cad_SisPC_Taggerencias> taggerencias= new ArrayList<>();
 
-	public Cad_SisPC_Gerencias(Integer gerenciaId, String gerencia, String tag) {
-		super();
-		this.gerenciaId = gerenciaId;
-		this.gerencia = gerencia;
-		this.tag = tag;
-	}
+	public Cad_SisPC_Gerencias(final Integer gerenciaId, final String label, final String tag, final String icon, final String routerLink) {
+        this.gerenciaId = gerenciaId;
+        this.label = label;
+        this.tag = tag;
+        this.icon = icon;
+        this.routerLink = routerLink;
+    }
 
 	
 }

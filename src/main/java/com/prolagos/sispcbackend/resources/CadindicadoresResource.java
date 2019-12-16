@@ -57,6 +57,12 @@ public class CadindicadoresResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@RequestMapping(value = { "/gerencia/{gerencia}" }, method = { RequestMethod.GET })
+    public ResponseEntity<List<Cad_Ind_Indicadores>> classIndicadores(@PathVariable final Integer gerencia) {
+        final List<Cad_Ind_Indicadores> list = this.service.classIndicadores(gerencia);
+        return (ResponseEntity<List<Cad_Ind_Indicadores>>)ResponseEntity.ok().body(list);
+    }
+	
 	@RequestMapping(value="/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<Cad_Ind_Indicadores>> findPage(
 			@RequestParam(value="page", defaultValue="0") Integer page, 

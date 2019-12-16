@@ -1,6 +1,8 @@
 package com.prolagos.sispcbackend.resources;
 
 import java.net.URI;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.prolagos.sispcbackend.domain.AppWeb_Ind_ExeIndicadores;
+import com.prolagos.sispcbackend.domain.Cad_Ind_Indicadores;
 import com.prolagos.sispcbackend.domain.procedures.ListaIndicadores;
 import com.prolagos.sispcbackend.repositories.ListaIndicadoresDAO;
 import com.prolagos.sispcbackend.services.IndicadoresService;
@@ -32,6 +35,14 @@ public class IndicadoresResource {
 		AppWeb_Ind_ExeIndicadores obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
+	
+	@RequestMapping(value = { "/{indicador}/{data}" }, method = { RequestMethod.GET })
+    public ResponseEntity<AppWeb_Ind_ExeIndicadores> findDiario(@PathVariable final List<Cad_Ind_Indicadores> indicador, @PathVariable final String data) {
+        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        final LocalDate date = LocalDate.parse(data, formatter);
+        final AppWeb_Ind_ExeIndicadores obj = this.service.findDiario(indicador, date);
+        return (ResponseEntity<AppWeb_Ind_ExeIndicadores>)ResponseEntity.ok().body(obj);
+    }
 	
 	@RequestMapping(method=RequestMethod.POST)
 		public ResponseEntity<Void> insert(@RequestBody AppWeb_Ind_ExeIndicadores obj) {

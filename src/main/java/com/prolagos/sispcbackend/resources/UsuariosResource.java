@@ -83,4 +83,12 @@ public class UsuariosResource {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
+	@RequestMapping(value="/attsenha/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> updateSenha(@Valid @RequestBody UsuarioDTO objDto, @PathVariable Integer id) {
+		Cad_SisPC_Usuarios obj = service.updateFromDTO(objDto);
+		obj.setUsuarioId(id);
+		obj = service.updateSenha(obj);
+		return ResponseEntity.noContent().build();
+	}
+	
 }

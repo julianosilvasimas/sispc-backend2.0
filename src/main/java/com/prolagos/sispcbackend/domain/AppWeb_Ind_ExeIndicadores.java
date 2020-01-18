@@ -11,6 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedStoredProcedureQueries;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -29,6 +33,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name="appweb_ind_exeindicadores")
 @JsonIgnoreProperties(ignoreUnknown = true)
+
+@NamedStoredProcedureQueries({@NamedStoredProcedureQuery(name ="inputIndicadores", procedureName="Insert_appwebIndExeIndicadores")})
+
 public class AppWeb_Ind_ExeIndicadores implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -82,7 +89,6 @@ public class AppWeb_Ind_ExeIndicadores implements Serializable {
 	@Getter @Setter private String analise;
 	@Getter @Setter private String colaborador;
 	
-
 	@ManyToOne
 	@JoinColumn(name="fk_indicadorId",foreignKey = @ForeignKey(name="fk_cadindicador_indicadores"))
 	@Getter @Setter private Cad_Ind_Indicadores indicadorId;
@@ -91,20 +97,20 @@ public class AppWeb_Ind_ExeIndicadores implements Serializable {
 	@JoinColumn(name="fk_emp_codigo",foreignKey = @ForeignKey(name="fk_unidade_indicadores"))
 	@Getter @Setter private Cad_SisPC_Unidades undcodigo;
 	
+	@Column(scale=2,precision=12)
+	@Getter @Setter private Double realizadokg;
 	
 	public LocalDate avancarDia(LocalDate dataHoje ) {
 	    dataHoje = dataHoje.plusDays(1);
 	    return dataHoje;
 	}
-	
-	
+
 	
 	public AppWeb_Ind_ExeIndicadores(Integer exeindicadorId, LocalDate datareferencia, LocalDate dataindicador, Integer ciclo,
 			Periodos_Indicadores periodicidade, Double orcado, Double realizado, Double pecld, Double forecast, Double minimo,
 			Double maximo, Double meta, Double previsao, Double dentroprazo, Double foraprazo, Double dentroprazoreg,
 			Double foraprazoreg, Integer atendente, Integer atendimento, String comentario, String acao, String analise,
-			String colaborador, Cad_Ind_Indicadores indicadorId, Cad_SisPC_Unidades undcodigo) {
-		
+			String colaborador, Cad_Ind_Indicadores indicadorId, Cad_SisPC_Unidades undcodigo, Double realizadokg) {
 		
         this.exeindicadorId = exeindicadorId;
 		this.datareferencia = datareferencia;
@@ -131,6 +137,8 @@ public class AppWeb_Ind_ExeIndicadores implements Serializable {
 		this.colaborador = colaborador;
 		this.indicadorId = indicadorId;
 		this.undcodigo = undcodigo;
+		this.realizadokg = realizadokg;
+		
 	}
 
 	@JsonIgnoreProperties("periodicidade")

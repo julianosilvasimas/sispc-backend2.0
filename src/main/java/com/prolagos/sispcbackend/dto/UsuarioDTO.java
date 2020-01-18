@@ -3,10 +3,6 @@ package com.prolagos.sispcbackend.dto;
 import java.io.Serializable;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.validator.constraints.Length;
-
 import com.prolagos.sispcbackend.domain.Cad_SisPC_Usuarios;
 
 import lombok.Getter;
@@ -19,14 +15,16 @@ public class UsuarioDTO implements Serializable {
 	
 	@Getter @Setter private Integer usuarioId;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
-	@Length(min=5, max=120, message="O tamanho deve ser entre 5 e 120 caracteres")
+	//@NotEmpty(message="Preenchimento obrigatório")
+	//@Length(min=5, max=120, message="O tamanho deve ser entre 5 e 120 caracteres")
 	@Getter @Setter private String nome;
-	@NotEmpty(message="Preenchimento obrigatório")
+	//@NotEmpty(message="Preenchimento obrigatório")
 	@Email(message="Email inválido")
 	@Getter @Setter private String email;
 	@Getter @Setter private String login;
 	@Getter @Setter private Boolean ativo;
+	@Getter @Setter private String senha;
+	
 	
 
 	public UsuarioDTO(Cad_SisPC_Usuarios obj) {
@@ -36,6 +34,7 @@ public class UsuarioDTO implements Serializable {
 		email = obj.getEmail();
 		login = obj.getLogin();
 		ativo = obj.getAtivo();
+		senha = obj.getPassword();
 		
 	}
 	

@@ -18,25 +18,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor @AllArgsConstructor
-@EqualsAndHashCode(of = "entregaId")
+@EqualsAndHashCode(of = "matricula")
 @Entity
 @Table(name="base_gss_endentregas")
 public class Base_GSS_EndEntregas implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Getter @Setter private Integer entregaId;
-	
+	/*@ManyToOne
+	@JoinColumn(name="matricula",foreignKey = @ForeignKey(name="fk_num_ligacao"))*/
+	@Getter @Setter private Integer matricula;
 	@Getter @Setter private String nome;
 	@Getter @Setter private String rua;
 	@Getter @Setter private String numero;
 	@Getter @Setter private String complemento;
 	@Getter @Setter private String bairro;
 	@Getter @Setter private String cidade;
-	@ManyToOne
-	@JoinColumn(name="fk_num_ligacao",foreignKey = @ForeignKey(name="fk_num_ligacao"))
-	@Getter @Setter private Base_GSS_Clientes matricula;
 
 	
 }

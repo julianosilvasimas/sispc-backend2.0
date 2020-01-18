@@ -84,6 +84,21 @@ public class UsuariosService {
 		return usu;
 	}
 	
+	public Cad_SisPC_Usuarios updateSenha(Cad_SisPC_Usuarios obj) {
+		Cad_SisPC_Usuarios newObj = find(obj.getUsuarioId());
+		updateDatas(newObj, obj);
+		return repo.save(newObj);
+	}
+	
+	public Cad_SisPC_Usuarios updateFromDTO(UsuarioDTO objDto) {
+		return new Cad_SisPC_Usuarios( objDto.getUsuarioId(), objDto.getNome(),objDto.getEmail(), objDto.getLogin(),
+				pe.encode(objDto.getSenha()), objDto.getAtivo(),null);
+	}
+
+	private void updateDatas(Cad_SisPC_Usuarios newObj, Cad_SisPC_Usuarios obj) {
+		newObj.setSenha(obj.getSenha());
+	}
+	
 	private void updateData(Cad_SisPC_Usuarios newObj, Cad_SisPC_Usuarios obj) {
 		newObj.setNome(obj.getNome());
 		newObj.setEmail(obj.getEmail());

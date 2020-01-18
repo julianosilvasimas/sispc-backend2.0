@@ -7,11 +7,12 @@ com\prolagos\sispcbackend\resources\IndicadoresResource.class
 com\prolagos\sispcbackend\resources\EmpresasResource.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Tagsupervisoes.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_Sesuite_RiscoContratual.class
-com\prolagos\sispcbackend\repositories\DelibFraudesRepository.class
 com\prolagos\sispcbackend\domain\Base_Correios_Logradouros.class
 com\prolagos\sispcbackend\repositories\ProjLicoesAprendidasRepository.class
 com\prolagos\sispcbackend\repositories\PerfisRepository.class
 com\prolagos\sispcbackend\domain\AppWeb_ProcessAdm_DelibFraudes.class
+com\prolagos\sispcbackend\resources\GestaoDeliberacaoResources.class
+com\prolagos\sispcbackend\services\IrregularidadesGSSService.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_Financeiros.class
 com\prolagos\sispcbackend\domain\enums\Classificacao_Indicadores.class
 com\prolagos\sispcbackend\services\ProjRegulatorioService.class
@@ -39,6 +40,7 @@ com\prolagos\sispcbackend\security\JWTAuthenticationFilter$JWTAuthenticationFail
 com\prolagos\sispcbackend\domain\Cad_Projetos_Sesuite_Beneficios.class
 com\prolagos\sispcbackend\services\GerenciasService.class
 com\prolagos\sispcbackend\domain\Base_Correios_Bairros.class
+com\prolagos\sispcbackend\resources\IrregularidadesGSSResource.class
 com\prolagos\sispcbackend\dto\UsuarioDTO.class
 com\prolagos\sispcbackend\domain\procedures\ListaIndicadores.class
 com\prolagos\sispcbackend\security\JWTAuthorizationFilter.class
@@ -51,6 +53,7 @@ com\prolagos\sispcbackend\domain\Cad_Projetos_Engenharia.class
 com\prolagos\sispcbackend\services\ProjFinanceirosServive.class
 com\prolagos\sispcbackend\SispcBackendApplication.class
 com\prolagos\sispcbackend\services\exceptions\DataIntegrityException.class
+com\prolagos\sispcbackend\services\GestaoDeliberacaoService.class
 com\prolagos\sispcbackend\services\ProjComissionamentoService.class
 com\prolagos\sispcbackend\repositories\EmpresasRepository.class
 com\prolagos\sispcbackend\repositories\ProjContratacaoRepository.class
@@ -71,6 +74,7 @@ com\prolagos\sispcbackend\domain\Cad_SisPC_Supervisoes.class
 com\prolagos\sispcbackend\services\validations\UsuarioInsertValidator.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Perfis.class
 com\prolagos\sispcbackend\repositories\ProjSeSuiteRepository.class
+com\prolagos\sispcbackend\resources\EntregaResource.class
 com\prolagos\sispcbackend\config\JacksonConfiguration.class
 com\prolagos\sispcbackend\services\validations\UsuarioUpdateValidator.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_Comissionamento.class
@@ -87,8 +91,10 @@ com\prolagos\sispcbackend\repositories\UsuarioRepository.class
 com\prolagos\sispcbackend\security\JWTAuthenticationFilter.class
 com\prolagos\sispcbackend\services\ProjEngenhariaService.class
 com\prolagos\sispcbackend\domain\Base_Correios_Localidades.class
+com\prolagos\sispcbackend\dto\InputDeliberacaoDTO.class
 com\prolagos\sispcbackend\services\PerfisService.class
 com\prolagos\sispcbackend\services\UsuariosService.class
+com\prolagos\sispcbackend\repositories\GestaoDeliberacaoRepository.class
 com\prolagos\sispcbackend\services\UserService.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Projetos.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Unidades.class
@@ -103,6 +109,7 @@ com\prolagos\sispcbackend\domain\Cad_Projetos_Sesuite_Direcionamento.class
 com\prolagos\sispcbackend\services\EmpresasService.class
 com\prolagos\sispcbackend\repositories\ProjEngenhariaRepository.class
 com\prolagos\sispcbackend\repositories\IrregularidadesGSSRepository.class
+com\prolagos\sispcbackend\repositories\EntregaRepository.class
 com\prolagos\sispcbackend\repositories\GerenciasRepository.class
 com\prolagos\sispcbackend\services\ProjetosService.class
 com\prolagos\sispcbackend\repositories\RubricasIrregGSSRepository.class
@@ -121,5 +128,6 @@ com\prolagos\sispcbackend\domain\AppWeb_Ind_ExeIndicadores.class
 com\prolagos\sispcbackend\repositories\ProjComissionamentoRepository.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_FinanceiroAnos.class
 com\prolagos\sispcbackend\repositories\ClientesGSSRepository.class
+com\prolagos\sispcbackend\services\EntregaService.class
 com\prolagos\sispcbackend\repositories\IndicadoresRepository.class
 com\prolagos\sispcbackend\repositories\ProjObrasRepository.class

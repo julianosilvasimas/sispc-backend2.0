@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor 
-@EqualsAndHashCode(of = "clienteId")
+@EqualsAndHashCode(of = "contrato")
 @Entity
 @Table(name="base_gss_clientes")
 public class Base_GSS_Clientes implements Serializable{
@@ -29,7 +29,7 @@ public class Base_GSS_Clientes implements Serializable{
 	
 	@Id
 	@Column(name="seq_responsavel")
-	@Getter @Setter private Integer clienteId;
+	@Getter @Setter private Integer contrato;
 	
 	@Column(name="num_ligacao")
 	@Getter @Setter private Integer matricula;
@@ -171,10 +171,10 @@ public class Base_GSS_Clientes implements Serializable{
 	@OneToMany(mappedBy="contrato")
 	@Getter @Setter private List<Base_GSS_Irregularidades> irregularidades= new  ArrayList<>();
 	
-	@JsonIgnore
+	/*@JsonIgnore
 	@OneToMany(mappedBy="matricula")
 	@Getter @Setter private List<Base_GSS_EndEntregas> entregas = new  ArrayList<>();
-
+*/
 
 
 }

@@ -1,6 +1,6 @@
 package com.prolagos.sispcbackend.domain;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor @AllArgsConstructor
+@NoArgsConstructor  @AllArgsConstructor
 @EqualsAndHashCode(of = "processo")
 @Entity
 @Table(name="appweb_processadm_delibfraudes")
@@ -27,10 +27,10 @@ public class AppWeb_ProcessAdm_DelibFraudes {
 	@Getter @Setter private Integer deliberacao;
 	@Column(name="seq_irregularidade")
 	@Getter @Setter private Integer idIrregularidade;
-	@Getter @Setter private LocalDateTime dataJulgado;
-	@Getter @Setter private LocalDateTime dataAviso1;
-	@Getter @Setter private LocalDateTime dataAviso2;
-	@Getter @Setter private LocalDateTime dataAviso3;
+	@Getter @Setter private Date dataJulgado;
+	@Getter @Setter private Date dataAviso1;
+	@Getter @Setter private Date dataAviso2;
+	@Getter @Setter private Date dataAviso3;
 	@Getter @Setter private Integer mesRetroativo;
 	@Getter @Setter private String titular;
 	@Getter @Setter private String usuarioPresente;
@@ -42,5 +42,7 @@ public class AppWeb_ProcessAdm_DelibFraudes {
 	@Getter @Setter private String ro;
 	@Getter @Setter private String num_termo;
 	@Getter @Setter private String colaborador;
+	@Getter @Setter private String protocolo;
+	@Getter @Setter private String cartacedoc;
 	
 }

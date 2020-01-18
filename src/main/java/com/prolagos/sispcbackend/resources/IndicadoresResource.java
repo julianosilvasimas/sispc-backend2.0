@@ -74,11 +74,25 @@ public class IndicadoresResource {
 	@Autowired
 	private ListaIndicadoresDAO dao;
 	
+	
 	//Aqui será o endpoint para o gráfico
 	@RequestMapping(value="/grafico/{ref}/{ind}", method=RequestMethod.GET)
 	public ResponseEntity<List<ListaIndicadores>> findAllBygrafico(@PathVariable String ref, @PathVariable Integer ind){
 		return ResponseEntity.ok().body(dao.findAllBygrafico(ref, ind));
 	}
+	
+	@RequestMapping(method=RequestMethod.PUT)
+	public ResponseEntity<Void> inserte (@RequestBody AppWeb_Ind_ExeIndicadores obj) {
+		final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        //final LocalDate datInd = LocalDate.parse(dataindicador, formatter);
+        //final LocalDate datRef = LocalDate.parse(datareferencia , formatter);
+		dao.insert(obj.getAcao(),obj.getAnalise(),obj.getAtendente(),obj.getAtendimento(),obj.getCiclo(), obj.getColaborador(),obj.getComentario(), obj.getDataindicador() ,obj.getDatareferencia(),
+				obj.getDentroprazo(),obj.getDentroprazoreg(),obj.getForaprazo(),obj.getForaprazoreg(),obj.getForecast(),obj.getMaximo(),obj.getMeta(),obj.getMinimo(),obj.getOrcado() ,obj.getPecld(),3,
+				obj.getPrevisao(),obj.getRealizado(), obj.getIndicadorId(),obj.getUndcodigo(),obj.getRealizadokg());
+		
+		return ResponseEntity.noContent().build();
+	}
+	
 	
 	@RequestMapping(value="/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<AppWeb_Ind_ExeIndicadores>> findPage(

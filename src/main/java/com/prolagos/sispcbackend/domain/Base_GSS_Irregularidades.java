@@ -25,7 +25,7 @@ public class Base_GSS_Irregularidades implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name=" seq_irregularidade")
+	@Column(name="seq_irregularidade")
 	@Getter @Setter private Integer  irregularidadeId;
 	@ManyToOne
 	@JoinColumn(name="fk_seq_responsavel", foreignKey = @ForeignKey(name="fk_irregularidades_clientes"))

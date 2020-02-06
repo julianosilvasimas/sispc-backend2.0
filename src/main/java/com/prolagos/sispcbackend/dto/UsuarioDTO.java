@@ -1,8 +1,12 @@
 package com.prolagos.sispcbackend.dto;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.validation.constraints.Email;
+
+import com.prolagos.sispcbackend.domain.Cad_SisPC_Perfis;
+import com.prolagos.sispcbackend.domain.Cad_SisPC_Unidades;
 import com.prolagos.sispcbackend.domain.Cad_SisPC_Usuarios;
 
 import lombok.Getter;
@@ -24,6 +28,8 @@ public class UsuarioDTO implements Serializable {
 	@Getter @Setter private String login;
 	@Getter @Setter private Boolean ativo;
 	@Getter @Setter private String senha;
+	@Getter @Setter private Cad_SisPC_Unidades undcodigo;
+	@Getter @Setter private Set<Cad_SisPC_Perfis> perfis;
 	
 	
 
@@ -35,6 +41,8 @@ public class UsuarioDTO implements Serializable {
 		login = obj.getLogin();
 		ativo = obj.getAtivo();
 		senha = obj.getPassword();
+		undcodigo = obj.getUndcodigo();
+		perfis = obj.getPerfis();
 		
 	}
 	

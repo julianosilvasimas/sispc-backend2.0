@@ -48,12 +48,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/modulos/**",
 			"/cadindicadores/**",
 			"/indicadores/**",
- 			"/veiculos_utilizacao/**",
  			"/bcadastro/**",
+ 			"/aprovar/**",
  			"/birregularidades/**",
  			"/gestaodeliberacao/**",
  			"/endentrega/**",
  			"/projetos/**",
+ 			"/veiculos_utilizacao/**",
+			"/veiculos/**",
+ 			"/condutores/**",
+ 			"/agendamento/**",
  			"/zteste/**"
 	};
 	

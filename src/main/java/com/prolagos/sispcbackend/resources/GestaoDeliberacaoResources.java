@@ -41,7 +41,6 @@ public class GestaoDeliberacaoResources {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ResponseEntity<List<AppWeb_ProcessAdm_DelibFraudes>> findAll() {
 		List<AppWeb_ProcessAdm_DelibFraudes> list = service.findAll();
-		
 		return ResponseEntity.ok().body(list);
 	}
 	

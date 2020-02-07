@@ -11,19 +11,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor @AllArgsConstructor
 @Entity
-@Table(name="base_gss_irregularidades")
+@Table(name="Apprpa_Rpa_Statusbot")
 public class Apprpa_Rpa_StatusBot implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="seq_status")
+	@Column(name="Id")
 	@Getter @Setter private Integer  Id;
 	@Column(name = "Timestamp", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	@Getter @Setter private Date Timestamp;
@@ -35,6 +34,5 @@ public class Apprpa_Rpa_StatusBot implements Serializable{
 	@Getter @Setter private cad_rpa_robos Bot;
 	@Getter @Setter private String Status;
 	@Getter @Setter private String Exception;
-
 
 }

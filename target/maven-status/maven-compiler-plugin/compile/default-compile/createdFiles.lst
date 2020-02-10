@@ -93,6 +93,7 @@ com\prolagos\sispcbackend\services\ModulosService.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Taggerencias.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Diretorias.class
 com\prolagos\sispcbackend\services\ProjObrasService.class
+com\prolagos\sispcbackend\resources\CondutoresResource.class
 com\prolagos\sispcbackend\resources\ModulosResource.class
 com\prolagos\sispcbackend\repositories\UsuarioRepository.class
 com\prolagos\sispcbackend\security\JWTAuthenticationFilter.class
@@ -101,11 +102,13 @@ com\prolagos\sispcbackend\domain\Base_Correios_Localidades.class
 com\prolagos\sispcbackend\dto\InputDeliberacaoDTO.class
 com\prolagos\sispcbackend\services\PerfisService.class
 com\prolagos\sispcbackend\repositories\AgendamentosRepository.class
+com\prolagos\sispcbackend\repositories\CondutoresRepository.class
 com\prolagos\sispcbackend\domain\Cad_Transporte_Veiculos.class
 com\prolagos\sispcbackend\services\UsuariosService.class
 com\prolagos\sispcbackend\repositories\GestaoDeliberacaoRepository.class
 com\prolagos\sispcbackend\services\UserService.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Projetos.class
+com\prolagos\sispcbackend\services\CondutoresService.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Unidades.class
 com\prolagos\sispcbackend\resources\UsuariosResource.class
 com\prolagos\sispcbackend\domain\Base_GSS_Clientes.class
@@ -116,6 +119,7 @@ com\prolagos\sispcbackend\resources\ProjetosResource.class
 com\prolagos\sispcbackend\services\ProjContratacaoService.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_Sesuite_Direcionamento.class
 com\prolagos\sispcbackend\services\EmpresasService.class
+com\prolagos\sispcbackend\domain\Cad_Transporte_CondutoresTicketLog.class
 com\prolagos\sispcbackend\repositories\ProjEngenhariaRepository.class
 com\prolagos\sispcbackend\repositories\VeiculosRepository.class
 com\prolagos\sispcbackend\repositories\IrregularidadesGSSRepository.class

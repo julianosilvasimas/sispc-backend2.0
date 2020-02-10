@@ -39,6 +39,10 @@ public class Cad_SisPC_Gerencias implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy="gerenciaId")
 	@Getter @Setter private List<Cad_SisPC_Taggerencias> taggerencias= new ArrayList<>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="gerenciaId")
+	@Getter @Setter private List<Cad_SisPC_Usuarios> usuarios= new ArrayList<>();	
 
 	public Cad_SisPC_Gerencias(final Integer gerenciaId, final String label, final String tag, final String icon, final String routerLink) {
         this.gerenciaId = gerenciaId;

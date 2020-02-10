@@ -9,6 +9,7 @@ D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\m
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\services\AgendamentosService.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\services\ProjetosService.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\repositories\ProjFinanceirosRepository.java
+D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\repositories\CondutoresRepository.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\repositories\VeiculosRepository.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\services\ProjComissionamentoService.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\domain\cad_rpa_robos.java
@@ -17,6 +18,7 @@ D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\m
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\repositories\ListaIndicadoresDAO.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\repositories\ProjContratacaoRepository.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\resources\exceptions\ResourceExceptionHandler.java
+D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\domain\Cad_Transporte_CondutoresTicketLog.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\dto\CredenciaisDTO.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\resources\PerfisResource.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\domain\Cad_Projetos_Sesuite_LicencaSocial.java
@@ -38,6 +40,7 @@ D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\m
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\domain\AppWeb_Ind_ExeIndicadores.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\domain\procedures\ListaIndicadores.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\repositories\GestaoDeliberacaoRepository.java
+D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\services\CondutoresService.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\resources\UsuariosResource.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\domain\Cad_Projetos_Sesuite_Beneficios.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\services\ProjComprovacaoService.java
@@ -123,6 +126,7 @@ D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\m
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\domain\Base_Correios_Logradouros.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\security\JWTAuthenticationFilter.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\domain\AppWeb_ProcessAdm_DelibFraudes.java
+D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\resources\CondutoresResource.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\services\exceptions\DataIntegrityException.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\services\CadindicadoresService.java
 D:\Users\juliano.simas\Documents\workspace-spring-tool-suite\sispc-backend\src\main\java\com\prolagos\sispcbackend\domain\Cad_Projetos_Sesuite_Direcionamento.java

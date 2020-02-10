@@ -74,12 +74,12 @@ public class UsuariosService {
 	
 	public Cad_SisPC_Usuarios fromDTO(UsuarioDTO objDto) {
 		return new Cad_SisPC_Usuarios(objDto.getUsuarioId(), objDto.getNome(), objDto.getEmail(), objDto.getLogin(),
-				null, objDto.getAtivo(), null);
+				null, objDto.getAtivo(), null, null, null, null, null);
 	}
 	
 	public Cad_SisPC_Usuarios fromDTO(UsuarioNewDTO objDto) {
 		Cad_SisPC_Usuarios usu = new Cad_SisPC_Usuarios(null, objDto.getNome(), objDto.getEmail(), objDto.getLogin(),
-				pe.encode(objDto.getSenha()), objDto.getAtivo(), null);
+				pe.encode(objDto.getSenha()), objDto.getAtivo(), null, null, null, null, null);
 		
 		return usu;
 	}
@@ -92,7 +92,7 @@ public class UsuariosService {
 	
 	public Cad_SisPC_Usuarios updateFromDTO(UsuarioDTO objDto) {
 		return new Cad_SisPC_Usuarios( objDto.getUsuarioId(), objDto.getNome(),objDto.getEmail(), objDto.getLogin(),
-				pe.encode(objDto.getSenha()), objDto.getAtivo(),null);
+				pe.encode(objDto.getSenha()), objDto.getAtivo(),null, null, null, null, null);
 	}
 
 	private void updateDatas(Cad_SisPC_Usuarios newObj, Cad_SisPC_Usuarios obj) {

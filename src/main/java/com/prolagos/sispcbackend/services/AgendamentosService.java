@@ -1,10 +1,7 @@
 package com.prolagos.sispcbackend.services;
 
-import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
-
-import javax.persistence.Column;
 
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +13,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.prolagos.sispcbackend.domain.Appweb_Transporte_Agendamentos;
-import com.prolagos.sispcbackend.domain.Cad_Transporte_Veiculos;
 import com.prolagos.sispcbackend.repositories.AgendamentosRepository;
 import com.prolagos.sispcbackend.services.exceptions.DataIntegrityException;
-
-import lombok.Getter;
-import lombok.Setter;
 
 @Service
 public class AgendamentosService {
@@ -44,8 +37,6 @@ public class AgendamentosService {
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Appweb_Transporte_Agendamentos.class.getName(), null));
 	}
     
-
-
 
     public List<Appweb_Transporte_Agendamentos> Disponiveis(String de, String ate) {
 		List<Appweb_Transporte_Agendamentos> obj = repo.Disponiveis(de, ate);
@@ -70,14 +61,18 @@ public class AgendamentosService {
 			obj.getAgendadode(),
 			obj.getAgendadoate(),
 			obj.getSolicitante(),
+			obj.getFksolicitante(),
 			obj.getCondutor(),
 			obj.getQtdPessoas(),
-			obj.getTipoVeiculo(),
+			obj.getTipoVeiculoSolicitado(),
 			obj.getDestino(),
 			obj.getPlaca(),
+			obj.getTipoVeiculoDisponibilizado(),
 			obj.getAprovador(),
 			obj.getAprovacao(),
-			obj.getJustificativa()
+			obj.getJustificativa(),
+			obj.isEmergencial(),
+			obj.getJustificativasolicitacao()
 		);
         return repo.save(veiculo);
     }

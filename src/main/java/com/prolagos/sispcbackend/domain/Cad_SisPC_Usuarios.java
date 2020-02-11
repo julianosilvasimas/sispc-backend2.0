@@ -29,9 +29,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
 @NoArgsConstructor 
 @EqualsAndHashCode(of = "usuarioId")
+@Entity
 public class Cad_SisPC_Usuarios implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	

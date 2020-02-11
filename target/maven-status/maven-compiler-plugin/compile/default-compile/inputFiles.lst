@@ -1,17 +1,18 @@
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\enums\Periodos_Indicadores.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\ProjContratacaoService.java
+C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\util\AgendamentoEmails.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\validations\utils\BR.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_Projetos_Licenciamentos.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\ProjEngenhariaService.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Base_Correios_Localidades.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_Projetos_Financeiros.java
-C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Apprpa_Rpa_StatusBot.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\ProjRegulatorioService.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_Projetos_Sesuite_Beneficios.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_SisPC_Gerencias.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_Projetos_Sesuite_LicencaSocial.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Base_GSS_IrregRubricas.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\GerenciasRepository.java
+C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\StatusBotRepository.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\EmpresasService.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_Transporte_CondutoresTicketLog.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_SisPC_Usuarios.java
@@ -22,6 +23,7 @@ C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\co
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\ModulosRepository.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\UsuarioRepository.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\IrregularidadesGSSResource.java
+C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\StatusBotsService.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\ListaIndicadoresDAO.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\EntregaResource.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\security\JWTUtil.java
@@ -53,6 +55,7 @@ C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\co
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\UserDetailsServiceImpl.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\ModulosService.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\GerenciasResource.java
+C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\StatusbotsResource.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_Projetos_ComprovacaoArquivos.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_SisPC_Taggerencias.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_SisPC_Unidades.java
@@ -143,4 +146,5 @@ C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\co
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\IndicadoresRepository.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\CadindicadoresService.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\EmpresasRepository.java
+C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Apprpa_Rpa_Statusbots.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_SisPC_Perfis.java

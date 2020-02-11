@@ -1,5 +1,6 @@
 package com.prolagos.sispcbackend.resources;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -57,7 +58,7 @@ public class AgendamentoResource {
     }
     
     @RequestMapping(method = { RequestMethod.POST })
-    public ResponseEntity<Void> insert(@RequestBody Appweb_Transporte_Agendamentos obj) throws EmailException {
+    public ResponseEntity<Void> insert(@RequestBody Appweb_Transporte_Agendamentos obj) throws EmailException, UnsupportedEncodingException {
         obj = this.service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
         		.path("/{id}").buildAndExpand(new Object[] { obj.getAgendamentoId()}).toUri();
@@ -65,7 +66,7 @@ public class AgendamentoResource {
     }
     
     @RequestMapping(value = { "/{id}" }, method = { RequestMethod.PUT })
-    public ResponseEntity<Void> update(@RequestBody Appweb_Transporte_Agendamentos obj, @PathVariable final Integer id) {
+    public ResponseEntity<Void> update(@RequestBody Appweb_Transporte_Agendamentos obj, @PathVariable final Integer id) throws UnsupportedEncodingException, EmailException {
         obj.setAgendamentoId(id);
         obj = this.service.update(obj);
         return ResponseEntity.noContent().build();

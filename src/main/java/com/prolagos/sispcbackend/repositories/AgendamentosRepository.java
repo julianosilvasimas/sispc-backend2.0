@@ -26,7 +26,7 @@ public interface AgendamentosRepository extends JpaRepository<Appweb_Transporte_
 	
 	@Transactional(readOnly = true)
     @Query( "SELECT "
-    		+ "obj2.Placa "
+    		+ "obj2 "
     		+ "FROM Appweb_Transporte_Agendamentos obj2 "
     		+ "WHERE obj2.Placa IS NOT NULL AND :de  BETWEEN obj2.Agendadode AND obj2.Agendadoate "
     		+ "OR    obj2.Placa IS NOT NULL AND :ate BETWEEN obj2.Agendadode AND obj2.Agendadoate "

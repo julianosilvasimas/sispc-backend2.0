@@ -35,6 +35,6 @@ public class cad_rpa_robos implements Serializable{
 
 	@JsonIgnore
 	@OneToMany(mappedBy="Id")
-	@Getter @Setter private List<Apprpa_Rpa_StatusBot> Status= new  ArrayList<>();
+	@Getter @Setter private List<Apprpa_Rpa_Statusbots> Status= new  ArrayList<>();
 	
 }

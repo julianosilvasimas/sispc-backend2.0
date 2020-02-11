@@ -17,8 +17,8 @@ import lombok.Setter;
 
 @NoArgsConstructor @AllArgsConstructor
 @Entity
-@Table(name="Apprpa_Rpa_Statusbot")
-public class Apprpa_Rpa_StatusBot implements Serializable{
+@Table(name="Apprpa_Rpa_Statusbots")
+public class Apprpa_Rpa_Statusbots implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -30,7 +30,7 @@ public class Apprpa_Rpa_StatusBot implements Serializable{
 	@Getter @Setter private String Ultimostart;
 	@Getter @Setter private String Ultimostartip;
 	@ManyToOne
-	@JoinColumn(name="fk_idbot", foreignKey = @ForeignKey(name="fk_Status_idbot"))
+	@JoinColumn(name="Bot", foreignKey = @ForeignKey(name="fk_Status_idbot"))
 	@Getter @Setter private cad_rpa_robos Bot;
 	@Getter @Setter private String Status;
 	@Getter @Setter private String Exception;

@@ -44,7 +44,7 @@ com\prolagos\sispcbackend\services\GerenciasService.class
 com\prolagos\sispcbackend\domain\Base_Correios_Bairros.class
 com\prolagos\sispcbackend\resources\IrregularidadesGSSResource.class
 com\prolagos\sispcbackend\dto\UsuarioDTO.class
-com\prolagos\sispcbackend\services\util\Emails.class
+com\prolagos\sispcbackend\repositories\StatusBotRepository.class
 com\prolagos\sispcbackend\domain\procedures\ListaIndicadores.class
 com\prolagos\sispcbackend\security\JWTAuthorizationFilter.class
 com\prolagos\sispcbackend\domain\Cad_Auth_Usuarios.class
@@ -86,10 +86,10 @@ com\prolagos\sispcbackend\resources\EntregaResource.class
 com\prolagos\sispcbackend\config\JacksonConfiguration.class
 com\prolagos\sispcbackend\services\validations\UsuarioUpdateValidator.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_Comissionamento.class
+com\prolagos\sispcbackend\services\StatusBotsService.class
 com\prolagos\sispcbackend\domain\enums\Periodos_Indicadores.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_DeliberacoesRegulatorios.class
 com\prolagos\sispcbackend\resources\exceptions\StandardError.class
-com\prolagos\sispcbackend\domain\Apprpa_Rpa_StatusBot.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_Contratacao.class
 com\prolagos\sispcbackend\services\ModulosService.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Taggerencias.class
@@ -107,6 +107,7 @@ com\prolagos\sispcbackend\repositories\AgendamentosRepository.class
 com\prolagos\sispcbackend\repositories\CondutoresRepository.class
 com\prolagos\sispcbackend\domain\Cad_Transporte_Veiculos.class
 com\prolagos\sispcbackend\services\UsuariosService.class
+com\prolagos\sispcbackend\domain\Apprpa_Rpa_Statusbots.class
 com\prolagos\sispcbackend\repositories\GestaoDeliberacaoRepository.class
 com\prolagos\sispcbackend\services\UserService.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Projetos.class
@@ -125,6 +126,7 @@ com\prolagos\sispcbackend\domain\Cad_Transporte_CondutoresTicketLog.class
 com\prolagos\sispcbackend\repositories\ProjEngenhariaRepository.class
 com\prolagos\sispcbackend\repositories\VeiculosRepository.class
 com\prolagos\sispcbackend\repositories\IrregularidadesGSSRepository.class
+com\prolagos\sispcbackend\resources\StatusbotsResource.class
 com\prolagos\sispcbackend\repositories\EntregaRepository.class
 com\prolagos\sispcbackend\repositories\GerenciasRepository.class
 com\prolagos\sispcbackend\services\ProjetosService.class
@@ -147,3 +149,4 @@ com\prolagos\sispcbackend\repositories\ClientesGSSRepository.class
 com\prolagos\sispcbackend\services\EntregaService.class
 com\prolagos\sispcbackend\repositories\IndicadoresRepository.class
 com\prolagos\sispcbackend\repositories\ProjObrasRepository.class
+com\prolagos\sispcbackend\services\util\AgendamentoEmails.class

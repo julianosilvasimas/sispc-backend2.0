@@ -34,6 +34,7 @@ public class Appweb_Transporte_Agendamentos implements Serializable{
 
 	@Getter @Setter private String  Solicitante;
 	@Getter @Setter private Integer fksolicitante;
+	@Getter @Setter private String  emailsolicitante;
 	@Getter @Setter private String  Condutor;
 	@Getter @Setter private Integer QtdPessoas;
 	@Getter @Setter private String  TipoVeiculoSolicitado;
@@ -41,6 +42,7 @@ public class Appweb_Transporte_Agendamentos implements Serializable{
 	@Getter @Setter private String  Placa;
 	@Getter @Setter private String  TipoVeiculoDisponibilizado;
 	@Getter @Setter private String  Aprovador;
+	@Getter @Setter private String  emailaprovador;
 	@Getter @Setter private Integer Aprovacao;
 	@Getter @Setter private String  Justificativa;
 	@Getter @Setter private boolean Emergencial;

@@ -38,6 +38,7 @@ public class UsuariosService {
         final Cad_SisPC_Usuarios obj = this.repo.findByEmail(email);
         return obj;
     }
+
 	
 	@Transactional
 	public Cad_SisPC_Usuarios insert(Cad_SisPC_Usuarios obj) {

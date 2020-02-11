@@ -1,5 +1,6 @@
 package com.prolagos.sispcbackend.services;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Service;
 import com.prolagos.sispcbackend.domain.Appweb_Transporte_Agendamentos;
 import com.prolagos.sispcbackend.repositories.AgendamentosRepository;
 import com.prolagos.sispcbackend.services.exceptions.DataIntegrityException;
-import com.prolagos.sispcbackend.services.util.Emails;
+import com.prolagos.sispcbackend.services.util.AgendamentoEmails;
 
 @Service
 public class AgendamentosService {
@@ -56,8 +57,7 @@ public class AgendamentosService {
 		return (List<Appweb_Transporte_Agendamentos>)this.repo.Aprovados();
 	}
     
-    public Appweb_Transporte_Agendamentos insert(final Appweb_Transporte_Agendamentos obj) throws EmailException {
-//    	Emails email = new Emails("Agendamento");
+    public Appweb_Transporte_Agendamentos insert(final Appweb_Transporte_Agendamentos obj) throws EmailException, UnsupportedEncodingException {
     	Appweb_Transporte_Agendamentos veiculo = new Appweb_Transporte_Agendamentos(
 			obj.getAgendamentoId(),
 			obj.getDataAgendamento(),
@@ -65,6 +65,7 @@ public class AgendamentosService {
 			obj.getAgendadoate(),
 			obj.getSolicitante(),
 			obj.getFksolicitante(),
+			obj.getEmailsolicitante(),
 			obj.getCondutor(),
 			obj.getQtdPessoas(),
 			obj.getTipoVeiculoSolicitado(),
@@ -72,17 +73,24 @@ public class AgendamentosService {
 			obj.getPlaca(),
 			obj.getTipoVeiculoDisponibilizado(),
 			obj.getAprovador(),
+			obj.getEmailaprovador(),
 			obj.getAprovacao(),
 			obj.getJustificativa(),
 			obj.isEmergencial(),
 			obj.getJustificativasolicitacao()
 		);
+        try {
+	    	AgendamentoEmails email = new AgendamentoEmails(veiculo, "Novo Agendamento");
+	    }catch(Exception e) {}
         return repo.save(veiculo);
     }
     
-    public Appweb_Transporte_Agendamentos update(final Appweb_Transporte_Agendamentos obj) {
+    public Appweb_Transporte_Agendamentos update(final Appweb_Transporte_Agendamentos obj) throws UnsupportedEncodingException, EmailException {
         this.find(obj.getAgendamentoId());
-        return (Appweb_Transporte_Agendamentos)this.repo.save(obj);
+        try {
+        	AgendamentoEmails email = new AgendamentoEmails(obj,"");
+        }catch(Exception e) {}
+    	return (Appweb_Transporte_Agendamentos)this.repo.save(obj);
     }
     
     public void delete(final Integer id) {

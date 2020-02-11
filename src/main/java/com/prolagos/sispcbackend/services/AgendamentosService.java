@@ -3,6 +3,7 @@ package com.prolagos.sispcbackend.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.mail.EmailException;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import com.prolagos.sispcbackend.domain.Appweb_Transporte_Agendamentos;
 import com.prolagos.sispcbackend.repositories.AgendamentosRepository;
 import com.prolagos.sispcbackend.services.exceptions.DataIntegrityException;
+import com.prolagos.sispcbackend.services.util.Emails;
 
 @Service
 public class AgendamentosService {
@@ -54,7 +56,8 @@ public class AgendamentosService {
 		return (List<Appweb_Transporte_Agendamentos>)this.repo.Aprovados();
 	}
     
-    public Appweb_Transporte_Agendamentos insert(final Appweb_Transporte_Agendamentos obj) {
+    public Appweb_Transporte_Agendamentos insert(final Appweb_Transporte_Agendamentos obj) throws EmailException {
+//    	Emails email = new Emails("Agendamento");
     	Appweb_Transporte_Agendamentos veiculo = new Appweb_Transporte_Agendamentos(
 			obj.getAgendamentoId(),
 			obj.getDataAgendamento(),

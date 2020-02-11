@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.prolagos.sispcbackend.domain.Cad_Ind_Indicadores;
 import com.prolagos.sispcbackend.domain.Cad_SisPC_Unidades;
 import com.prolagos.sispcbackend.domain.procedures.ListaIndicadores;
+import com.prolagos.sispcbackend.domain.procedures.ResumoIndicadores;
 
 @Repository
 public class ListaIndicadoresDAO {
@@ -23,8 +24,14 @@ public class ListaIndicadoresDAO {
 	@SuppressWarnings("unchecked")
 	public List<ListaIndicadores> findAllBygrafico(String ref, Integer ind){
 			return em.createNamedStoredProcedureQuery("procedure1").setParameter("referencia", ref).setParameter("indicador", ind).getResultList();
-		}
+	}
 
+	@SuppressWarnings("unchecked")
+	public List<ListaIndicadores> findAllBygraficoResumo(String ref, Integer ind){
+			return em.createNamedStoredProcedureQuery("procedure2").setParameter("referencia", ref).setParameter("indicador", ind).getResultList();
+	}
+	
+	
 	public boolean insert(String acao, String analise, Integer  atendente, Integer atendimento, Integer ciclo, String colaborador, String comentario, LocalDate dataindicador, LocalDate datareferencia,
 			Double dentroprazo, Double dentroprazoreg, Double foraprazo, Double foraprazoreg, Double forecast, Double maximo, Double meta, Double minimo, Double orcado , Double pecld, Integer periodicidade,
 			Double previsao, Double realizado, Cad_Ind_Indicadores indicadorId, Cad_SisPC_Unidades undcodigo, Double  realizadokg ) {

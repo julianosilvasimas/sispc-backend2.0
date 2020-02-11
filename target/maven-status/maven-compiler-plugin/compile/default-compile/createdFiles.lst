@@ -44,6 +44,7 @@ com\prolagos\sispcbackend\services\GerenciasService.class
 com\prolagos\sispcbackend\domain\Base_Correios_Bairros.class
 com\prolagos\sispcbackend\resources\IrregularidadesGSSResource.class
 com\prolagos\sispcbackend\dto\UsuarioDTO.class
+com\prolagos\sispcbackend\services\util\Emails.class
 com\prolagos\sispcbackend\domain\procedures\ListaIndicadores.class
 com\prolagos\sispcbackend\security\JWTAuthorizationFilter.class
 com\prolagos\sispcbackend\domain\Cad_Auth_Usuarios.class
@@ -80,6 +81,7 @@ com\prolagos\sispcbackend\domain\Cad_SisPC_Supervisoes.class
 com\prolagos\sispcbackend\services\validations\UsuarioInsertValidator.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Perfis.class
 com\prolagos\sispcbackend\repositories\ProjSeSuiteRepository.class
+com\prolagos\sispcbackend\domain\procedures\ResumoIndicadores.class
 com\prolagos\sispcbackend\resources\EntregaResource.class
 com\prolagos\sispcbackend\config\JacksonConfiguration.class
 com\prolagos\sispcbackend\services\validations\UsuarioUpdateValidator.class

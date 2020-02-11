@@ -10,6 +10,7 @@ import com.prolagos.sispcbackend.domain.Cad_Transporte_Veiculos;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.apache.commons.mail.EmailException;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.prolagos.sispcbackend.services.AgendamentosService;
 import com.prolagos.sispcbackend.services.VeiculosService;
@@ -56,7 +57,7 @@ public class AgendamentoResource {
     }
     
     @RequestMapping(method = { RequestMethod.POST })
-    public ResponseEntity<Void> insert(@RequestBody Appweb_Transporte_Agendamentos obj) {
+    public ResponseEntity<Void> insert(@RequestBody Appweb_Transporte_Agendamentos obj) throws EmailException {
         obj = this.service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
         		.path("/{id}").buildAndExpand(new Object[] { obj.getAgendamentoId()}).toUri();

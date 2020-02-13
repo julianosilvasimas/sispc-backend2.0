@@ -35,18 +35,5 @@ public class Cad_Transporte_CondutoresTicketLog implements Serializable{
 	@Getter @Setter private String Situacao;
 	@Column(name = "dataCadastro", nullable = true, updatable = true, insertable = true, columnDefinition = "DATE")
 	@Getter @Setter private String dataCadastro;
-//	public Cad_Transporte_CondutoresTicketLog(Integer matricula, String nome, String gestor,
-//			String vencimentoHabilitacao, String nascimento, String rG, String cPF, String situacao,
-//			String dataCadastro) {
-//		super();
-//		this.matricula = matricula;
-//		Nome = nome;
-//		Gestor = gestor;
-//		VencimentoHabilitacao = vencimentoHabilitacao;
-//		Nascimento = nascimento;
-//		RG = rG;
-//		CPF = cPF;
-//		Situacao = situacao;
-//		this.dataCadastro = dataCadastro;
-//	}
+
 }

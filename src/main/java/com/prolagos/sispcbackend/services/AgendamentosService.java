@@ -1,11 +1,10 @@
 package com.prolagos.sispcbackend.services;
 
-import java.sql.Date;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.Column;
-
+import org.apache.commons.mail.EmailException;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -16,12 +15,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.prolagos.sispcbackend.domain.Appweb_Transporte_Agendamentos;
-import com.prolagos.sispcbackend.domain.Cad_Transporte_Veiculos;
 import com.prolagos.sispcbackend.repositories.AgendamentosRepository;
 import com.prolagos.sispcbackend.services.exceptions.DataIntegrityException;
-
-import lombok.Getter;
-import lombok.Setter;
+import com.prolagos.sispcbackend.services.util.AgendamentoEmails;
 
 @Service
 public class AgendamentosService {
@@ -44,6 +40,7 @@ public class AgendamentosService {
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Appweb_Transporte_Agendamentos.class.getName(), null));
 	}
     
+
     public List<Appweb_Transporte_Agendamentos> Disponiveis(String de, String ate) {
 		List<Appweb_Transporte_Agendamentos> obj = repo.Disponiveis(de, ate);
 		return (List<Appweb_Transporte_Agendamentos>)this.repo.Disponiveis(de, ate);
@@ -60,13 +57,15 @@ public class AgendamentosService {
 		return (List<Appweb_Transporte_Agendamentos>)this.repo.Aprovados();
 	}
     
-    public Appweb_Transporte_Agendamentos insert(final Appweb_Transporte_Agendamentos obj) {
+    public Appweb_Transporte_Agendamentos insert(final Appweb_Transporte_Agendamentos obj) throws EmailException, UnsupportedEncodingException {
     	Appweb_Transporte_Agendamentos veiculo = new Appweb_Transporte_Agendamentos(
 			obj.getAgendamentoId(),
 			obj.getDataAgendamento(),
 			obj.getAgendadode(),
 			obj.getAgendadoate(),
 			obj.getSolicitante(),
+			obj.getFksolicitante(),
+			obj.getEmailsolicitante(),
 			obj.getCondutor(),
 			obj.getQtdPessoas(),
 			obj.getTipoVeiculoSolicitado(),
@@ -74,15 +73,18 @@ public class AgendamentosService {
 			obj.getPlaca(),
 			obj.getTipoVeiculoDisponibilizado(),
 			obj.getAprovador(),
+			obj.getEmailaprovador(),
 			obj.getAprovacao(),
-			obj.getJustificativa()
+			obj.getJustificativa(),
+			obj.isEmergencial(),
+			obj.getJustificativasolicitacao()
 		);
         return repo.save(veiculo);
     }
     
-    public Appweb_Transporte_Agendamentos update(final Appweb_Transporte_Agendamentos obj) {
+    public Appweb_Transporte_Agendamentos update(final Appweb_Transporte_Agendamentos obj) throws UnsupportedEncodingException, EmailException {
         this.find(obj.getAgendamentoId());
-        return (Appweb_Transporte_Agendamentos)this.repo.save(obj);
+    	return (Appweb_Transporte_Agendamentos)this.repo.save(obj);
     }
     
     public void delete(final Integer id) {

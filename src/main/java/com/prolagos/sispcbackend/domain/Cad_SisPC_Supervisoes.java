@@ -33,6 +33,10 @@ public class Cad_SisPC_Supervisoes implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy="supervisaoId")
 	@Getter @Setter private List<Cad_SisPC_Tagsupervisoes> tagsupervisoes= new ArrayList<>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="supervisaoId")
+	@Getter @Setter private List<Cad_SisPC_Usuarios> usuarios= new ArrayList<>();	
 
 	public Cad_SisPC_Supervisoes(Integer supervisaoId, String codsupervisao, String supervisao) {
 		super();

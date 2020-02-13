@@ -17,6 +17,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -27,9 +29,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
 @NoArgsConstructor 
 @EqualsAndHashCode(of = "usuarioId")
+@Entity
 public class Cad_SisPC_Usuarios implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	
@@ -45,22 +47,30 @@ public class Cad_SisPC_Usuarios implements UserDetails {
 	@Getter @Setter private String cargo;
 	@Getter @Setter private String foto;
 	
+	
 	@ManyToOne
 	@JoinColumn(name="fk_emp_codigo",foreignKey = @ForeignKey(name="fk_unidade_usuarios"))
 	@Getter @Setter private Cad_SisPC_Unidades undcodigo;
 	
+	@ManyToOne
+	@JoinColumn(name="fk_gerencia",foreignKey = @ForeignKey(name="fk_gerencia_usuarios"))
+	@Getter @Setter private Cad_SisPC_Gerencias  gerenciaId;
+	
+	@ManyToOne
+	@JoinColumn(name="fk_supervisao",foreignKey = @ForeignKey(name="fk_supervisao_usuarios"))
+	@Getter @Setter private Cad_SisPC_Supervisoes supervisaoId;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "cad_relc_usuariosperfis",
 		joinColumns = @JoinColumn(name = "fk_usuarioId", foreignKey = @ForeignKey(name="fk_usuario_perfis")),
 		inverseJoinColumns = @JoinColumn(name = "fk_perfilId", foreignKey = @ForeignKey(name="fk_perfil_usuarios")))
-	@Getter @Setter private Set<Cad_SisPC_Perfis> perfis;
+	@Fetch(FetchMode.SUBSELECT) 
+	@Getter @Setter private List<Cad_SisPC_Perfis> perfis;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="usuarioId")
 	@Getter @Setter private List<Cad_Auth_Usuarios> usuarios= new ArrayList<>();
 
-	
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -97,8 +107,9 @@ public class Cad_SisPC_Usuarios implements UserDetails {
 		return true;
 	}
 
+	
 	public Cad_SisPC_Usuarios(Integer usuarioId, String nome, String email, String login, String senha, Boolean ativo,
-			Cad_SisPC_Unidades undcodigo) {
+			String cargo, String foto, Cad_SisPC_Unidades undcodigo, Cad_SisPC_Gerencias gerenciaId, Cad_SisPC_Supervisoes supervisaoId) {
 		super();
 		this.usuarioId = usuarioId;
 		this.nome = nome;
@@ -106,8 +117,14 @@ public class Cad_SisPC_Usuarios implements UserDetails {
 		this.login = login;
 		this.senha = senha;
 		this.ativo = ativo;
+		this.cargo = cargo;
+		this.foto = foto;
 		this.undcodigo = undcodigo;
+		this.gerenciaId = gerenciaId;
+		this.supervisaoId = supervisaoId;
 	}
+	
+	
 	
 
 }

@@ -41,7 +41,8 @@ public class UsuariosResource {
         final Cad_SisPC_Usuarios obj = this.service.findByEmail(email);
         return (ResponseEntity.ok().body(obj));
     }
-	
+
+    
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody UsuarioNewDTO objDto) {
 		Cad_SisPC_Usuarios obj = service.fromDTO(objDto);

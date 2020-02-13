@@ -26,11 +26,11 @@ public interface AgendamentosRepository extends JpaRepository<Appweb_Transporte_
 	
 	@Transactional(readOnly = true)
     @Query( "SELECT "
-    		+ "obj "
-    		+ "FROM Appweb_Transporte_Agendamentos obj "
-    		+ "WHERE obj.Placa IS NOT NULL AND obj.Aprovacao = 1 AND :de  BETWEEN obj.Agendadode AND obj.Agendadoate "
-    		+ "OR    obj.Placa IS NOT NULL AND obj.Aprovacao = 1 AND :ate BETWEEN obj.Agendadode AND obj.Agendadoate "
-    		+ "OR(   obj.Placa IS NOT NULL AND obj.Aprovacao = 1 AND :de <= obj.Agendadode AND :ate >= obj.Agendadoate)"
+    		+ "obj2 "
+    		+ "FROM Appweb_Transporte_Agendamentos obj2 "
+    		+ "WHERE obj2.Placa IS NOT NULL AND :de  BETWEEN obj2.Agendadode AND obj2.Agendadoate "
+    		+ "OR    obj2.Placa IS NOT NULL AND :ate BETWEEN obj2.Agendadode AND obj2.Agendadoate "
+    		+ "OR(   obj2.Placa IS NOT NULL AND :de <= obj2.Agendadode AND :ate >= obj2.Agendadoate)"
 		)
 	List<Appweb_Transporte_Agendamentos> Disponiveis(@Param("de") final String de, @Param("ate") final String ate);
 }

@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.prolagos.sispcbackend.domain.AppWeb_Ind_ExeIndicadores;
 import com.prolagos.sispcbackend.domain.Cad_Ind_Indicadores;
 import com.prolagos.sispcbackend.domain.procedures.ListaIndicadores;
+import com.prolagos.sispcbackend.domain.procedures.ResumoIndicadores;
 import com.prolagos.sispcbackend.repositories.ListaIndicadoresDAO;
 import com.prolagos.sispcbackend.services.IndicadoresService;
 
@@ -79,6 +80,13 @@ public class IndicadoresResource {
 	@RequestMapping(value="/grafico/{ref}/{ind}", method=RequestMethod.GET)
 	public ResponseEntity<List<ListaIndicadores>> findAllBygrafico(@PathVariable String ref, @PathVariable Integer ind){
 		return ResponseEntity.ok().body(dao.findAllBygrafico(ref, ind));
+	}
+
+
+	//Aqui será o endpoint para o gráfico
+	@RequestMapping(value="/graficoResumo/{ref}/{ind}", method=RequestMethod.GET)
+	public ResponseEntity<List<ListaIndicadores>> findAllBygraficoResumo(@PathVariable String ref, @PathVariable Integer ind){
+		return ResponseEntity.ok().body(dao.findAllBygraficoResumo(ref, ind));
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT)

@@ -13,6 +13,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,6 +44,7 @@ public class Cad_Auth_Usuarios {
 	@Getter @Setter private Cad_SisPC_Modulos moduloId;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT) 
 	@JoinTable(name = "cad_relc_indicadoresauths",
 		joinColumns = @JoinColumn(name = "fk_indicadorId", foreignKey = @ForeignKey(name="fk_auth_indicadores")),
 		inverseJoinColumns = @JoinColumn(name = "fk_authId", foreignKey = @ForeignKey(name="fk_indicador_auths")))

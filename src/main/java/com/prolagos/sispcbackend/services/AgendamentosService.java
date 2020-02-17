@@ -79,17 +79,11 @@ public class AgendamentosService {
 			obj.isEmergencial(),
 			obj.getJustificativasolicitacao()
 		);
-        try {
-	    	AgendamentoEmails email = new AgendamentoEmails(veiculo, "Novo Agendamento");
-	    }catch(Exception e) {}
         return repo.save(veiculo);
     }
     
     public Appweb_Transporte_Agendamentos update(final Appweb_Transporte_Agendamentos obj) throws UnsupportedEncodingException, EmailException {
         this.find(obj.getAgendamentoId());
-        try {
-        	AgendamentoEmails email = new AgendamentoEmails(obj,"");
-        }catch(Exception e) {}
     	return (Appweb_Transporte_Agendamentos)this.repo.save(obj);
     }
     

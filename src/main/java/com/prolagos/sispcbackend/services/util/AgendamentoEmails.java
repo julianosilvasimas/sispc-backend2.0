@@ -2,23 +2,14 @@ package com.prolagos.sispcbackend.services.util;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 
-import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 
-import com.prolagos.sispcbackend.domain.Appweb_Transporte_Agendamentos;
-import com.prolagos.sispcbackend.domain.Cad_SisPC_Usuarios;
-import com.prolagos.sispcbackend.services.UsuariosService;
+public class AgendamentoEmails extends Thread {
 
-public class AgendamentoEmails {
 	public String Nome;
     String servidor = "correio.level3br.com";
     int porta = 587;
@@ -28,34 +19,50 @@ public class AgendamentoEmails {
     String [] destinatario;
 
     public ArrayList<String> Emails = new ArrayList<>();
-	private UsuariosService service;
-    
-    //AGENDAMENTO
-	public AgendamentoEmails(Appweb_Transporte_Agendamentos obj, String tipo) throws EmailException, UnsupportedEncodingException {
-        System.setProperty("file.encoding","ISO-8859-1");
-        System.setProperty("encoding", "ISO-8859-1");
-        System.setProperty("sun.jnu.encoding", "ISO-8859-1");
-		HtmlEmail email = new HtmlEmail();
+
+    public AgendamentoEmails(
+    		Integer getAprovacao, 
+			String getEmailsolicitante, 
+			Integer getAgendamentoId, 
+			String getCondutor, 
+			String getDestino, 
+			String getSolicitante,
+			String getTipoVeiculoSolicitado,
+			String getAgendadode,
+	 		String getAgendadoate,
+	 		String getJustificativasolicitacao,
+	 		String getAprovador,
+	 		String getJustificativa,
+	 		String getPlaca,
+	 		String getTipoVeiculoDisponibilizado,
+    		String tipo) throws EmailException, UnsupportedEncodingException {
+    	HtmlEmail email = new HtmlEmail();
+        email.setDebug(true);
 		
         String assunto = null;
         String txtHtml= null;
-        
-        if(tipo.equals("Novo Agendamento")) {
-        	txtHtml=TextoHtmlNovoAgendamento(obj);
-    		assunto = "Solicitação de Agendamento";
-        }else if(obj.getAprovacao()==1) {
-        	txtHtml=TextoHtmlAgendamentoAprovado(obj);
-    		assunto = "Agendamento Aprovado";
-        }else if(obj.getAprovacao()==0) {
-        	txtHtml=TextoHtmlAgendamentoReprovado(obj);
-    		assunto = "Agendamento Reprovado";
-        }
-        
-		Emails.add(obj.getEmailsolicitante());
+		Emails.add(getEmailsolicitante);
+        Emails.add("vitor.heser@prolagos.com.br");
         String[] convertido = (String[]) Emails.toArray(new String[Emails.size()]);
         destinatario = convertido;
 		
-        
+        if(tipo.equals("Novo Agendamento")) {
+        	txtHtml=TextoHtmlNovoAgendamento(getAgendamentoId, getSolicitante,
+        			getCondutor, getDestino, getTipoVeiculoSolicitado, getAgendadode, getAgendadoate, getJustificativasolicitacao,
+        			getAprovador, getJustificativa, getPlaca, getTipoVeiculoDisponibilizado);
+    		assunto = "Solicitação de Agendamento Nº"+getAgendamentoId;
+        }else if(getAprovacao==1) {
+        	txtHtml=TextoHtmlAgendamentoAprovado(getAgendamentoId, getSolicitante,
+        			getCondutor, getDestino, getTipoVeiculoSolicitado, getAgendadode, getAgendadoate, getJustificativasolicitacao,
+        			getAprovador, getJustificativa, getPlaca, getTipoVeiculoDisponibilizado);
+    		assunto = "Solicitação de Agendamento Nº "+getAgendamentoId+" Aprovado";
+        }else if(getAprovacao==0) {
+        	txtHtml=TextoHtmlAgendamentoReprovado(getAgendamentoId, getSolicitante,
+        			getCondutor, getDestino, getTipoVeiculoSolicitado, getAgendadode, getAgendadoate, getJustificativasolicitacao,
+        			getAprovador, getJustificativa, getPlaca, getTipoVeiculoDisponibilizado);
+    		assunto = "Solicitação de Agendamento Nº "+getAgendamentoId+" Reprovado";
+        }
+
         txtHtml = txtHtml + Assinatura(email) + "</html>";
         email.setDebug(false);
         email.setHostName(servidor);
@@ -67,11 +74,14 @@ public class AgendamentoEmails {
         email.addTo(destinatario);
         email.setHtmlMsg(txtHtml);
         email.send();
-	}
-	
+
+    }
+
 	
 	public String Assinatura(HtmlEmail email) throws EmailException {
-		String cid1 = email.embed(new File("\\\\Fsprl01\\prolagos\\RPA\\UTIL\\Prolagos.png"));
+		
+		String cid1 = email.embed(new File("C:\\Users\\Public\\Documents\\Prolagos.png"));
+
 		String Assinatura =  "<em>Atenciosamente,</em></strong></p>"
 		+ "<img src=\"cid:" + cid1 + "\"  width=\"127\">";
 		return Assinatura;
@@ -82,42 +92,71 @@ public class AgendamentoEmails {
 		return datafinal;
 	}
 	
-	public String TextoHtmlNovoAgendamento(Appweb_Transporte_Agendamentos obj) throws EmailException{
+
+	public String TextoHtmlNovoAgendamento(
+			Integer getAgendamentoId, 
+			String getSolicitante,
+			String getCondutor, 
+			String getDestino, 
+			String getTipoVeiculoSolicitado, 
+			String getAgendadode, 
+			String getAgendadoate, 
+			String getJustificativasolicitacao,
+			String getAprovador, 
+			String getJustificativa, 
+			String getPlaca, 
+			String getTipoVeiculoDisponibilizado) throws EmailException{
 		String texto=
                 "<html>"
-                        + "Olá, <br><br>"
+                        + "Olá,<br><br>"
                         + "Você acabou de agendar um veículo, segue abaixo os dados do seu agendamento: <br><br>"
-                        + "<b>Solicitante: </b>"+obj.getSolicitante()+",<br>"
-                        + "<b>Condutor: </b>"+obj.getCondutor()+",<br>"
-                        + "<b>Destino: </b>"+obj.getDestino()+",<br>"
-                        + "<b>Veículo Solicitado: </b>"+obj.getTipoVeiculoSolicitado()+",<br>"
-                        + "<b>Horário: </b>"+dataFormatada(obj.getAgendadode())+" - "+dataFormatada(obj.getAgendadoate())+",<br>"
-                        + "<b>Justificativa: </b>"+obj.getJustificativasolicitacao()+",<br><br>"
+                        + "<b>Nº da Solicitação: "+getAgendamentoId+"</b>,<br>"
+                        + "<b>Solicitante: </b>"+getSolicitante+",<br>"
+                        + "<b>Condutor: </b>"+getCondutor+",<br>"
+                        + "<b>Destino: </b>"+getDestino+",<br>"
+                        + "<b>Veículo Solicitado: </b>"+getTipoVeiculoSolicitado+",<br>"
+                        + "<b>Horário: </b>"+dataFormatada(getAgendadode)+" - "+dataFormatada(getAgendadoate)+",<br>"
+                        + "<b>Justificativa: </b>"+getJustificativasolicitacao+",<br><br>"
                         + "Aguarde que entraremos em contato em caso de aprovação ou reprovação da solicitação!.<br><br>";
                         
 		return texto;
 	}
-	public String TextoHtmlAgendamentoAprovado(Appweb_Transporte_Agendamentos obj) throws EmailException{
+
+	public String TextoHtmlAgendamentoAprovado(
+			Integer getAgendamentoId, 
+			String getSolicitante,
+			String getCondutor, 
+			String getDestino, 
+			String getTipoVeiculoSolicitado, 
+			String getAgendadode, 
+			String getAgendadoate, 
+			String getJustificativasolicitacao,
+			String getAprovador, 
+			String getJustificativa, 
+			String getPlaca, 
+			String getTipoVeiculoDisponibilizado)  throws EmailException{
 		String texto=
                 "<html>"
                         + "Olá, <br><br>"
                         + "Seu veículo foi aprovado pelo setor de transporte: <br><br>"
                         + "<b>SOLICITAÇÃO</b> <br>"
                         + "------------------------------------------------------------<br>"
-                        + "<b>Nº da Solicitação: "+obj.getAgendamentoId()+"</b>,<br>"
-                        + "<b>Solicitante: </b>"+obj.getSolicitante()+",<br>"
-                        + "<b>Condutor: </b>"+obj.getCondutor()+",<br>"
-                        + "<b>Destino: </b>"+obj.getDestino()+",<br>"
-                        + "<b>Veículo Solicitado: </b>"+obj.getTipoVeiculoSolicitado()+",<br>"
-                        + "<b>Horário: </b>"+dataFormatada(obj.getAgendadode())+" - "+dataFormatada(obj.getAgendadoate())+",<br>"
-                        + "<b>Justificativa: </b>"+obj.getJustificativasolicitacao()+",<br><br>"
+
+                        + "<b>Nº da Solicitação: "+getAgendamentoId+"</b>,<br>"
+                        + "<b>Solicitante: </b>"+getSolicitante+",<br>"
+                        + "<b>Condutor: </b>"+getCondutor+",<br>"
+                        + "<b>Destino: </b>"+getDestino+",<br>"
+                        + "<b>Veículo Solicitado: </b>"+getTipoVeiculoSolicitado+",<br>"
+                        + "<b>Horário: </b>"+dataFormatada(getAgendadode)+" - "+dataFormatada(getAgendadoate)+",<br>"
+                        + "<b>Justificativa: </b>"+getJustificativasolicitacao+",<br><br>"
 
                         + "<b>APROVAÇÃO</b> <br>"
                         + "------------------------------------------------------------<br>"
                         + "<b>Status: </b>APROVADO<br>"
-                        + "<b>Placa: </b>"+obj.getPlaca()+",<br>"
-                        + "<b>Veiculo Disponibilizado: </b>"+obj.getTipoVeiculoDisponibilizado()+",<br>"
-                        + "<b>Aprovador: </b>"+obj.getAprovador()+"<br><br>"
+
+                        + "<b>Placa: </b>"+getPlaca+",<br>"
+                        + "<b>Veiculo Disponibilizado: </b>"+getTipoVeiculoDisponibilizado+",<br>"
+                        + "<b>Aprovador: </b>"+getAprovador+"<br><br>"
                         
 						+"<b>INSTRUÇÕES</b> <br>"
 				        + "------------------------------------------------------------<br>"
@@ -130,26 +169,38 @@ public class AgendamentoEmails {
 				                        
 		return texto;
 	}
-	public String TextoHtmlAgendamentoReprovado(Appweb_Transporte_Agendamentos obj) throws EmailException{
+	public String TextoHtmlAgendamentoReprovado(
+			Integer getAgendamentoId, 
+			String getSolicitante,
+			String getCondutor, 
+			String getDestino, 
+			String getTipoVeiculoSolicitado, 
+			String getAgendadode, 
+			String getAgendadoate, 
+			String getJustificativasolicitacao,
+			String getAprovador, 
+			String getJustificativa, 
+			String getPlaca, 
+			String getTipoVeiculoDisponibilizado) throws EmailException{
 		String texto=
                 "<html>"
                         + "Olá, <br><br>"
                         + "Seu veículo foi reprovado pelo setor de transporte: <br><br>"
                         + "<b>SOLICITAÇÃO</b> <br>"
                         + "------------------------------------------------------------<br>"
-                        + "<b>Nº da Solicitação: "+obj.getAgendamentoId()+"</b>,<br>"
-                        + "<b>Solicitante: </b>"+obj.getSolicitante()+",<br>"
-                        + "<b>Condutor: </b>"+obj.getCondutor()+",<br>"
-                        + "<b>Destino: </b>"+obj.getDestino()+",<br>"
-                        + "<b>Veículo Solicitado: </b>"+obj.getTipoVeiculoSolicitado()+",<br>"
-                        + "<b>Horário: </b>"+dataFormatada(obj.getAgendadode())+" - "+dataFormatada(obj.getAgendadoate())+",<br>"
-                        + "<b>Justificativa: </b>"+obj.getJustificativasolicitacao()+",<br><br>"
+                        + "<b>Nº da Solicitação: "+getAgendamentoId+"</b>,<br>"
+                        + "<b>Solicitante: </b>"+getSolicitante+",<br>"
+                        + "<b>Condutor: </b>"+getCondutor+",<br>"
+                        + "<b>Destino: </b>"+getDestino+",<br>"
+                        + "<b>Veículo Solicitado: </b>"+getTipoVeiculoSolicitado+",<br>"
+                        + "<b>Horário: </b>"+dataFormatada(getAgendadode)+" - "+dataFormatada(getAgendadoate)+",<br>"
+                        + "<b>Justificativa: </b>"+getJustificativasolicitacao+",<br><br>"
 
                         + "<b>APROVAÇÃO</b> <br>"
                         + "------------------------------------------------------------<br>"
                         + "<b>Status: </b>REPROVADO<br>"
-                        + "<b>Aprovador: </b>"+obj.getAprovador()+"<br>"
-                        + "<b>Justificativa: </b>"+obj.getJustificativa()+"<br>"
+                        + "<b>Aprovador: </b>"+getAprovador+"<br>"
+                        + "<b>Justificativa: </b>"+getJustificativa+"<br><br>"
                         
 						+"<b>INSTRUÇÕES</b> <br>"
 				        + "------------------------------------------------------------<br>"

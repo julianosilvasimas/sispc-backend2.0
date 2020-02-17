@@ -21,20 +21,27 @@ import lombok.Setter;
 
 @Entity
 @NoArgsConstructor 
-@EqualsAndHashCode(of = "Id")
+@EqualsAndHashCode(of = "IdCad")
 @Table(name="cad_rpa_robos")
 public class cad_rpa_robos implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="Id")
+	@Column(name="IdCad")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Getter @Setter private Integer Id;
+	@Getter @Setter private Integer IdCad;
 	@Getter @Setter private String Nomebot;
 	@Getter @Setter private String Descricao;
 
-	@JsonIgnore
-	@OneToMany(mappedBy="Id")
-	@Getter @Setter private List<Apprpa_Rpa_Statusbots> Status= new  ArrayList<>();
+//	@JsonIgnore
+//	@OneToMany(mappedBy="Bot")
+//	@Getter @Setter private List<Apprpa_Rpa_Statusbots> Status= new  ArrayList<>();
+
+	public cad_rpa_robos(Integer id, String nomebot, String descricao) {
+		
+		this.IdCad = id;
+		this.Nomebot = nomebot;
+		this.Descricao = descricao;
+	}
 	
 }

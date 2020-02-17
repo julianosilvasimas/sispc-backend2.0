@@ -59,6 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  			"/gestaodeliberacao/**",
  			"/endentrega/**",
  			"/projetos/**",
+ 			"/enviarEmail/**",
  			"/zteste/**"
 	};
 	

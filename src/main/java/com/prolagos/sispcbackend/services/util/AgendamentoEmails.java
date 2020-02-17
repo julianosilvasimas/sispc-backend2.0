@@ -1,27 +1,13 @@
 package com.prolagos.sispcbackend.services.util;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
-
-import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 
-import com.prolagos.sispcbackend.domain.Appweb_Transporte_Agendamentos;
-import com.prolagos.sispcbackend.domain.Cad_SisPC_Usuarios;
-import com.prolagos.sispcbackend.services.UsuariosService;
-
-public class AgendamentoEmails {
+public class AgendamentoEmails extends Thread {
 	public String Nome;
     String servidor = "correio.level3br.com";
     int porta = 587;

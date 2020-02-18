@@ -12,6 +12,9 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.prolagos.sispcbackend.domain.Apprpa_Rpa_Statusbots;
+import com.prolagos.sispcbackend.domain.Cad_Ind_Indicadores;
+import com.prolagos.sispcbackend.domain.cad_rpa_robos;
+import com.prolagos.sispcbackend.repositories.CadRpaRepository;
 import com.prolagos.sispcbackend.repositories.CadindicadoresRepository;
 import com.prolagos.sispcbackend.repositories.StatusBotRepository;
 import com.prolagos.sispcbackend.services.exceptions.DataIntegrityException;
@@ -39,20 +42,20 @@ public class StatusBotsService {
 		Apprpa_Rpa_Statusbots.class.getName(), null));
 	}
 
-	public Apprpa_Rpa_Statusbots findByBot(Integer id) {
-		Optional<Apprpa_Rpa_Statusbots> obj = repo.findByBot(id);
-		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " +
-		Apprpa_Rpa_Statusbots.class.getName(), null));
-	}
+//	public Apprpa_Rpa_Statusbots findByBot(final List<cad_rpa_robos> robos) {
+//		Optional<Apprpa_Rpa_Statusbots> obj = repo.findByBot(robos);
+//		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + robos + ", Tipo: " +
+//		Apprpa_Rpa_Statusbots.class.getName(), null));
+//	}
 	
 	public Apprpa_Rpa_Statusbots insert(Apprpa_Rpa_Statusbots obj) {
-		obj.setId(null);  //Utilizado em Entidade Com auto incremento
+		obj.setIdAppWeb(null);  //Utilizado em Entidade Com auto incremento
 		obj = repo.save(obj);
 		return obj;
 	}
 	
 	public Apprpa_Rpa_Statusbots update(Apprpa_Rpa_Statusbots obj) {
-		find(obj.getId());
+		find(obj.getIdAppWeb());
 		return repo.save(obj);
 	}
 	

@@ -21,7 +21,6 @@ public class Appweb_Transporte_Agendamentos implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Getter @Setter private Integer agendamentoId;
 	@Column(name = "DataAgendamento", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	@Getter @Setter private String DataAgendamento;

@@ -65,25 +65,11 @@ public class AgendamentoResource {
 
 
         obj = this.service.insert(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-        		.path("/{id}").buildAndExpand(new Object[] { obj.getAgendamentoId()}).toUri();
-    	AgendamentoEmails email = new AgendamentoEmails(
-		obj.getAprovacao(),
- 		obj.getEmailsolicitante(),
- 		obj.getAgendamentoId(),
- 		obj.getCondutor(),
- 		obj.getDestino(),
- 		obj.getSolicitante(),
- 		obj.getTipoVeiculoSolicitado(),
- 		obj.getAgendadode(),
- 		obj.getAgendadoate(),
- 		obj.getJustificativasolicitacao(),
- 		obj.getAprovador(),
- 		obj.getJustificativa(),
- 		obj.getPlaca(),
- 		obj.getTipoVeiculoDisponibilizado(),
-		"Novo Agendamento");
-        return ResponseEntity.noContent().build();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(new Object[] { obj.getAgendamentoId()}).toUri();
+    	AgendamentoEmails email = new AgendamentoEmails(obj.getAprovacao(), obj.getEmailsolicitante(), obj.getAgendamentoId(), obj.getCondutor(), obj.getDestino(), obj.getSolicitante(), obj.getTipoVeiculoSolicitado(), obj.getAgendadode(), obj.getAgendadoate(), obj.getJustificativasolicitacao(), obj.getAprovador(), obj.getJustificativa(), obj.getPlaca(), obj.getTipoVeiculoDisponibilizado(),"Novo Agendamento");
+        
+    	
+    	return ResponseEntity.noContent().build();
     }
     
     @RequestMapping(value = { "/{id}" }, method = { RequestMethod.PUT })
@@ -91,25 +77,12 @@ public class AgendamentoResource {
 
         obj.setAgendamentoId(id);
         obj = this.service.update(obj);
-
-    	AgendamentoEmails email = new AgendamentoEmails(
-		obj.getAprovacao(),
- 		obj.getEmailsolicitante(),
- 		obj.getAgendamentoId(),
- 		obj.getCondutor(),
- 		obj.getDestino(),
- 		obj.getSolicitante(),
- 		obj.getTipoVeiculoSolicitado(),
- 		obj.getAgendadode(),
- 		obj.getAgendadoate(),
- 		obj.getJustificativasolicitacao(),
- 		obj.getAprovador(),
- 		obj.getJustificativa(),
- 		obj.getPlaca(),
- 		obj.getTipoVeiculoDisponibilizado(),
-		"");
-        return ResponseEntity.noContent().build();
+    	AgendamentoEmails email = new AgendamentoEmails(obj.getAprovacao(), obj.getEmailsolicitante(), obj.getAgendamentoId(), obj.getCondutor(), obj.getDestino(), obj.getSolicitante(), obj.getTipoVeiculoSolicitado(), obj.getAgendadode(), obj.getAgendadoate(), obj.getJustificativasolicitacao(), obj.getAprovador(), obj.getJustificativa(), obj.getPlaca(), obj.getTipoVeiculoDisponibilizado(),"");
+        
+    	
+    	return ResponseEntity.noContent().build();
     }
+    
     
     @RequestMapping(value = { "/{id}" }, method = { RequestMethod.DELETE })
     public ResponseEntity<Void> delete(@PathVariable final Integer id) {

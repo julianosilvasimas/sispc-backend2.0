@@ -22,8 +22,9 @@ import lombok.Setter;
 @EqualsAndHashCode(of = "IdPagamento")
 public class Appweb_Juridico_pagamentos implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
-	@Id
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter @Setter private Integer IdPagamento;
 	
 	@Column(name = "DataCadastro", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
@@ -46,22 +47,22 @@ public class Appweb_Juridico_pagamentos implements Serializable{
 	@Getter @Setter private String Sentenca;
 	@Getter @Setter private String MotivoPagamento;
 	@Getter @Setter private boolean FalhaConcess;
-	@Getter @Setter private boolean EnviadoParaAprovacao;
+	@Getter @Setter private Integer EnviadoParaAprovacao;
 
 	@Getter @Setter private String Aprovador1;
-	@Getter @Setter private boolean Aprovacao1;
+	@Getter @Setter private Integer Aprovacao1;
 
 	@Getter @Setter private String Aprovador2;
-	@Getter @Setter private boolean Aprovacao2;
+	@Getter @Setter private Integer Aprovacao2;
 
 	@Getter @Setter private String Aprovador3;
-	@Getter @Setter private boolean Aprovacao3;
+	@Getter @Setter private Integer Aprovacao3;
 	
 	public Appweb_Juridico_pagamentos(Integer idPagamento, String dataCadastro, String usuarioInsert, String empresa,
 			String autor, String processo, String natureza, String dataProgramada, Double valor, String escritorio,
 			String contaContabil, String centroDeCusto, String fornecedor, String sentenca, String motivoPagamento,
-			boolean falhaConcess, boolean enviadoParaAprovacao, String aprovador1, boolean aprovacao1,
-			String aprovador2, boolean aprovacao2, String aprovador3, boolean aprovacao3) {
+			boolean falhaConcess, Integer enviadoParaAprovacao, String aprovador1, Integer aprovacao1,
+			String aprovador2, Integer aprovacao2, String aprovador3, Integer aprovacao3) {
 		super();
 		IdPagamento = idPagamento;
 		DataCadastro = dataCadastro;

@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.Arrays;
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.prolagos.sispcbackend.domain.Appweb_Juridico_pagamentos;
@@ -34,6 +36,25 @@ public class JuridicoPagamentoResource {
         return (ResponseEntity<Appweb_Juridico_pagamentos>)ResponseEntity.ok().body(obj);
     }
 
+    @RequestMapping(value = { "/editaveis" }, method = { RequestMethod.GET })
+    public ResponseEntity<List<Appweb_Juridico_pagamentos>> SemAprovar() {
+        final List<Appweb_Juridico_pagamentos> list = this.service.SemAprovar();
+        return (ResponseEntity<List<Appweb_Juridico_pagamentos>>)ResponseEntity.ok().body(list);
+    }
+
+    @RequestMapping(value = { "/emaprovacao" }, method = { RequestMethod.GET })
+    public ResponseEntity<List<Appweb_Juridico_pagamentos>> Aprovacao() {
+        final List<Appweb_Juridico_pagamentos> list = this.service.EmAprovacao();
+        return (ResponseEntity<List<Appweb_Juridico_pagamentos>>)ResponseEntity.ok().body(list);
+    }
+        
+    @RequestMapping(value = { "/aprovando/{nivel}/{string}" }, method = { RequestMethod.GET })
+    public ResponseEntity<List<Appweb_Juridico_pagamentos>> emAprovacao(@PathVariable Integer nivel, @PathVariable String string) {
+    	final List<String> dados = Arrays.asList(string.split(","));
+        final List<Appweb_Juridico_pagamentos> list = this.service.Aprovacao(nivel,dados);
+        return (ResponseEntity<List<Appweb_Juridico_pagamentos>>)ResponseEntity.ok().body(list);
+    }
+    
     @RequestMapping(method = { RequestMethod.GET })
     public ResponseEntity<List<Appweb_Juridico_pagamentos>> findAll() {
         final List<Appweb_Juridico_pagamentos> list = this.service.findAll();

@@ -30,6 +30,27 @@ public class JuridicoPagamentoService {
     public List<Appweb_Juridico_pagamentos> findAll() {
         return (List<Appweb_Juridico_pagamentos>)this.repo.findAll();
     }
+
+    public List<Appweb_Juridico_pagamentos> SemAprovar() {
+        return (List<Appweb_Juridico_pagamentos>)this.repo.enviarParaAprovacao();
+    }
+
+    public List<Appweb_Juridico_pagamentos> EmAprovacao() {
+        return (List<Appweb_Juridico_pagamentos>)this.repo.emAprovacao();
+    }
+    
+
+    public List<Appweb_Juridico_pagamentos> Aprovacao(Integer nivel, List<String> centroDeCusto) {
+    	List<Appweb_Juridico_pagamentos> lista= null;
+		if(nivel == 1) {
+    		lista = this.repo.emAprovacaoNivel1();
+    	}else if(nivel == 2){
+    		lista = this.repo.emAprovacaoNivel2(centroDeCusto);
+    	}else if(nivel == 3){
+    		lista = this.repo.emAprovacaoNivel3();
+    	}
+        return lista;
+    }
     
     public Page<Appweb_Juridico_pagamentos> findPage(final Integer page, final Integer linesPerPage, final String orderBy, final String direction) {
         final PageRequest pageRequest = PageRequest.of((int)page, (int)linesPerPage, Sort.Direction.valueOf(direction), new String[] { orderBy });
@@ -41,7 +62,7 @@ public class JuridicoPagamentoService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Appweb_Juridico_pagamentos.class.getName(), null));
 	}
-    
+
     
     public Appweb_Juridico_pagamentos insert(final Appweb_Juridico_pagamentos obj) throws EmailException, UnsupportedEncodingException {
     	
@@ -62,13 +83,13 @@ public class JuridicoPagamentoService {
     			obj.getSentenca(),
     			obj.getMotivoPagamento(),
     			obj.isFalhaConcess(),
-    			obj.isEnviadoParaAprovacao(),
+    			obj.getEnviadoParaAprovacao(),
     			obj.getAprovador1(),
-    			obj.isAprovacao1(),
+    			obj.getAprovacao1(),
     			obj.getAprovador2(),
-    			obj.isAprovacao2(),
+    			obj.getAprovacao2(),
     			obj.getAprovador3(),
-    			obj.isAprovacao3()
+    			obj.getAprovacao3()
 		);
         return repo.save(veiculo);
     }

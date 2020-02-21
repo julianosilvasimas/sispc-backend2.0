@@ -27,20 +27,17 @@ public interface JuridicoPagamentosRepository extends JpaRepository<Appweb_Jurid
 
 	@Transactional(readOnly = true)
     @Query("SELECT obj FROM Appweb_Juridico_pagamentos obj WHERE "
-    		+ "(obj.EnviadoParaAprovacao <= 3 AND (obj.Aprovacao1 IS NULL))")
+    		+ "(obj.EnviadoParaAprovacao > 0 AND (obj.Aprovacao1 IS NULL))")
     List<Appweb_Juridico_pagamentos> emAprovacaoNivel1();
     
 
 	@Transactional(readOnly = true)
     @Query("SELECT obj FROM Appweb_Juridico_pagamentos obj WHERE "
-    		+ "(obj.EnviadoParaAprovacao = 3 AND (obj.Aprovacao3 IS NULL))")
+    		+ "(obj.EnviadoParaAprovacao >= 3 AND (obj.Aprovacao3 IS NULL))")
     List<Appweb_Juridico_pagamentos> emAprovacaoNivel3();
     
 
 	@Transactional(readOnly = true)
-    @Query("SELECT obj FROM Appweb_Juridico_pagamentos obj WHERE obj.CentroDeCusto IN (:centroDeCusto) AND ("
-    		+ "(obj.EnviadoParaAprovacao = 3 AND (obj.Aprovacao2 IS NULL)) OR "
-    		+ "(obj.EnviadoParaAprovacao = 2 AND (obj.Aprovacao2 IS NULL))"
-    		+ ")")
+    @Query("SELECT obj FROM Appweb_Juridico_pagamentos obj WHERE obj.EnviadoParaAprovacao = 2 AND obj.CentroDeCusto IN (:centroDeCusto) AND ((obj.EnviadoParaAprovacao >= 2 AND (obj.Aprovacao2 IS NULL)))")
     List<Appweb_Juridico_pagamentos> emAprovacaoNivel2(@Param("centroDeCusto") final List<String> centroDeCusto);
 }

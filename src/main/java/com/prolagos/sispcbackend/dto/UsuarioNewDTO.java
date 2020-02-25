@@ -27,6 +27,8 @@ public class UsuarioNewDTO implements Serializable {
 	@Getter @Setter private String login;
 	@Getter @Setter private Boolean ativo;
 	@Getter @Setter private String senha;
+	@Getter @Setter private String gerenciaId;
+	@Getter @Setter private String supervisaoId;
 	
 
 }

@@ -52,6 +52,9 @@ public class UsuariosResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	
+	
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody UsuarioDTO objDto, @PathVariable Integer id) {
 		Cad_SisPC_Usuarios obj = service.fromDTO(objDto);
@@ -59,6 +62,9 @@ public class UsuariosResource {
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
+	
+	
+	
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
@@ -73,6 +79,7 @@ public class UsuariosResource {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
+	
 	@RequestMapping(value="/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<UsuarioDTO>> findPage(
 			@RequestParam(value="page", defaultValue="0") Integer page, 
@@ -86,6 +93,16 @@ public class UsuariosResource {
 	
 	@RequestMapping(value="/attsenha/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> updateSenha(@Valid @RequestBody UsuarioDTO objDto, @PathVariable Integer id) {
+		Cad_SisPC_Usuarios obj = service.updateFromDTO(objDto);
+		obj.setUsuarioId(id);
+		obj = service.updateSenha(obj);
+		return ResponseEntity.noContent().build();
+	}
+	
+	
+	@RequestMapping(value="/recupereSenhaUser/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> recuperarSenha(@Valid @RequestBody UsuarioDTO objDto, @PathVariable Integer id) {
+		objDto.setSenha("123");
 		Cad_SisPC_Usuarios obj = service.updateFromDTO(objDto);
 		obj.setUsuarioId(id);
 		obj = service.updateSenha(obj);

@@ -35,7 +35,7 @@ public class Apprpa_Rpa_Statusbots implements Serializable{
 	@Getter @Setter private String Exception;
 	
 	
-	@ManyToOne
-	@JoinColumn(name="Bot", foreignKey = @ForeignKey(name="fk_Status_idbot"))
-	@Getter @Setter private cad_rpa_robos Bot;
+//	@ManyToOne
+//	@JoinColumn(name="Bot", foreignKey = @ForeignKey(name="fk_Status_idbot"))
+//	@Getter @Setter private cad_rpa_robos Bot;
 }

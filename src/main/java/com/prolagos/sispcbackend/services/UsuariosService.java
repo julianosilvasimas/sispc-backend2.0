@@ -43,15 +43,16 @@ public class UsuariosService {
 	@Transactional
 	public Cad_SisPC_Usuarios insert(Cad_SisPC_Usuarios obj) {
 		obj.setUsuarioId(null);
+		obj.setSenha("123");
 		obj = repo.save(obj);
 		return obj;
 	}
 	
 	
 	public Cad_SisPC_Usuarios update(Cad_SisPC_Usuarios obj) {
-		Cad_SisPC_Usuarios newObj = find(obj.getUsuarioId());
-		updateData(newObj, obj);
-		return repo.save(newObj);
+		Cad_SisPC_Usuarios oldObj = find(obj.getUsuarioId());
+		updateData(oldObj, obj);
+		return repo.save(oldObj);
 	}
 
 	public void delete(Integer id) {
@@ -74,13 +75,13 @@ public class UsuariosService {
 	}
 	
 	public Cad_SisPC_Usuarios fromDTO(UsuarioDTO objDto) {
-		return new Cad_SisPC_Usuarios(objDto.getUsuarioId(), objDto.getNome(), objDto.getEmail(), objDto.getLogin(),
-				null, objDto.getAtivo(), null, null, null, null, null);
+		return new Cad_SisPC_Usuarios(objDto.getUsuarioId(), objDto.getNome(), objDto.getEmail(), objDto.getLogin(),null, 
+				objDto.getAtivo(), null, null, null, null, null);
 	}
 	
 	public Cad_SisPC_Usuarios fromDTO(UsuarioNewDTO objDto) {
 		Cad_SisPC_Usuarios usu = new Cad_SisPC_Usuarios(null, objDto.getNome(), objDto.getEmail(), objDto.getLogin(),
-				pe.encode(objDto.getSenha()), objDto.getAtivo(), null, null, null, null, null);
+				pe.encode("123"), objDto.getAtivo(), null, null, objDto.getUndcodigo(), objDto.getGerenciaId(), objDto.getSupervisaoId());
 		
 		return usu;
 	}
@@ -93,7 +94,7 @@ public class UsuariosService {
 	
 	public Cad_SisPC_Usuarios updateFromDTO(UsuarioDTO objDto) {
 		return new Cad_SisPC_Usuarios( objDto.getUsuarioId(), objDto.getNome(),objDto.getEmail(), objDto.getLogin(),
-				pe.encode(objDto.getSenha()), objDto.getAtivo(),null, null, null, null, null);
+		pe.encode(objDto.getSenha()), objDto.getAtivo(),null, null, objDto.getUndcodigo(), objDto.getGerenciaId(), objDto.getSupervisaoId());
 	}
 
 	private void updateDatas(Cad_SisPC_Usuarios newObj, Cad_SisPC_Usuarios obj) {
@@ -103,5 +104,6 @@ public class UsuariosService {
 	private void updateData(Cad_SisPC_Usuarios newObj, Cad_SisPC_Usuarios obj) {
 		newObj.setNome(obj.getNome());
 		newObj.setEmail(obj.getEmail());
+		newObj.setPerfis(obj.getPerfis());
 	}
 }

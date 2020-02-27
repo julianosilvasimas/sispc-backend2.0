@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.prolagos.sispcbackend.domain.Apprpa_Rpa_Statusbots;
 import com.prolagos.sispcbackend.domain.Cad_SisPC_Usuarios;
 import com.prolagos.sispcbackend.dto.UsuarioDTO;
 import com.prolagos.sispcbackend.dto.UsuarioNewDTO;
@@ -42,7 +43,6 @@ public class UsuariosResource {
         return (ResponseEntity.ok().body(obj));
     }
 
-    
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody UsuarioNewDTO objDto) {
 		Cad_SisPC_Usuarios obj = service.fromDTO(objDto);
@@ -52,9 +52,6 @@ public class UsuariosResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	
-	
-	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody UsuarioDTO objDto, @PathVariable Integer id) {
 		Cad_SisPC_Usuarios obj = service.fromDTO(objDto);
@@ -63,8 +60,13 @@ public class UsuariosResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	
-	
+    @RequestMapping(value = { "/user/{id}" }, method = { RequestMethod.PUT })
+    public ResponseEntity<Void> update(@RequestBody Cad_SisPC_Usuarios obj, @PathVariable final Integer id) {
+        obj.setUsuarioId(id);
+        obj = this.service.update(obj);
+        return ResponseEntity.noContent().build();
+    }
+    
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
@@ -83,7 +85,7 @@ public class UsuariosResource {
 	@RequestMapping(value="/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<UsuarioDTO>> findPage(
 			@RequestParam(value="page", defaultValue="0") Integer page, 
-			@RequestParam(value="linesPerPage", defaultValue="24") Integer linesPerPage, 
+			@RequestParam(value="linesPerPage", defaultValue="100000") Integer linesPerPage, 
 			@RequestParam(value="orderBy", defaultValue="nome") String orderBy, 
 			@RequestParam(value="direction", defaultValue="ASC") String direction) {
 		Page<Cad_SisPC_Usuarios> list = service.findPage(page, linesPerPage, orderBy, direction);

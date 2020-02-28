@@ -2,12 +2,14 @@ package com.prolagos.sispcbackend.services.util;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+
 import java.util.ArrayList;
 
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 
 public class AgendamentoEmails extends Thread {
+
 	public String Nome;
     String servidor = "correio.level3br.com";
     int porta = 587;
@@ -17,6 +19,7 @@ public class AgendamentoEmails extends Thread {
     String [] destinatario;
 
     public ArrayList<String> Emails = new ArrayList<>();
+
     public AgendamentoEmails(
     		Integer getAprovacao, 
 			String getEmailsolicitante, 
@@ -59,6 +62,7 @@ public class AgendamentoEmails extends Thread {
         			getAprovador, getJustificativa, getPlaca, getTipoVeiculoDisponibilizado);
     		assunto = "Solicitação de Agendamento Nº "+getAgendamentoId+" Reprovado";
         }
+
         txtHtml = txtHtml + Assinatura(email) + "</html>";
         email.setDebug(false);
         email.setHostName(servidor);
@@ -70,12 +74,14 @@ public class AgendamentoEmails extends Thread {
         email.addTo(destinatario);
         email.setHtmlMsg(txtHtml);
         email.send();
+
     }
 
 	
 	public String Assinatura(HtmlEmail email) throws EmailException {
 		
 		String cid1 = email.embed(new File("C:\\Users\\Public\\Documents\\Prolagos.png"));
+
 		String Assinatura =  "<em>Atenciosamente,</em></strong></p>"
 		+ "<img src=\"cid:" + cid1 + "\"  width=\"127\">";
 		return Assinatura;
@@ -86,6 +92,7 @@ public class AgendamentoEmails extends Thread {
 		return datafinal;
 	}
 	
+
 	public String TextoHtmlNovoAgendamento(
 			Integer getAgendamentoId, 
 			String getSolicitante,
@@ -114,6 +121,7 @@ public class AgendamentoEmails extends Thread {
                         
 		return texto;
 	}
+
 	public String TextoHtmlAgendamentoAprovado(
 			Integer getAgendamentoId, 
 			String getSolicitante,
@@ -133,6 +141,7 @@ public class AgendamentoEmails extends Thread {
                         + "Seu veículo foi aprovado pelo setor de transporte: <br><br>"
                         + "<b>SOLICITAÇÃO</b> <br>"
                         + "------------------------------------------------------------<br>"
+
                         + "<b>Nº da Solicitação: "+getAgendamentoId+"</b>,<br>"
                         + "<b>Solicitante: </b>"+getSolicitante+",<br>"
                         + "<b>Condutor: </b>"+getCondutor+",<br>"
@@ -144,6 +153,7 @@ public class AgendamentoEmails extends Thread {
                         + "<b>APROVAÇÃO</b> <br>"
                         + "------------------------------------------------------------<br>"
                         + "<b>Status: </b>APROVADO<br>"
+
                         + "<b>Placa: </b>"+getPlaca+",<br>"
                         + "<b>Veiculo Disponibilizado: </b>"+getTipoVeiculoDisponibilizado+",<br>"
                         + "<b>Aprovador: </b>"+getAprovador+"<br><br>"

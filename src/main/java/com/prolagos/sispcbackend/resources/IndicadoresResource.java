@@ -44,6 +44,15 @@ public class IndicadoresResource {
         final AppWeb_Ind_ExeIndicadores obj = this.service.findDiario(indicador, date);
         return (ResponseEntity<AppWeb_Ind_ExeIndicadores>)ResponseEntity.ok().body(obj);
     }
+    
+    @RequestMapping(value = { "/pormes/{indicador}/{data}" }, method = { RequestMethod.GET })
+    public ResponseEntity<List<AppWeb_Ind_ExeIndicadores>> findIndDiariosPorMes(@PathVariable final List<Cad_Ind_Indicadores> indicador, @PathVariable final String data) {
+        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        final LocalDate date = LocalDate.parse(data, formatter);
+        final List<AppWeb_Ind_ExeIndicadores> list = this.service.findDiarioPorMes(indicador, date);
+		return ResponseEntity.ok().body(list);
+	}
+    
 	
 	@RequestMapping(method=RequestMethod.POST)
 		public ResponseEntity<Void> insert(@RequestBody AppWeb_Ind_ExeIndicadores obj) {

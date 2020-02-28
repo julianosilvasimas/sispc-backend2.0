@@ -30,6 +30,7 @@ public class Cad_SisPC_Perfis implements GrantedAuthority {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Getter @Setter private Integer perfilId;
 	@Getter @Setter private String perfil;
+	@Getter @Setter private String Descricao;
 	@Getter @Setter private String permissao;
 
 	

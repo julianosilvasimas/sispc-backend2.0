@@ -43,6 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/empresas/**",
 			"/gerencias/**",
 			"/statusbot/**",
+			"/unidades/**",
  			"/supervisoes/**",
 			"/precos/**",
 			"/perfis/**",

@@ -20,4 +20,8 @@ public interface IndicadoresRepository extends JpaRepository<AppWeb_Ind_ExeIndic
     @Query("SELECT obj FROM AppWeb_Ind_ExeIndicadores obj INNER JOIN obj.indicadorId cad WHERE cad IN :indicador AND obj.dataindicador = :data")
     Optional<AppWeb_Ind_ExeIndicadores> findIndDiario(@Param("indicador") final List<Cad_Ind_Indicadores> indicador, @Param("data") final LocalDate data);
 	
+    @Transactional(readOnly = true)
+    @Query("SELECT obj FROM AppWeb_Ind_ExeIndicadores obj INNER JOIN obj.indicadorId cad WHERE cad IN :indicador AND obj.datareferencia = :data")
+    List<AppWeb_Ind_ExeIndicadores> findIndDiariosPorMes(@Param("indicador") final List<Cad_Ind_Indicadores> indicador, @Param("data") final LocalDate data);
+	
 }

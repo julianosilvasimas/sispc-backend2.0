@@ -35,15 +35,33 @@ public class ProjetosService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " +
 		Cad_SisPC_Projetos.class.getName(), null));
 	}
-	
+	//obj.getPagamento().setPedido(obj);
 	public Cad_SisPC_Projetos insert(Cad_SisPC_Projetos obj) {
 		obj.setProjetoId(null);  //Utilizado em Entidade Com auto incremento
+		obj.getRegulatorio().setProjeto(obj);
+		obj.getFinanceiro().setProjeto(obj);
+		obj.getContratacao().setProjeto(obj);
+		obj.getObra().setProjeto(obj);
+		obj.getComissionamento().setProjeto(obj);
+		obj.getComprovacao().setProjeto(obj);
+		obj.getLicoes().setProjeto(obj);
+		obj.getSesuite().setProjeto(obj);
 		obj = repo.save(obj);
+		
 		return obj;
 	}
 	
 	public Cad_SisPC_Projetos update(Cad_SisPC_Projetos obj) {
 		find(obj.getProjetoId());
+		obj.getRegulatorio().setProjeto(obj);
+		obj.getFinanceiro().setProjeto(obj);
+		obj.getContratacao().setProjeto(obj);
+		obj.getObra().setProjeto(obj);
+		obj.getComissionamento().setProjeto(obj);
+		obj.getComprovacao().setProjeto(obj);
+		obj.getLicoes().setProjeto(obj);
+		obj.getSesuite().setProjeto(obj);
+		
 		return repo.save(obj);
 	}
 	

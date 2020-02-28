@@ -2,6 +2,7 @@ package com.prolagos.sispcbackend.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,7 +44,7 @@ public class Cad_Projetos_Contratacao implements Serializable {
 	@OneToOne
 	@JoinColumn(name="fk_projetoId" ,foreignKey = @ForeignKey(name="fk_projeto_regulatorio"))
 	@MapsId
-	private Cad_SisPC_Projetos projeto;
+	@Setter private Cad_SisPC_Projetos projeto;
 	
 	
 }

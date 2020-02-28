@@ -38,7 +38,7 @@ public class Cad_Projetos_Comprovacao implements Serializable {
 	@OneToOne
 	@JoinColumn(name="fk_projetoId" ,foreignKey = @ForeignKey(name="fk_projeto_comprovacao"))
 	@MapsId
-	private Cad_SisPC_Projetos projeto;
+	@Setter private Cad_SisPC_Projetos projeto;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="comprovacaoId")

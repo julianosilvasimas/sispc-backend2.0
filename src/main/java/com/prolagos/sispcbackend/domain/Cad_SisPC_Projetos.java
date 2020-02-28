@@ -31,7 +31,7 @@ public class Cad_SisPC_Projetos implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter @Setter private Integer projetoId;
 	@Getter @Setter private String projeto;
 	@Getter @Setter private String localidade;

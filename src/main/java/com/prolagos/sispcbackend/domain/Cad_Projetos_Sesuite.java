@@ -72,6 +72,6 @@ public class Cad_Projetos_Sesuite implements Serializable {
 	@OneToOne
 	@JoinColumn(name="fk_projetoId" ,foreignKey = @ForeignKey(name="fk_projeto_sesuite"))
 	@MapsId
-	protected Cad_SisPC_Projetos projeto;
+	@Setter protected Cad_SisPC_Projetos projeto;
 	
 }

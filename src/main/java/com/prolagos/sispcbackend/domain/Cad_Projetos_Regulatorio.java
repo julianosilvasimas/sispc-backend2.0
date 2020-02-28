@@ -37,7 +37,7 @@ public class Cad_Projetos_Regulatorio implements Serializable {
 	@OneToOne
 	@JoinColumn(name="fk_projetoId" ,foreignKey = @ForeignKey(name="fk_projeto_regulatorio"))
 	@MapsId
-	private Cad_SisPC_Projetos projeto;
+	@Setter private Cad_SisPC_Projetos projeto;
 	
 	
 	@ManyToMany

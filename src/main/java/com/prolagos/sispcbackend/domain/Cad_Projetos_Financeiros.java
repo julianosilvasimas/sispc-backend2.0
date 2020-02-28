@@ -27,6 +27,7 @@ public class Cad_Projetos_Financeiros implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@Column(nullable=true)
 	@Getter @Setter private Integer capexId;
 	@Getter @Setter private String nprojetocognos;
 	@Getter @Setter private String descricao;
@@ -37,10 +38,11 @@ public class Cad_Projetos_Financeiros implements Serializable {
 	@OneToOne
 	@JoinColumn(name="fk_projetoId" ,foreignKey = @ForeignKey(name="fk_projeto_financeiro"))
 	@MapsId
-	private Cad_SisPC_Projetos projeto;
+	@Setter private Cad_SisPC_Projetos projeto;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="capex")
 	@Getter @Setter private List<Cad_Projetos_FinanceiroAnos> anos= new ArrayList<>();
+
 
 }

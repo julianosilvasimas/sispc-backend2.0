@@ -11,8 +11,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @Repository
 public interface CadindicadoresRepository extends JpaRepository<Cad_Ind_Indicadores, Integer>{
 
-	 @Transactional(readOnly = true)
-	    @Query("SELECT obj FROM Cad_Ind_Indicadores obj WHERE obj.gerencia = :gerencia order by obj.ordem")
-	    List<Cad_Ind_Indicadores> classIndicadores(@Param("gerencia") final Integer gerencia);
-	
+	@Transactional(readOnly = true)
+    @Query("SELECT obj FROM Cad_Ind_Indicadores obj WHERE obj.gerencia = :gerencia order by obj.ordem")
+    List<Cad_Ind_Indicadores> classIndicadores(@Param("gerencia") final Integer gerencia);
+
 }

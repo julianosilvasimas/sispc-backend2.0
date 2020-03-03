@@ -28,6 +28,8 @@ public class UsuarioDTO implements Serializable {
 	@Getter @Setter private String login;
 	@Getter @Setter private Boolean ativo;
 	@Getter @Setter private String senha;
+	@Getter @Setter private String cargo;
+	@Getter @Setter private String foto;
 	@Getter @Setter private Cad_SisPC_Gerencias  gerenciaId;
 	@Getter @Setter private Cad_SisPC_Supervisoes supervisaoId;
 	@Getter @Setter private Cad_SisPC_Unidades undcodigo;
@@ -42,6 +44,8 @@ public class UsuarioDTO implements Serializable {
 		login = obj.getLogin();
 		ativo = obj.getAtivo();
 		senha = obj.getPassword();
+		cargo = obj.getCargo();
+		foto = obj.getFoto();
 		gerenciaId = obj.getGerenciaId();
 		supervisaoId = obj.getSupervisaoId();
 		undcodigo = obj.getUndcodigo();

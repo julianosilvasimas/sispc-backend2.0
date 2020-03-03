@@ -52,6 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/veiculos/**",
 			"/indicadores/**",
  			"/veiculos_utilizacao/**",
+ 			"/cadindicadoresgraficos/**",
  			"/bcadastro/**",
  			"/agendamento/**",
  			"/aprovar/**",

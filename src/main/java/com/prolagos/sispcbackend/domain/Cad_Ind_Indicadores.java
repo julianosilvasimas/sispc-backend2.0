@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -43,6 +44,10 @@ public class Cad_Ind_Indicadores implements Serializable {
 	@Getter @Setter private Integer gerencia;
 	@Getter @Setter private Integer ordem;
 	@Getter @Setter private Integer tipoGrafico;
+	@Getter @Setter private Integer RotuloVirgula;
+	@Getter @Setter private Integer Ativo;
+	
+	
 	@JsonIgnoreProperties("tendencia")
 	private Integer tendencia;
 	
@@ -59,11 +64,16 @@ public class Cad_Ind_Indicadores implements Serializable {
 	@Getter @Setter private List<AppWeb_Ind_ExeIndicadores> exeindicadores= new ArrayList<>();
 	
 	@JsonIgnore
+	@OneToMany(mappedBy="indicadorId")
+    @OrderBy("ordem ASC")
+	@Getter @Setter private List<Cad_Ind_Graficos> CampoDoGraficoId= new ArrayList<>();
+	
+	@JsonIgnore
 	@ManyToMany(mappedBy="indicadores", fetch = FetchType.EAGER)
 	@Getter @ Setter private List<Cad_Auth_Usuarios> usuarios;
 
-	public Cad_Ind_Indicadores(final Integer indicadorId, final String indicador, final Integer ordem, final Integer tipoGrafico,
-			Classificacao_Indicadores classificacao, Tendencia_Indicadores tendencia) {
+	public Cad_Ind_Indicadores(final Integer indicadorId, final String indicador, final Integer ordem, final Integer ativo,
+			Classificacao_Indicadores classificacao, Tendencia_Indicadores tendencia, List<Cad_Ind_Graficos> campodograficoid) {
 		super();
 		this.indicadorId = indicadorId;
 		this.indicador = indicador;
@@ -71,6 +81,8 @@ public class Cad_Ind_Indicadores implements Serializable {
 	    this.ordem = ordem;
 	    this.classificacao = ((classificacao == null) ? null : Integer.valueOf(classificacao.getCod()));
 	    this.tendencia = ((tendencia == null) ? null : Integer.valueOf(tendencia.getCod()));
+	    this.CampoDoGraficoId = campodograficoid;
+	    this.Ativo = ativo;
 	}
 	
 	@JsonIgnoreProperties({ "classificacao" })

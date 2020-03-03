@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.prolagos.sispcbackend.domain.Cad_Ind_Graficos;
 import com.prolagos.sispcbackend.domain.Cad_Ind_Indicadores;
 import com.prolagos.sispcbackend.repositories.CadindicadoresRepository;
 import com.prolagos.sispcbackend.services.exceptions.DataIntegrityException;
@@ -28,6 +29,7 @@ public class CadindicadoresService {
 	public List<Cad_Ind_Indicadores> classIndicadores(final Integer gerencia) {
 	    return (List<Cad_Ind_Indicadores>)this.repo.classIndicadores(gerencia);
 	}
+
 
 	public Page<Cad_Ind_Indicadores> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);

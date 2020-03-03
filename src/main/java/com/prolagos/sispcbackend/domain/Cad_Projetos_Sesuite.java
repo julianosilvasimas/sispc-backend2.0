@@ -3,12 +3,11 @@ package com.prolagos.sispcbackend.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
@@ -22,7 +21,6 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor @AllArgsConstructor
 @EqualsAndHashCode(of = "sesuiteId")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE) // define estrategia de superclasse
 public class Cad_Projetos_Sesuite implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -68,6 +66,21 @@ public class Cad_Projetos_Sesuite implements Serializable {
 	@Getter @Setter protected String melhoraempresa;
 	@Column(length=50)
 	@Getter @Setter protected String delineado;
+	
+	@OneToOne(cascade=CascadeType.ALL, mappedBy="sesuite")
+	@Getter @Setter private Cad_Projetos_Sesuite_Beneficios  beneficios;
+	
+	@OneToOne(cascade=CascadeType.ALL, mappedBy="sesuite")
+	@Getter @Setter private Cad_Projetos_Sesuite_Direcionamento direcionamento;
+	
+	@OneToOne(cascade=CascadeType.ALL, mappedBy="sesuite")
+	@Getter @Setter private Cad_Projetos_Sesuite_LicencaSocial licenca;
+	
+	@OneToOne(cascade=CascadeType.ALL, mappedBy="sesuite")
+	@Getter @Setter private Cad_Projetos_Sesuite_RiscoContratual riscoscontratual;
+	
+	@OneToOne(cascade=CascadeType.ALL, mappedBy="sesuite")
+	@Getter @Setter private Cad_Projetos_Sesuite_RiscosOperacionais riscosoperacionais;
 	
 	@OneToOne
 	@JoinColumn(name="fk_projetoId" ,foreignKey = @ForeignKey(name="fk_projeto_sesuite"))

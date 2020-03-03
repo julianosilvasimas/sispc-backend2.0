@@ -24,6 +24,10 @@ public class ProjRegulatorioService {
 	public List<Cad_Projetos_Regulatorio> findAll() {
 		return repo.findAll();
 	}
+	
+	public List<Cad_Projetos_Regulatorio> findByProjeto(Integer projetoId) {
+		return repo.regPorProjeto(projetoId);
+	}
 
 	public Page<Cad_Projetos_Regulatorio> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);

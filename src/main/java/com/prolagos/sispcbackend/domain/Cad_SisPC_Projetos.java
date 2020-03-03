@@ -49,8 +49,10 @@ public class Cad_SisPC_Projetos implements Serializable {
 	@Getter @Setter private LocalDate terminoreplanejado;
 	@Getter @Setter private LocalDate terminorealizado;
 	
-	@OneToOne(cascade=CascadeType.ALL, mappedBy="projeto")
-	@Getter @Setter private Cad_Projetos_Regulatorio regulatorio;
+	@JsonIgnore
+	@OneToMany(mappedBy="projetoId")
+	@Getter @Setter private List<Cad_Projetos_Regulatorio> regulatorio= new ArrayList<>();
+	
 	
 	@OneToOne(cascade=CascadeType.ALL, mappedBy="projeto")
 	@Getter @Setter private Cad_Projetos_Financeiros financeiro;

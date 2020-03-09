@@ -5,6 +5,7 @@ com\prolagos\sispcbackend\domain\Base_GSS_EndEntregas.class
 com\prolagos\sispcbackend\dto\UsuarioNewDTO.class
 com\prolagos\sispcbackend\resources\IndicadoresResource.class
 com\prolagos\sispcbackend\resources\EmpresasResource.class
+com\prolagos\sispcbackend\threadpoolconfig\ThreadPoolConfiguration.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Tagsupervisoes.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_Sesuite_RiscoContratual.class
 com\prolagos\sispcbackend\domain\Base_Correios_Logradouros.class
@@ -35,6 +36,7 @@ com\prolagos\sispcbackend\domain\Cad_Projetos_Sesuite.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Modulos.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_Comprovacao.class
 com\prolagos\sispcbackend\services\VeiculosService.class
+com\prolagos\sispcbackend\services\CadindicadoresGraficosService.class
 com\prolagos\sispcbackend\services\CadindicadoresService.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_Regulatorio.class
 com\prolagos\sispcbackend\services\validations\UsuarioUpdate.class
@@ -43,6 +45,7 @@ com\prolagos\sispcbackend\services\ProjSesuiteService.class
 com\prolagos\sispcbackend\repositories\ModulosRepository.class
 com\prolagos\sispcbackend\security\JWTAuthenticationFilter$JWTAuthenticationFailureHandler.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_Sesuite_Beneficios.class
+com\prolagos\sispcbackend\repositories\CadindicadoresGraficosRepository.class
 com\prolagos\sispcbackend\services\GerenciasService.class
 com\prolagos\sispcbackend\domain\Base_Correios_Bairros.class
 com\prolagos\sispcbackend\resources\IrregularidadesGSSResource.class
@@ -116,7 +119,9 @@ com\prolagos\sispcbackend\repositories\AgendamentosRepository.class
 com\prolagos\sispcbackend\repositories\CondutoresRepository.class
 com\prolagos\sispcbackend\domain\Cad_Transporte_Veiculos.class
 com\prolagos\sispcbackend\services\UsuariosService.class
+com\prolagos\sispcbackend\domain\Cad_Ind_Graficos.class
 com\prolagos\sispcbackend\domain\Apprpa_Rpa_Statusbots.class
+com\prolagos\sispcbackend\resources\CadindicadoresGraficosResource.class
 com\prolagos\sispcbackend\repositories\GestaoDeliberacaoRepository.class
 com\prolagos\sispcbackend\services\UserService.class
 com\prolagos\sispcbackend\domain\Appweb_Juridico_pagamentos.class

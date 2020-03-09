@@ -1,13 +1,18 @@
 package com.prolagos.sispcbackend.resources;
 
 import java.net.URI;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.Future;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +27,7 @@ import com.prolagos.sispcbackend.domain.procedures.ListaIndicadores;
 import com.prolagos.sispcbackend.domain.procedures.ResumoIndicadores;
 import com.prolagos.sispcbackend.repositories.ListaIndicadoresDAO;
 import com.prolagos.sispcbackend.services.IndicadoresService;
+import com.prolagos.sispcbackend.threadpoolconfig.EnvioDeEmails;
 
 @RestController
 @RequestMapping(value="/indicadores")
@@ -61,14 +67,32 @@ public class IndicadoresResource {
 			.path("/{id}").buildAndExpand(obj.getExeindicadorId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
+
+
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody AppWeb_Ind_ExeIndicadores obj, @PathVariable Integer id) {
 		obj.setExeindicadorId(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
+
 	
+
+    
+	@RequestMapping(value="/updateCsv/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> updateCsv(@RequestBody AppWeb_Ind_ExeIndicadores obj, @PathVariable Integer id) throws ClassNotFoundException, SQLException {
+		AppWeb_Ind_ExeIndicadores obj2 = service.findByDataInd(id, obj.getDataindicador());
+		obj2.setOrcado(obj.getOrcado());
+		obj2.setMeta(obj.getMeta());
+		obj2.setMinimo(obj.getMinimo());
+		obj2.setMaximo(obj.getMaximo());
+		obj2.setForecast(obj.getForecast());
+		obj2.setPrevisao(obj.getPrevisao());
+		obj = service.update(obj2);
+        
+		return ResponseEntity.noContent().build();
+	}
+
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
@@ -94,7 +118,7 @@ public class IndicadoresResource {
 
 	//Aqui será o endpoint para o gráfico
 	@RequestMapping(value="/graficoResumo/{ref}/{ind}", method=RequestMethod.GET)
-	public ResponseEntity<List<ListaIndicadores>> findAllBygraficoResumo(@PathVariable String ref, @PathVariable Integer ind){
+	public ResponseEntity<List<ResumoIndicadores>> findAllBygraficoResumo(@PathVariable String ref, @PathVariable Integer ind){
 		return ResponseEntity.ok().body(dao.findAllBygraficoResumo(ref, ind));
 	}
 	

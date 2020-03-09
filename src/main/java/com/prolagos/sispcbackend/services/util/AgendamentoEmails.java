@@ -3,11 +3,13 @@ package com.prolagos.sispcbackend.services.util;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.concurrent.Callable;
 
+import org.springframework.scheduling.annotation.Async;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 
-public class AgendamentoEmails extends Thread {
+public class AgendamentoEmails extends Thread{
 	public String Nome;
     String servidor = "correio.level3br.com";
     int porta = 587;
@@ -65,7 +67,7 @@ public class AgendamentoEmails extends Thread {
         email.setSmtpPort(porta);
         email.setStartTLSEnabled(true);
         email.setAuthentication(usuario, senha);
-        email.setFrom(remetente, "SisPC - Agendamento de Veículos");
+        email.setFrom(remetente, "SisPC - Agendamento de Veículos - teste");
         email.setSubject(assunto);
         email.addTo(destinatario);
         email.setHtmlMsg(txtHtml);

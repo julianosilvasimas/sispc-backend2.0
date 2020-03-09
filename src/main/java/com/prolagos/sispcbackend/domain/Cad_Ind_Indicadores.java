@@ -46,6 +46,14 @@ public class Cad_Ind_Indicadores implements Serializable {
 	@Getter @Setter private Integer tipoGrafico;
 	@Getter @Setter private Integer RotuloVirgula;
 	@Getter @Setter private Integer Ativo;
+	@Getter @Setter private String Campo1;
+	@Getter @Setter private String Campo2;
+	@Getter @Setter private String Campo3;
+	@Getter @Setter private String Campo4;
+	@Getter @Setter private String Rotulocampo1;
+	@Getter @Setter private String Rotulocampo2;
+	@Getter @Setter private String Rotulocampo3;
+	@Getter @Setter private String Rotulocampo4;
 	
 	
 	@JsonIgnoreProperties("tendencia")

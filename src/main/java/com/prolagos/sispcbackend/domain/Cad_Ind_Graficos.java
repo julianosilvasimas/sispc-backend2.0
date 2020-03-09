@@ -49,7 +49,7 @@ public class Cad_Ind_Graficos implements Serializable {
 	@Getter @Setter private Integer ordem;
 
 	@ManyToOne
-	@JoinColumn(name="fk_cadgraficoEixo",foreignKey = @ForeignKey(name="fk_cadindicador_indicadores"))
+	@JoinColumn(name="fk_cadgraficoEixo",foreignKey = @ForeignKey(name="fk_cadind_indicadores"))
 	@Setter private Cad_Ind_Indicadores indicadorId;
 
 	public Cad_Ind_Graficos(Integer campoDoGraficoId, String estilo, String label, String tipografico, String coreixo,

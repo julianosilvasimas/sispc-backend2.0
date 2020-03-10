@@ -13,8 +13,8 @@ import com.prolagos.sispcbackend.domain.Cad_Projetos_Regulatorio;
 @Repository
 public interface ProjRegulatorioRepository extends JpaRepository<Cad_Projetos_Regulatorio, Integer> {
 
-	@Transactional(readOnly=false)
-	@Query("SELECT obj FROM Cad_Projetos_Regulatorio obj WHERE obj.projetoId.projetoId = :id ")
+	@Transactional(readOnly=true)
+	@Query("SELECT obj FROM Cad_Projetos_Regulatorio obj WHERE obj.projetoId.projetoId = :id ORDER BY obj.fluxoinvestimento")
 	public List<Cad_Projetos_Regulatorio> regPorProjeto(@Param("id") Integer id);
 	
 }

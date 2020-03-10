@@ -72,6 +72,12 @@ public class ProjetosService {
 	
 	public Cad_SisPC_Projetos update(Cad_SisPC_Projetos obj) {
 		find(obj.getProjetoId());
+		obj.setInicioprevisto(obj.getInicioprevisto().plusDays(1));
+		obj.setInicioreplanejado(obj.getInicioreplanejado().plusDays(1));
+		obj.setIniciorealizado(obj.getIniciorealizado().plusDays(1));
+		obj.setTerminoprevisto(obj.getTerminoprevisto().plusDays(1));
+		obj.setTerminoreplanejado(obj.getTerminoreplanejado().plusDays(1));
+		obj.setTerminorealizado(obj.getTerminorealizado().plusDays(1));
 		obj.getFinanceiro().setProjeto(obj);
 		obj.getContratacao().setProjeto(obj);
 		obj.getObra().setProjeto(obj);

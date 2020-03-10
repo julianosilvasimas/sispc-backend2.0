@@ -35,11 +35,6 @@ public class ProjetosResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@RequestMapping(value="regulatorio/{id}", method=RequestMethod.GET)
-	public ResponseEntity<Cad_SisPC_Projetos> findRegulatorios(@PathVariable Integer id) {
-		Cad_SisPC_Projetos obj = service.find(id);
-		return ResponseEntity.ok().body(obj);
-	}
 	
 	@RequestMapping(value="/{projetoId}/regulatorios", method=RequestMethod.GET)
 	public ResponseEntity<List<Cad_Projetos_Regulatorio>> findByProjeto(@PathVariable Integer projetoId) {

@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -42,12 +44,23 @@ public class Cad_SisPC_Projetos implements Serializable {
 	@Getter @Setter private Integer gravidade;
 	@Getter @Setter private Integer urgencia;
 	@Getter @Setter private Integer tendencia;
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate inicioprevisto;
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate inicioreplanejado;
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate iniciorealizado;
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate terminoprevisto;
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate terminoreplanejado;
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate terminorealizado;
+	@Getter @Setter private String descricao;
+	@Getter @Setter private String premissas;
+	@Getter @Setter private String restricao;
+	@Getter @Setter private String riscos;
+	@Getter @Setter private String objetivo;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="projetoId")

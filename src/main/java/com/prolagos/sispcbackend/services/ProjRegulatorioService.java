@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.prolagos.sispcbackend.domain.Cad_Projetos_Regulatorio;
 import com.prolagos.sispcbackend.repositories.ProjRegulatorioRepository;
+import com.prolagos.sispcbackend.repositories.ProjetosRepository;
 import com.prolagos.sispcbackend.services.exceptions.DataIntegrityException;
 
 @Service
@@ -20,6 +21,9 @@ public class ProjRegulatorioService {
 	
 	@Autowired
 	private ProjRegulatorioRepository repo;
+	
+	@Autowired
+	private ProjetosRepository repo2;
 	
 	public List<Cad_Projetos_Regulatorio> findAll() {
 		return repo.findAll();
@@ -42,12 +46,20 @@ public class ProjRegulatorioService {
 	
 	public Cad_Projetos_Regulatorio insert(Cad_Projetos_Regulatorio obj) {
 		obj.setRegulatorioId(null);  //Utilizado em Entidade Com auto incremento
+		obj.setProjetoId(repo2.findById(obj.getProjetoId().getProjetoId()).orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado!", null)));
 		obj = repo.save(obj);
 		return obj;
 	}
 	
 	public Cad_Projetos_Regulatorio update(Cad_Projetos_Regulatorio obj) {
 		find(obj.getRegulatorioId());
+		if(obj.getInicio() != null ){
+			obj.setInicio(obj.getInicio().plusDays(1)) ;	
+		}
+		if(obj.getTermino() != null ){
+			obj.setTermino(obj.getTermino().plusDays(1));	
+		}
+		
 		return repo.save(obj);
 	}
 	

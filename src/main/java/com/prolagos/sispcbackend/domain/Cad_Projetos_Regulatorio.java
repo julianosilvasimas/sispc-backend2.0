@@ -12,12 +12,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -33,35 +33,38 @@ public class Cad_Projetos_Regulatorio implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter @Setter private Integer regulatorioId;
-	@Getter @Setter private String processo;
 	@Getter @Setter private String fluxoinvestimento;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate inicio;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate termino;
 	@Column(scale=2,precision=12)
 	@Getter @Setter private Double valorprojeto;
+	@Getter @Setter private String descricao;
 	@Getter @Setter private String aprovacao;
-	
+	@Getter @Setter private String moeda;
 	
 	@ManyToOne
 	@JoinColumn(name="fk_projetoId",foreignKey = @ForeignKey(name="fk_projeto_regulatorio"))
-	@Setter private Cad_SisPC_Projetos projetoId;
+	@Getter @Setter private Cad_SisPC_Projetos projetoId;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="regulatorio")
 	@Getter @Setter private List<Cad_Projetos_DeliberacoesRegulatorios> deliberacoes= new ArrayList<>();
-	
-	
-	public Cad_Projetos_Regulatorio(Integer regulatorioId, String processo, String fluxoinvestimento, LocalDate inicio,
-			LocalDate termino, Double valorprojeto, String aprovacao, Cad_SisPC_Projetos projetoId) {
+
+	public Cad_Projetos_Regulatorio(Integer regulatorioId,String fluxoinvestimento, LocalDate inicio,
+			LocalDate termino, Double valorprojeto, String descricao, String aprovacao, String moeda) {
 		super();
 		this.regulatorioId = regulatorioId;
-		this.processo = processo;
 		this.fluxoinvestimento = fluxoinvestimento;
 		this.inicio = inicio;
 		this.termino = termino;
 		this.valorprojeto = valorprojeto;
+		this.descricao = descricao;
 		this.aprovacao = aprovacao;
-		this.projetoId = projetoId;
+		this.moeda = moeda;
 	}
 
 	

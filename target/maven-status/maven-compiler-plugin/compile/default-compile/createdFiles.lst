@@ -39,6 +39,7 @@ com\prolagos\sispcbackend\domain\Cad_Projetos_Comprovacao.class
 com\prolagos\sispcbackend\services\VeiculosService.class
 com\prolagos\sispcbackend\services\CadindicadoresGraficosService.class
 com\prolagos\sispcbackend\services\CadindicadoresService.class
+com\prolagos\sispcbackend\threadpoolconfig\InserirIndicadores.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_Regulatorio.class
 com\prolagos\sispcbackend\services\validations\UsuarioUpdate.class
 com\prolagos\sispcbackend\domain\Cad_Ind_Indicadores.class

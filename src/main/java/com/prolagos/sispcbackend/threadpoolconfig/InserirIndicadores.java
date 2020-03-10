@@ -104,8 +104,9 @@ public class InserirIndicadores implements Callable<String>{
 		        AppWeb_Ind_ExeIndicadores obj = service.findByDataInd(indicador,localDateIndicador);
 		        System.out.println(obj.getExeindicadorId()+" | "+obj.getOrcado()+" | "+obj.getRealizado());
 	        }catch(Exception e) {
+	        	System.out.println("ERRO NA EXECUCAO");
 		        LocalDate localDateReferencia = LocalDate.parse(DataReferencia, formatter);
-	        	AppWeb_Ind_ExeIndicadores obj = new AppWeb_Ind_ExeIndicadores(null,localDateReferencia,localDateIndicador,0,null,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,null,null,null,"",objCadInd,objUnidade,0.0);
+	        	AppWeb_Ind_ExeIndicadores obj = new AppWeb_Ind_ExeIndicadores(null,localDateReferencia,localDateIndicador,0,null,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,null,null,null,"",objCadInd,objUnidade,0.0,0.0,0.0);
 	        	service.insert(obj);
 	        }
 	        //FIM AQUI

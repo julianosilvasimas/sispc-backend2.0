@@ -154,6 +154,7 @@ C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\co
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\CadindicadoresGraficosResource.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\IndicadoresService.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\UsuariosService.java
+C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\threadpoolconfig\InserirIndicadores.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_Projetos_Engenharia.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\dto\UsuarioDTO.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_Ind_Indicadores.java

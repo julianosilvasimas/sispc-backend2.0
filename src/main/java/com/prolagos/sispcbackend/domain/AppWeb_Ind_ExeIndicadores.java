@@ -40,7 +40,7 @@ public class AppWeb_Ind_ExeIndicadores implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter @Setter private Integer exeindicadorId;
 	
 	@JsonDeserialize(using = LocalDateDeserializer.class)

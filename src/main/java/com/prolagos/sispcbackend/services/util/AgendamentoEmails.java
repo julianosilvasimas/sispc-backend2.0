@@ -41,7 +41,7 @@ public class AgendamentoEmails extends Thread{
         String assunto = null;
         String txtHtml= null;
 		Emails.add(getEmailsolicitante);
-        Emails.add("vitor.heser@prolagos.com.br");
+
         String[] convertido = (String[]) Emails.toArray(new String[Emails.size()]);
         destinatario = convertido;
 		

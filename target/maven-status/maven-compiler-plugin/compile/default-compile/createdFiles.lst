@@ -8,6 +8,7 @@ com\prolagos\sispcbackend\resources\EmpresasResource.class
 com\prolagos\sispcbackend\threadpoolconfig\ThreadPoolConfiguration.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Tagsupervisoes.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_Sesuite_RiscoContratual.class
+com\prolagos\sispcbackend\bots\calculosEnergia\CalculosEnergia.class
 com\prolagos\sispcbackend\domain\Base_Correios_Logradouros.class
 com\prolagos\sispcbackend\repositories\ProjLicoesAprendidasRepository.class
 com\prolagos\sispcbackend\repositories\JuridicoPagamentosRepository.class
@@ -50,6 +51,7 @@ com\prolagos\sispcbackend\services\GerenciasService.class
 com\prolagos\sispcbackend\domain\Base_Correios_Bairros.class
 com\prolagos\sispcbackend\resources\IrregularidadesGSSResource.class
 com\prolagos\sispcbackend\dto\UsuarioDTO.class
+com\prolagos\sispcbackend\threadpoolconfig\EnvioDeEmails.class
 com\prolagos\sispcbackend\repositories\StatusBotRepository.class
 com\prolagos\sispcbackend\domain\procedures\ListaIndicadores.class
 com\prolagos\sispcbackend\security\JWTAuthorizationFilter.class
@@ -87,6 +89,7 @@ com\prolagos\sispcbackend\domain\Cad_Projetos_Sesuite_LicencaSocial.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_Obras.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Supervisoes.class
 com\prolagos\sispcbackend\services\validations\UsuarioInsertValidator.class
+com\prolagos\sispcbackend\bots\GerenciadorDeBots.class
 com\prolagos\sispcbackend\domain\Cad_SisPC_Perfis.class
 com\prolagos\sispcbackend\repositories\ProjSeSuiteRepository.class
 com\prolagos\sispcbackend\domain\procedures\ResumoIndicadores.class
@@ -161,6 +164,7 @@ com\prolagos\sispcbackend\domain\Cad_Ind_Prodquimico.class
 com\prolagos\sispcbackend\repositories\PrecosPQRepository.class
 com\prolagos\sispcbackend\domain\Cad_Projetos_Licenciamentos.class
 com\prolagos\sispcbackend\services\validations\utils\BR.class
+com\prolagos\sispcbackend\bots\Volumes.class
 com\prolagos\sispcbackend\repositories\CadindicadoresRepository.class
 com\prolagos\sispcbackend\domain\AppWeb_Ind_ExeIndicadores.class
 com\prolagos\sispcbackend\repositories\ProjComissionamentoRepository.class

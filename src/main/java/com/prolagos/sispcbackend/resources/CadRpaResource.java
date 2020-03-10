@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.prolagos.sispcbackend.bots.GerenciadorDeBots;
-import com.prolagos.sispcbackend.bots.Volumes.Volumes;
+import com.prolagos.sispcbackend.bots.Volumes;
 import com.prolagos.sispcbackend.domain.cad_rpa_robos;
 import com.prolagos.sispcbackend.services.CadRpaService;
 

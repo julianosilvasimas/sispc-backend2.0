@@ -71,6 +71,7 @@ C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\co
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_Projetos_ComprovacaoArquivos.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_SisPC_Taggerencias.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_SisPC_Unidades.java
+C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\bots\GerenciadorDeBots.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\VeiculosResource.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\PerfisResource.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\ProjComissionamentoService.java
@@ -106,6 +107,7 @@ C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\co
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_SisPC_PartesInteressadas.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\CadindicadoresRepository.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_Projetos_Regulatorio.java
+C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\bots\Volumes.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Base_GSS_Clientes.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\dto\CredenciaisDTO.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Base_GSS_EndEntregas.java
@@ -124,6 +126,8 @@ C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\co
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\exceptions\ResourceExceptionHandler.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_SisPC_Empresas.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\ProjetosResource.java
+C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\threadpoolconfig\EnvioDeEmails.java
+C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\bots\calculosEnergia\CalculosEnergia.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\CondutoresResource.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\validations\UsuarioUpdate.java
 C:\Users\vitor.heser\Documents\AngularProjects\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\threadpoolconfig\ThreadPoolConfiguration.java

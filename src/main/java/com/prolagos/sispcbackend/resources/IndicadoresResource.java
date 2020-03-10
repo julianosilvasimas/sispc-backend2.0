@@ -4,10 +4,7 @@ import java.net.URI;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.Future;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,7 +24,7 @@ import com.prolagos.sispcbackend.domain.procedures.ListaIndicadores;
 import com.prolagos.sispcbackend.domain.procedures.ResumoIndicadores;
 import com.prolagos.sispcbackend.repositories.ListaIndicadoresDAO;
 import com.prolagos.sispcbackend.services.IndicadoresService;
-import com.prolagos.sispcbackend.threadpoolconfig.EnvioDeEmails;
+import com.prolagos.sispcbackend.threadpoolconfig.InserirIndicadores;
 
 @RestController
 @RequestMapping(value="/indicadores")
@@ -35,6 +32,7 @@ public class IndicadoresResource {
 
 	@Autowired
 	private IndicadoresService service;
+
 	
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
@@ -145,4 +143,18 @@ public class IndicadoresResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	
+
+    @Autowired
+    ThreadPoolTaskExecutor threadPool;
+	
+	@RequestMapping(value="/novoindicador/{indicador}/{ano}/{diaDeMudanca}/{unidade}", method=RequestMethod.GET)
+	public ResponseEntity<Void> insert(@PathVariable Integer indicador,@PathVariable Integer ano,@PathVariable Integer diaDeMudanca,@PathVariable Integer unidade) {
+		
+		InserirIndicadores iI = new InserirIndicadores(indicador,ano,diaDeMudanca,unidade);
+		iI.agendamentos();
+		
+	    URI uri = null;
+		return ResponseEntity.created(uri).build();
+	}
 }

@@ -55,7 +55,7 @@ public class NotificacoesSispcEmails {
     public NotificacoesSispcEmails(String Assunto, String Texto) throws EmailException, UnsupportedEncodingException, ClassNotFoundException, SQLException {
     	
     	
-    	ArrayList Emails = Emails();
+    	ArrayList<String> Emails = Emails();
     	Texto = Texto.replaceAll("\n", "<br>");
     	HtmlEmail email = new HtmlEmail();
         email.setDebug(true);
@@ -65,7 +65,7 @@ public class NotificacoesSispcEmails {
 		
         String txtHtml = "<html>";
         txtHtml =Texto;
-		txtHtml = txtHtml +convertido+ Assinatura(email) + "</html>";
+		txtHtml = txtHtml +Assinatura(email) + "</html>";
 		
 		
 		
@@ -77,6 +77,9 @@ public class NotificacoesSispcEmails {
         email.setAuthentication(usuario, senha);
         email.setFrom(remetente, "SisPC - Informativo");
         email.setSubject(assunto);
+//        email.addTo(convertido);
+        email.addTo("juliano.simas@prolagos.com.br");
+        email.addTo("tamirys.vieira@prolagos.com.br");
         email.addTo("vitor.heser@prolagos.com.br");
         email.setHtmlMsg(txtHtml);
         email.send();
@@ -85,9 +88,7 @@ public class NotificacoesSispcEmails {
 	
 	public String Assinatura(HtmlEmail email) throws EmailException {
 		String cid1 = email.embed(new File("C:\\Users\\Public\\Documents\\Prolagos.png"));
-		
-//		String cid1 = email.embed(new File("C:\\Users\\Public\\Documents\\Prolagos.png"));
-		String Assinatura =  "<em>Atenciosamente,</em></strong></p>"
+		String Assinatura =  "<br><br><em>Atenciosamente,</em></strong></p>"
 		+ "<img src=\"cid:" + cid1 + "\"  width=\"127\">";
 		return Assinatura;
 	}

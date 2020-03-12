@@ -38,8 +38,6 @@ public class NotificacoesSispcEmails {
     
     public NotificacoesSispcEmails(List<String> usuarios, String Assunto, String Texto) throws EmailException, UnsupportedEncodingException, ClassNotFoundException, SQLException {
 
-    	
-    	Texto = Texto.replaceAll("\n", "<br>");
     	HtmlEmail email = new HtmlEmail();
         email.setDebug(true);
 		

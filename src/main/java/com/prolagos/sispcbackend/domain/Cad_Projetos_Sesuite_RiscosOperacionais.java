@@ -11,6 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Type;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,39 +25,41 @@ public class Cad_Projetos_Sesuite_RiscosOperacionais implements Serializable {
 	
 	@Id
 	@Getter @Setter private Integer sesuiteRiscoOperacionaisId;
-	@Column(length=50)
+	@Column(length=150)
 	@Getter @Setter private String impactointerrupcao;
-	@Column(length=50)
+	@Column(length=150)
 	@Getter @Setter private String probabilidadeimpactointerrupcao;
-	@Column(length=50)
+	@Column(length=150)
 	@Getter @Setter private String custointerrupcao;
-	@Column(length=50)
+	@Column(length=150)
 	@Getter @Setter private String complexidadeexecucao;
-	@Column(length=50)
+	@Column(length=150)
 	@Getter @Setter private String impactosubstituicao;
-	@Column(length=50)
+	@Column(length=150)
 	@Getter @Setter private String probabilidadeimpactosubstituicao;
-	@Column(length=50)
+	@Column(length=150)
 	@Getter @Setter private String impactoambiental;
-	@Column(length=50)
+	@Column(length=150)
 	@Getter @Setter private String probabilidadeimpactoambiental;
-	@Column(length=50)
+	@Column(length=150)
 	@Getter @Setter private String impactointegridade;
-	@Column(length=50)
+	@Column(length=150)
 	@Getter @Setter private String probabilidadeimpactointegridade;
-	@Column(length=50)
+	@Column(length=150)
 	@Getter @Setter private String riscoatraso;
-	@Column(length=50)
+	@Column(length=150)
 	@Getter @Setter private String possuilicenca;
-	@Column(length=50)
+	@Column(length=150)
 	@Getter @Setter private String nlicenca;
-	@Column(length=50)
+	@Column(length=150)
 	@Getter @Setter private String prazolicenca;
-	@Column(length=50)
-	@Getter @Setter private String condicionantelicenca;
-	@Column(length=50)
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	@Getter @Setter private Boolean condicionantelicenca;
+	@Column(length=150)
 	@Getter @Setter private String condicionantelicencaespec;
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate emissaolicenca;
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate validadelicenca;
 	
 	@OneToOne

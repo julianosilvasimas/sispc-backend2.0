@@ -72,12 +72,33 @@ public class ProjetosService {
 	
 	public Cad_SisPC_Projetos update(Cad_SisPC_Projetos obj) {
 		find(obj.getProjetoId());
-		obj.setInicioprevisto(obj.getInicioprevisto().plusDays(1));
+		/*obj.setInicioprevisto(obj.getInicioprevisto().plusDays(1));
 		obj.setInicioreplanejado(obj.getInicioreplanejado().plusDays(1));
 		obj.setIniciorealizado(obj.getIniciorealizado().plusDays(1));
 		obj.setTerminoprevisto(obj.getTerminoprevisto().plusDays(1));
 		obj.setTerminoreplanejado(obj.getTerminoreplanejado().plusDays(1));
-		obj.setTerminorealizado(obj.getTerminorealizado().plusDays(1));
+		obj.setTerminorealizado(obj.getTerminorealizado().plusDays(1));*/
+		
+		if(obj.getInicioprevisto() != null ){
+			obj.setInicioprevisto(obj.getInicioprevisto().plusDays(1)) ;	
+		}
+		if(obj.getTerminoprevisto() != null ){
+			obj.setTerminoprevisto(obj.getTerminoprevisto().plusDays(1));	
+		}
+		if(obj.getInicioreplanejado() != null ){
+			obj.setInicioreplanejado(obj.getInicioreplanejado().plusDays(1)) ;	
+		}
+		if(obj.getTerminoreplanejado() != null ){
+			obj.setTerminoreplanejado(obj.getTerminoreplanejado().plusDays(1));	
+		}
+		if(obj.getIniciorealizado() != null ){
+			obj.setIniciorealizado(obj.getIniciorealizado().plusDays(1)) ;	
+		}
+		if(obj.getTerminorealizado() != null ){
+			obj.setTerminorealizado(obj.getTerminorealizado().plusDays(1));	
+		}
+		
+		
 		obj.getFinanceiro().setProjeto(obj);
 		obj.getContratacao().setProjeto(obj);
 		obj.getObra().setProjeto(obj);

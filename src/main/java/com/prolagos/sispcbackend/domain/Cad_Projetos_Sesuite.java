@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Type;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -50,21 +52,43 @@ public class Cad_Projetos_Sesuite implements Serializable {
 	@Getter @Setter protected String email;
 	@Column(length=50)
 	@Getter @Setter protected String tel;
+	
+	@Column(name="ja_teve_investimento_realizado")
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	@Getter @Setter protected Boolean teveinvestimento;
+	
 	@Column(length=50)
-	@Getter @Setter protected String teveinvestimento;
+	@Getter @Setter protected String valorinvestido;
+	
 	@Column(length=50)
 	@Getter @Setter protected String envolve;
+	
+	@Column(name="objetivo_atingido_independente_outro_nao_aprovado")
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	@Getter @Setter protected Boolean objetivoindepende;
+	
 	@Column(length=50)
+	@Getter @Setter protected String dependente;
+	
+	
 	@Getter @Setter protected String tipo;
-	@Column(length=50)
-	@Getter @Setter protected String corebusiness;
-	@Column(length=50)
-	@Getter @Setter protected String negocioexistente;
+	
+	@Column(name="diretamente_associado_corebusiness_empresa")
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	@Getter @Setter protected Boolean corebusiness;
+	
+	@Column(name="associado_negocio_existente_aegea")
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	@Getter @Setter protected Boolean negocioexistente;
+	
 	@Column(length=50)
 	@Getter @Setter protected String principalmotivacao;
+	
+	@Column(name="facilita_melhora_contribui_operacoes_atuais")
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	@Getter @Setter protected Boolean melhoraempresa;
 	@Column(length=50)
-	@Getter @Setter protected String melhoraempresa;
-	@Column(length=50)
+	
 	@Getter @Setter protected String delineado;
 	
 	@OneToOne(cascade=CascadeType.ALL, mappedBy="sesuite")

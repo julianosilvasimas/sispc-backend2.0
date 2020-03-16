@@ -19,17 +19,17 @@ public class Cad_Projetos_Sesuite_LicencaSocial implements Serializable {
 	
 	@Id
 	@Getter @Setter private Integer sesuiteLicencaId;
-	@Column(length=50)
+	@Column(length=100)
 	@Getter @Setter private String impactosocial;
-	@Column(length=50)
+	@Column(length=100)
 	@Getter @Setter private String relacionamentopolitico;
-	@Column(length=50)
+	@Column(length=100)
 	@Getter @Setter private String relacionamentosociedade;
-	@Column(length=50)
+	@Column(length=100)
 	@Getter @Setter private String impactoimagem;
-	@Column(length=50)
+	@Column(length=100)
 	@Getter @Setter private String probabilidadeimpactoimagem;
-	@Column(length=50)
+	@Column(length=100)
 	@Getter @Setter private String impactoreputacional;
 	
 	@OneToOne

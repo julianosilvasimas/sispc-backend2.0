@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Type;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,25 +21,27 @@ public class Cad_Projetos_Sesuite_Direcionamento implements Serializable {
 	
 	@Id
 	@Getter @Setter private Integer sesuiteDirecionamentoId;
-	@Column(length=50)
+	@Column(length=100)
 	@Getter @Setter private String nagua;
-	@Column(length=50)
-	@Getter @Setter private String impactoagua;
-	@Column(length=50)
+	
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	@Getter @Setter private Boolean impactoagua;
+	@Column(length=100)
 	@Getter @Setter private String nesgoto;
-	@Column(length=50)
-	@Getter @Setter private String impactoesgoto;
-	@Column(length=50)
+	
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	@Getter @Setter private Boolean impactoesgoto;
+	
 	@Getter @Setter private String maturidade;
-	@Column(length=50)
+	@Column(length=100)
 	@Getter @Setter private String modelomercado;
-	@Column(length=50)
+	@Column(length=100)
 	@Getter @Setter private String diferencialcompetitivo;
-	@Column(length=50)
+	@Column(length=100)
 	@Getter @Setter private String modeloconcessao;
-	@Column(length=50)
+	@Column(length=100)
 	@Getter @Setter private String sinergia;
-	@Column(length=50)
+	@Column(length=100)
 	@Getter @Setter private String maturidaderegiao;
 	
 	@OneToOne

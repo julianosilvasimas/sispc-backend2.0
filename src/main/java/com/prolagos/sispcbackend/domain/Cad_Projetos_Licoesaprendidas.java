@@ -1,6 +1,7 @@
 package com.prolagos.sispcbackend.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -35,6 +36,6 @@ public class Cad_Projetos_Licoesaprendidas implements Serializable {
 	@OneToOne
 	@JoinColumn(name="fk_projetoId" ,foreignKey = @ForeignKey(name="fk_projeto_licoes"))
 	@MapsId
-	private Cad_SisPC_Projetos projeto;
+	@Setter private Cad_SisPC_Projetos projeto;
 
 }

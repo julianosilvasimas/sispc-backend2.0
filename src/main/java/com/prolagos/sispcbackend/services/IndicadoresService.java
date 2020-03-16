@@ -46,6 +46,11 @@ public class IndicadoresService {
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + indicador + ", Tipo: " +
         		AppWeb_Ind_ExeIndicadores.class.getName(), null));
     }
+
+	public AppWeb_Ind_ExeIndicadores findByDataInd(final Integer indicadorId, final LocalDate data) {
+        final AppWeb_Ind_ExeIndicadores obj = this.repo.findByDataInd(indicadorId, data.plusDays(1));
+        return obj;
+    }
 	
 
 	public List<AppWeb_Ind_ExeIndicadores>  findDiarioPorMes(final List<Cad_Ind_Indicadores> indicador, final LocalDate data) {

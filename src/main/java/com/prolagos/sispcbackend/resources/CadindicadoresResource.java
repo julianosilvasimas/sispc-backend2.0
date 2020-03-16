@@ -38,9 +38,12 @@ public class CadindicadoresResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Cad_Ind_Indicadores obj, @PathVariable Integer id) {
 		obj.setIndicadorId(id);
+		obj.setCampoDoGraficoId(obj.getCampoDoGraficoId());
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
@@ -67,7 +70,7 @@ public class CadindicadoresResource {
 	public ResponseEntity<Page<Cad_Ind_Indicadores>> findPage(
 			@RequestParam(value="page", defaultValue="0") Integer page, 
 			@RequestParam(value="linesPerPage", defaultValue="24") Integer linesPerPage, 
-			@RequestParam(value="orderBy", defaultValue="IndicadorId") String orderBy, 
+			@RequestParam(value="orderBy", defaultValue="ordem") String orderBy, 
 			@RequestParam(value="direction", defaultValue="ASC") String direction) {
 		Page<Cad_Ind_Indicadores> list = service.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(list);

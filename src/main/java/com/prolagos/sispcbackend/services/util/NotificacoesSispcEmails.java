@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
@@ -33,39 +34,19 @@ public class NotificacoesSispcEmails {
         }
         return connection;
     }
+        
     
-    public ArrayList<String> Emails() throws ClassNotFoundException, SQLException{
-    	ArrayList<String> Emails= new ArrayList<>();
-    	String inserir="SELECT * FROM sispc.cad_sispc_usuarios;";
+    public NotificacoesSispcEmails(List<String> usuarios, String Assunto, String Texto) throws EmailException, UnsupportedEncodingException, ClassNotFoundException, SQLException {
 
-        Connection connection= getnewConnection();
-        PreparedStatement ps = connection.prepareStatement(inserir);
-        ResultSet rs = ps.executeQuery();
-        
-        while(rs.next()){
-            String email = rs.getString("email");
-            Emails.add(email);
-        }
-        
-        connection.close();
-		return Emails;
-    }
-    
-    
-    public NotificacoesSispcEmails(String Assunto, String Texto) throws EmailException, UnsupportedEncodingException, ClassNotFoundException, SQLException {
-    	
-    	
-    	ArrayList Emails = Emails();
-    	Texto = Texto.replaceAll("\n", "<br>");
     	HtmlEmail email = new HtmlEmail();
         email.setDebug(true);
 		
         String assunto = Assunto;
-        String[] convertido = (String[]) Emails.toArray(new String[Emails.size()]);
+        String[] convertido = (String[]) usuarios.toArray(new String[usuarios.size()]);
 		
         String txtHtml = "<html>";
         txtHtml =Texto;
-		txtHtml = txtHtml +convertido+ Assinatura(email) + "</html>";
+		txtHtml = txtHtml +Assinatura(email) + "</html>";
 		
 		
 		
@@ -77,7 +58,10 @@ public class NotificacoesSispcEmails {
         email.setAuthentication(usuario, senha);
         email.setFrom(remetente, "SisPC - Informativo");
         email.setSubject(assunto);
-        email.addTo("vitor.heser@prolagos.com.br");
+        email.addTo(convertido);
+//        email.addTo("juliano.simas@prolagos.com.br");
+//        email.addTo("tamirys.vieira@prolagos.com.br");
+//        email.addTo("vitor.heser@prolagos.com.br");
         email.setHtmlMsg(txtHtml);
         email.send();
     }
@@ -85,9 +69,7 @@ public class NotificacoesSispcEmails {
 	
 	public String Assinatura(HtmlEmail email) throws EmailException {
 		String cid1 = email.embed(new File("C:\\Users\\Public\\Documents\\Prolagos.png"));
-		
-//		String cid1 = email.embed(new File("C:\\Users\\Public\\Documents\\Prolagos.png"));
-		String Assinatura =  "<em>Atenciosamente,</em></strong></p>"
+		String Assinatura =  "<br><br><em>Atenciosamente,</em></strong></p>"
 		+ "<img src=\"cid:" + cid1 + "\"  width=\"127\">";
 		return Assinatura;
 	}

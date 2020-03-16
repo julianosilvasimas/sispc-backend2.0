@@ -40,7 +40,7 @@ public class AppWeb_Ind_ExeIndicadores implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter @Setter private Integer exeindicadorId;
 	
 	@JsonDeserialize(using = LocalDateDeserializer.class)
@@ -63,9 +63,15 @@ public class AppWeb_Ind_ExeIndicadores implements Serializable {
 	@Column(scale=2,precision=12)
 	@Getter @Setter private Double realizado;
 	@Column(scale=2,precision=12)
+	@Getter @Setter private Double valorretido;
+	@Column(scale=2,precision=12)
 	@Getter @Setter private Double pecld;
 	@Column(scale=2,precision=12)
 	@Getter @Setter private Double forecast;
+	@Column(scale=2,precision=12)
+	@Getter @Setter private Double forecast2;
+	@Column(scale=2,precision=12)
+	@Getter @Setter private Double forecast3;
 	@Column(scale=2,precision=12)
 	@Getter @Setter private Double minimo;
 	@Column(scale=2,precision=12)
@@ -108,9 +114,9 @@ public class AppWeb_Ind_ExeIndicadores implements Serializable {
 	
 	public AppWeb_Ind_ExeIndicadores(Integer exeindicadorId, LocalDate datareferencia, LocalDate dataindicador, Integer ciclo,
 			Periodos_Indicadores periodicidade, Double orcado, Double realizado, Double pecld, Double forecast, Double minimo,
-			Double maximo, Double meta, Double previsao, Double dentroprazo, Double foraprazo, Double dentroprazoreg,
+			Double maximo, Double meta, Double previsao, Double valorretido, Double dentroprazo, Double foraprazo, Double dentroprazoreg,
 			Double foraprazoreg, Integer atendente, Integer atendimento, String comentario, String acao, String analise,
-			String colaborador, Cad_Ind_Indicadores indicadorId, Cad_SisPC_Unidades undcodigo, Double realizadokg) {
+			String colaborador, Cad_Ind_Indicadores indicadorId, Cad_SisPC_Unidades undcodigo, Double realizadokg, Double forecast2, Double forecast3) {
 		
         this.exeindicadorId = exeindicadorId;
 		this.datareferencia = datareferencia;
@@ -121,10 +127,13 @@ public class AppWeb_Ind_ExeIndicadores implements Serializable {
 		this.realizado = realizado;
 		this.pecld = pecld;
 		this.forecast = forecast;
+		this.forecast2 = forecast2;
+		this.forecast3 = forecast3;
 		this.minimo = minimo;
 		this.maximo = maximo;
 		this.meta = meta;
 		this.previsao = previsao;
+		this.valorretido = valorretido;
 		this.dentroprazo = dentroprazo;
 		this.foraprazo = foraprazo;
 		this.dentroprazoreg = dentroprazoreg;

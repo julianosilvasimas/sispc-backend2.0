@@ -15,6 +15,7 @@ import com.prolagos.sispcbackend.services.CadRpaService;
 @RestController
 @RequestMapping(value="/cadrpa")
 public class CadRpaResource {
+	public CadRpaResource() {}
 	
 	@Autowired
 	private CadRpaService service;
@@ -31,6 +32,20 @@ public class CadRpaResource {
 		List<cad_rpa_robos> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
+	
+
+
+//	@Value("${spring.datasource.username}")
+//    private String username;
+// 
+//    @Value("${spring.datasource.password}")
+//    private String password;
+// 
+//    @Value("${spring.datasource.url}")
+//    private String url;
+//    
+    
+	
 	
 
 }

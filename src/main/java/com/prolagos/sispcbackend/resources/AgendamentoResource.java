@@ -39,7 +39,7 @@ public class AgendamentoResource {
         return (ResponseEntity<Appweb_Transporte_Agendamentos>)ResponseEntity.ok().body(obj);
     }
 
-    
+
     @RequestMapping(value = { "/aprovar" }, method = { RequestMethod.GET })
     public ResponseEntity<List<Appweb_Transporte_Agendamentos>> Aprovar() {
     	List<Appweb_Transporte_Agendamentos> list  = (List<Appweb_Transporte_Agendamentos>) service.paraAprovar();
@@ -71,6 +71,7 @@ public class AgendamentoResource {
     
     @RequestMapping(method = { RequestMethod.POST })
     public ResponseEntity<Void> insert(@RequestBody Appweb_Transporte_Agendamentos obj) throws EmailException, UnsupportedEncodingException {
+      
         obj = this.service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(new Object[] { obj.getAgendamentoId()}).toUri();
         
@@ -88,6 +89,7 @@ public class AgendamentoResource {
         obj = this.service.update(obj);
     	
     	return ResponseEntity.noContent().build();
+
     }
     
     

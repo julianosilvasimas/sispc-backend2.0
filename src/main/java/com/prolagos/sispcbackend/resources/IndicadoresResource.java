@@ -1,4 +1,4 @@
-package com.prolagos.sispcbackend.resources;
+	package com.prolagos.sispcbackend.resources;
 
 import java.net.URI;
 import java.sql.SQLException;
@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -29,16 +30,18 @@ import com.prolagos.sispcbackend.domain.Cad_SisPC_Unidades;
 import com.prolagos.sispcbackend.domain.procedures.ListaIndicadores;
 import com.prolagos.sispcbackend.domain.procedures.ResumoIndicadores;
 import com.prolagos.sispcbackend.repositories.ListaIndicadoresDAO;
+import com.prolagos.sispcbackend.services.CadindicadoresService;
 import com.prolagos.sispcbackend.services.IndicadoresService;
 
 @RestController
 @RequestMapping(value="/indicadores")
 public class IndicadoresResource {
 
+
+
+
 	@Autowired
 	private IndicadoresService service;
-
-	
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<AppWeb_Ind_ExeIndicadores> find(@PathVariable Integer id) {
@@ -54,6 +57,29 @@ public class IndicadoresResource {
         return (ResponseEntity<AppWeb_Ind_ExeIndicadores>)ResponseEntity.ok().body(obj);
     }
     
+
+	@Autowired
+	private CadindicadoresService service2;
+	
+	@RequestMapping(value = { "/porrange/{Classificacao}/{data1}/{data2}" }, method = { RequestMethod.GET })
+    public ResponseEntity<List<AppWeb_Ind_ExeIndicadores>> findRange(@PathVariable final Integer Classificacao, @PathVariable final String data1, @PathVariable final String data2) {
+
+		List<Cad_Ind_Indicadores> indicador= new ArrayList<>();
+		if(Classificacao==1) {
+			indicador.add(service2.find(2));
+		}else {
+			indicador.add(service2.find(72));
+		}
+		
+		final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        final LocalDate date1 = LocalDate.parse(data1, formatter);
+        final LocalDate date2 = LocalDate.parse(data2, formatter);
+                
+        return ResponseEntity.ok().body(this.service.findDiarioPorRange(indicador, date1,date2));
+    }
+    
+	
+	
     @RequestMapping(value = { "/pormes/{indicador}/{data}" }, method = { RequestMethod.GET })
     public ResponseEntity<List<AppWeb_Ind_ExeIndicadores>> findIndDiariosPorMes(@PathVariable final List<Cad_Ind_Indicadores> indicador, @PathVariable final String data) {
         final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");

@@ -57,6 +57,11 @@ public class IndicadoresService {
 		return this.repo.findIndDiariosPorMes(indicador, data.plusDays(1));
         
     }
+
+	public List<AppWeb_Ind_ExeIndicadores>  findDiarioPorRange(final List<Cad_Ind_Indicadores> indicador, final LocalDate data1, final LocalDate data2) {
+		return this.repo.findIndDiariosPorRange(indicador, data1.plusDays(1), data2.plusDays(1));
+        
+    }
 	
 	public AppWeb_Ind_ExeIndicadores insert(AppWeb_Ind_ExeIndicadores obj) {
 		obj.setExeindicadorId(null);  //Utilizado em Entidade Com auto incremento

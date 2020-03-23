@@ -68,6 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  			"/partesinteressadas/**",
  			"/regulatorios/**",
  			"/energia/**",
+ 			"/cenariosenergia/**",
  			"/zteste/**"
 	};
 	

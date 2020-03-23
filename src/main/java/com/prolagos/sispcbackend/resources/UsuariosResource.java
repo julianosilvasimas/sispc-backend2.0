@@ -56,7 +56,7 @@ public class UsuariosResource {
 	public ResponseEntity<Void> update(@Valid @RequestBody UsuarioDTO objDto, @PathVariable Integer id) {
 		Cad_SisPC_Usuarios obj = service.fromDTO(objDto);
 		obj.setUsuarioId(id);
-		obj = service.update(obj);
+		obj = service.updateDTO(obj);
 		return ResponseEntity.noContent().build();
 	}
 	

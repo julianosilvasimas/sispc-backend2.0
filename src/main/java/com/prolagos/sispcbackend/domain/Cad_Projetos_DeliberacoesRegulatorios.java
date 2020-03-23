@@ -3,6 +3,7 @@ package com.prolagos.sispcbackend.domain;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -31,8 +35,14 @@ public class Cad_Projetos_DeliberacoesRegulatorios implements Serializable {
 	@Getter @Setter private String ndeliberacao;
 	@Getter @Setter private String assunto;
 	@Getter @Setter private String tipo;   // 1.Informativo ou 2.Deliberativo  //Pode ser um Enum de tipo
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate envio;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate retorno;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate aprovado;
 	@Getter @Setter private String link;
     

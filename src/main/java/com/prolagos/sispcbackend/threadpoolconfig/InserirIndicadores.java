@@ -14,6 +14,7 @@ import org.springframework.scheduling.annotation.Async;
 import com.prolagos.sispcbackend.domain.AppWeb_Ind_ExeIndicadores;
 import com.prolagos.sispcbackend.domain.Cad_Ind_Indicadores;
 import com.prolagos.sispcbackend.domain.Cad_SisPC_Unidades;
+import com.prolagos.sispcbackend.domain.enums.Periodos_Indicadores;
 import com.prolagos.sispcbackend.services.IndicadoresService;
 
 public class InserirIndicadores implements Callable<String>{
@@ -106,7 +107,7 @@ public class InserirIndicadores implements Callable<String>{
 	        }catch(Exception e) {
 	        	System.out.println("ERRO NA EXECUCAO");
 		        LocalDate localDateReferencia = LocalDate.parse(DataReferencia, formatter);
-	        	AppWeb_Ind_ExeIndicadores obj = new AppWeb_Ind_ExeIndicadores(null,localDateReferencia,localDateIndicador,0,null,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,null,null,null,"",objCadInd,objUnidade,0.0,0.0,0.0);
+	        	AppWeb_Ind_ExeIndicadores obj = new AppWeb_Ind_ExeIndicadores(null,localDateReferencia,localDateIndicador,0,Periodos_Indicadores.DIARIO,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,null,null,null,"",objCadInd,objUnidade);
 	        	service.insert(obj);
 	        }
 	        //FIM AQUI

@@ -43,11 +43,17 @@ public class UsuariosService {
 	@Transactional
 	public Cad_SisPC_Usuarios insert(Cad_SisPC_Usuarios obj) {
 		obj.setUsuarioId(null);
-		obj.setSenha("123");
+		obj.setSenha(pe.encode("123"));
 		obj = repo.save(obj);
 		return obj;
 	}
+
 	
+	public Cad_SisPC_Usuarios updateDTO(Cad_SisPC_Usuarios obj) {
+		Cad_SisPC_Usuarios oldObj = find(obj.getUsuarioId());
+		updateDataDTO(oldObj, obj);
+		return repo.save(oldObj);
+	}
 	
 	public Cad_SisPC_Usuarios update(Cad_SisPC_Usuarios obj) {
 		Cad_SisPC_Usuarios oldObj = find(obj.getUsuarioId());
@@ -101,9 +107,15 @@ public class UsuariosService {
 		newObj.setSenha(obj.getSenha());
 	}
 	
+	private void updateDataDTO(Cad_SisPC_Usuarios newObj, Cad_SisPC_Usuarios obj) {
+		newObj.setNome(obj.getNome());
+		newObj.setEmail(obj.getEmail());
+		newObj.setAtivo(obj.getAtivo());
+	}
 	private void updateData(Cad_SisPC_Usuarios newObj, Cad_SisPC_Usuarios obj) {
 		newObj.setNome(obj.getNome());
 		newObj.setEmail(obj.getEmail());
+		newObj.setAtivo(obj.getAtivo());
 		newObj.setPerfis(obj.getPerfis());
 	}
 }

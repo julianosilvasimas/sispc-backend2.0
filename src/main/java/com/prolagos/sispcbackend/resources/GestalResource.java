@@ -104,9 +104,6 @@ public class GestalResource {
 
     @RequestMapping(value = { "/item" },method = { RequestMethod.POST })
     public ResponseEntity<Apprpa_Energia_Gestal> insert(@RequestBody Apprpa_Energia_Gestal obj) {
-    	System.out.println("-\n--\n---\n----\n-----\n------\n===============================================================================");
-    	System.out.println("O id do objeto: "+obj.getIdEnergia());
-    	System.out.println("===============================================================================");
     	Apprpa_Energia_Gestal objReal = this.service2.pelaData(obj.getUnidade(),obj.getDataIndicador());
     	
     	if(objReal!=null) {

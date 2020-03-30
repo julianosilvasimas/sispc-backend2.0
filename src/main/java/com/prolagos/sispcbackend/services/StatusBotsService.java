@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,14 @@ public class StatusBotsService {
 	public Page<Apprpa_Rpa_Statusbots> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
+	}
+
+	public List<Apprpa_Rpa_Statusbots> findByBot(Integer bot) {
+		Integer pageNo = 0;
+	    Integer pageSize = 10;
+	    String sortBy = "IdAppWeb";
+	    Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy).descending());
+		return repo.findByBot(paging, bot);
 	}
 	
 	public Apprpa_Rpa_Statusbots find(Integer id) {

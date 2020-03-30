@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Indicadores;
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Preenchimentos;
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Unidades;
+import com.prolagos.sispcbackend.services.ApprpaEsgotoIndicadoresService;
 import com.prolagos.sispcbackend.services.ApprpaEsgotoService;
+import com.prolagos.sispcbackend.services.ApprpaEsgotoUnidadesService;
 
 @RestController
 @RequestMapping({ "/appesgoto" })
@@ -31,17 +34,12 @@ public class ApprpaEsgotoResource {
     
 
 
-    @RequestMapping(value = { "/unidades" },method = { RequestMethod.GET })
-    public ResponseEntity<List<Apprpa_Esgoto_Unidades>> findUnidades() {
-        final List<Apprpa_Esgoto_Unidades> list = this.service.findUnidades();
-        return (ResponseEntity<List<Apprpa_Esgoto_Unidades>>)ResponseEntity.ok().body(list);
-    }
-    
-    @RequestMapping(value = { "/unidades/{unidade}/{de}/{ate}/{clas}" },method = { RequestMethod.GET })
-    public ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>> findByUnidadesDeAte(@PathVariable final String unidade, @PathVariable final String de, @PathVariable final String ate, @PathVariable final Integer clas) {
-        final List<Apprpa_Esgoto_Preenchimentos> list = this.service.findUnidadeRef(unidade, de, ate, clas);
-        return (ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>>)ResponseEntity.ok().body(list);
-    }
+//    @RequestMapping(value = { "/unidades" },method = { RequestMethod.GET })
+//    public ResponseEntity<List<Apprpa_Esgoto_Unidades>> findUnidades() {
+//        final List<Apprpa_Esgoto_Unidades> list = this.service.findUnidades();
+//        return (ResponseEntity<List<Apprpa_Esgoto_Unidades>>)ResponseEntity.ok().body(list);
+//    }
+//    
     
     @RequestMapping(method = { RequestMethod.GET })
     public ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>> findAll() {
@@ -76,6 +74,22 @@ public class ApprpaEsgotoResource {
         return ResponseEntity.noContent().build();
     }
 
-    
+
+	@Autowired
+    private ApprpaEsgotoIndicadoresService service2;
+
+	@Autowired
+    private ApprpaEsgotoUnidadesService service3;
+	
+    @RequestMapping(value = { "/unidades/{unid}/{de}/{ate}/{clas}" },method = { RequestMethod.GET })
+    public ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>> findByUnidadesDeAte(@PathVariable final Integer unid, @PathVariable final String de, @PathVariable final String ate, @PathVariable final Integer clas) {
+        
+
+		List<Apprpa_Esgoto_Indicadores> ind = service2.findByClass(clas); 
+    	Apprpa_Esgoto_Unidades unidade = service3.find(unid);
+//    	
+    	final List<Apprpa_Esgoto_Preenchimentos> list = this.service.findUnidadeRef(unidade, de, ate, ind);
+        return (ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>>)ResponseEntity.ok().body(list);
+    }
 
 }

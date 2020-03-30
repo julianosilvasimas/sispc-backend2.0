@@ -54,7 +54,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  			"/veiculos_utilizacao/**",
  			"/cadindicadoresgraficos/**",
  			"/bcadastro/**",
- 			"/appesgoto/**",
  			"/agendamento/**",
  			"/aprovar/**",
  			"/pagamentoJuridico/**",
@@ -70,6 +69,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  			"/regulatorios/**",
  			"/energia/**",
  			"/cenariosenergia/**",
+ 			"/appesgoto/**",
+ 			"/appunidadesesgoto/**",
+ 			"/appclassificacoesesgoto/**",
  			"/zteste/**"
 	};
 	

@@ -2,6 +2,7 @@ package com.prolagos.sispcbackend.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.prolagos.sispcbackend.domain.Cad_Ind_Indicadores;
+import com.prolagos.sispcbackend.dto.CenariosEnergiaDTO;
+import com.prolagos.sispcbackend.dto.IndicadorsNomesDTO;
 import com.prolagos.sispcbackend.services.CadindicadoresService;
 
 @RestController
@@ -54,11 +57,21 @@ public class CadindicadoresResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	
+	
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<Cad_Ind_Indicadores>> findAll() {
 		List<Cad_Ind_Indicadores> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
+
+	@RequestMapping(value = { "/nomesIndicadores" },method=RequestMethod.GET)
+	public ResponseEntity<List<IndicadorsNomesDTO>> findAllNomes() {
+		List<Cad_Ind_Indicadores> list = service.findAll();
+		List<IndicadorsNomesDTO> listDto = list.stream().map(obj -> new IndicadorsNomesDTO(obj)).collect(Collectors.toList());  
+		return ResponseEntity.ok().body(listDto);
+	}
+	
 	
 	@RequestMapping(value = { "/gerencia/{gerencia}" }, method = { RequestMethod.GET })
     public ResponseEntity<List<Cad_Ind_Indicadores>> classIndicadores(@PathVariable final Integer gerencia) {

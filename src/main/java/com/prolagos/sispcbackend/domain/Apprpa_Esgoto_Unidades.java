@@ -38,5 +38,10 @@ public class Apprpa_Esgoto_Unidades implements Serializable{
 	@Getter @Setter private String dataDaCriacao;
 
 	@Getter @Setter private String Unidade;
+	@Getter @Setter private Integer Volume;
 	@Getter @Setter private String TipoDeTratamento;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="Unidade")
+	@Setter private List<Apprpa_Esgoto_Preenchimentos> Indicadores= new ArrayList<>();
 }

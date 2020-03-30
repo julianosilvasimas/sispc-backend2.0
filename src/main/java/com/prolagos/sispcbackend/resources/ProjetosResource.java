@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.prolagos.sispcbackend.domain.Cad_Projetos_Engenharia;
+import com.prolagos.sispcbackend.domain.Cad_Projetos_FinanceiroAnos;
 import com.prolagos.sispcbackend.domain.Cad_Projetos_Licenciamentos;
 import com.prolagos.sispcbackend.domain.Cad_Projetos_Regulatorio;
 import com.prolagos.sispcbackend.domain.Cad_SisPC_Projetos;
 import com.prolagos.sispcbackend.services.ProjEngenhariaService;
+import com.prolagos.sispcbackend.services.ProjFinanceiroAnosService;
 import com.prolagos.sispcbackend.services.ProjLicenciamentosService;
 import com.prolagos.sispcbackend.services.ProjRegulatorioService;
 import com.prolagos.sispcbackend.services.ProjetosService;
@@ -39,6 +41,9 @@ public class ProjetosResource {
 	@Autowired
 	private ProjLicenciamentosService licenservice;
 	
+	@Autowired
+	private ProjFinanceiroAnosService anoscapexservice;
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Cad_SisPC_Projetos> find(@PathVariable Integer id) {
 		Cad_SisPC_Projetos obj = service.find(id);
@@ -49,6 +54,13 @@ public class ProjetosResource {
 	@RequestMapping(value="/{projetoId}/regulatorios", method=RequestMethod.GET)
 	public ResponseEntity<List<Cad_Projetos_Regulatorio>> findByProjeto(@PathVariable Integer projetoId) {
 		List<Cad_Projetos_Regulatorio> list = regservice.findByProjeto(projetoId);
+		
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@RequestMapping(value="/{projetoId}/anoscapex", method=RequestMethod.GET)
+	public ResponseEntity<List<Cad_Projetos_FinanceiroAnos>> findByProjetoanoscapex(@PathVariable Integer projetoId) {
+		List<Cad_Projetos_FinanceiroAnos> list = anoscapexservice.findByCapex(projetoId);
 		
 		return ResponseEntity.ok().body(list);
 	}

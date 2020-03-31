@@ -27,21 +27,20 @@ import lombok.Setter;
 @NoArgsConstructor @AllArgsConstructor
 @Entity
 @EqualsAndHashCode(of = "id")
-public class Apprpa_Esgoto_Unidades implements Serializable{
+public class Apprpa_Esgoto_Classificacoes implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter @Setter private Integer id;
-
+	
 	@Column(name = "dataDaCriacao", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	@Getter @Setter private String dataDaCriacao;
-
-	@Getter @Setter private String Unidade;
-	@Getter @Setter private Integer Volume;
-	@Getter @Setter private String TipoDeTratamento;
+	
+	@Getter @Setter private String Nome;
+	@Getter @Setter private String icon;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="Unidade")
-	@Setter private List<Apprpa_Esgoto_Preenchimentos> Indicadores= new ArrayList<>();
+	@OneToMany(mappedBy="Classificacao")
+	@Setter private List<Apprpa_Esgoto_Indicadores> Classificacao= new ArrayList<>();
 }

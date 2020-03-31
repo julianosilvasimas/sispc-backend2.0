@@ -34,13 +34,18 @@ public class Apprpa_Esgoto_Indicadores implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter @Setter private Integer id;
 
+	@ManyToOne
+	@JoinColumn(name="Classificacao", foreignKey = @ForeignKey(name="fk_IndicadoresClassificacao"))
+	@Getter @Setter private Apprpa_Esgoto_Classificacoes Classificacao;
+	
 	@Column(name = "dataDaCriacao", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	@Getter @Setter private String dataDaCriacao;
-
-	@Getter @Setter private String Grupo;
-	@Getter @Setter private String Indicador;
 	
+	@Getter @Setter private String Nome;
 
-	@Getter @Setter private Integer IdEte;
-	@Getter @Setter private Integer IdIndicadores;
+	@Getter @Setter private String tagIndicador;
+
+	@JsonIgnore
+	@OneToMany(mappedBy="Indicador")
+	@Setter private List<Apprpa_Esgoto_Preenchimentos> Preenchimento = new ArrayList<>();
 }

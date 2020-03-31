@@ -44,11 +44,11 @@ public class StatusbotsResource {
         return (ResponseEntity<List<Apprpa_Rpa_Statusbots>>)ResponseEntity.ok().body(list);
     }
 
-//    @RequestMapping(value = { "/bot/{bot}" }, method = { RequestMethod.GET })
-//    public ResponseEntity<Apprpa_Rpa_Statusbots> findByBot(@PathVariable final List<cad_rpa_robos> bot) {
-//        Apprpa_Rpa_Statusbots obj = service.findByBot(bot);
-//        return (ResponseEntity<Apprpa_Rpa_Statusbots>)ResponseEntity.ok().body(obj);
-//    }
+    @RequestMapping(value = { "/bot/{bot}" }, method = { RequestMethod.GET })
+    public ResponseEntity<List<Apprpa_Rpa_Statusbots>> findByBot(@PathVariable final Integer bot) {
+    	List<Apprpa_Rpa_Statusbots> list  = service.findByBot(bot);
+        return (ResponseEntity<List<Apprpa_Rpa_Statusbots>>)ResponseEntity.ok().body(list);
+    }
     
     
     @RequestMapping(method = { RequestMethod.POST })

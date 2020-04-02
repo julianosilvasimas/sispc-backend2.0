@@ -59,6 +59,9 @@ public class ProjDelibRegulatorioService {
 		if(obj.getRetorno() != null ){
 			obj.setRetorno(obj.getRetorno().plusDays(1));	
 		}
+		if(obj.getAprovado() != null ){
+			obj.setAprovado(obj.getAprovado().plusDays(1));	
+		}
 		
 		return repo.save(obj);
 	}

@@ -56,12 +56,6 @@ public class ProjEngenhariaService {
 		if(obj.getRealizado() != null ){
 			obj.setRealizado(obj.getRealizado() .plusDays(1)) ;	
 		}
-		if(obj.getContfisico() != null ){
-			obj.setContfisico(obj.getContfisico().plusDays(1));	
-		}
-		if(obj.getContsistemico() != null ){
-			obj.setContsistemico(obj.getContsistemico() .plusDays(1)) ;	
-		}
 		obj.setProjetoId(repo2.findById(obj.getProjetoId().getProjetoId()).orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado!", null)));
 		obj = repo.save(obj);
 		return obj;
@@ -77,12 +71,6 @@ public class ProjEngenhariaService {
 		}
 		if(obj.getRealizado() != null ){
 			obj.setRealizado(obj.getRealizado() .plusDays(1)) ;	
-		}
-		if(obj.getContfisico() != null ){
-			obj.setContfisico(obj.getContfisico().plusDays(1));	
-		}
-		if(obj.getContsistemico() != null ){
-			obj.setContsistemico(obj.getContsistemico() .plusDays(1)) ;	
 		}
 		return repo.save(obj);
 	}

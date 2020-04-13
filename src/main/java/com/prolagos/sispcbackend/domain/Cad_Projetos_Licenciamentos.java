@@ -42,6 +42,7 @@ public class Cad_Projetos_Licenciamentos implements Serializable {
 	@Column(nullable=true)
 	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate termino;
+	@Getter @Setter private String link;
 	
 	@ManyToOne
 	@JoinColumn(name="fk_projetoId",foreignKey = @ForeignKey(name="fk_projeto_licenciamentos"))

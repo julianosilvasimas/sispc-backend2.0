@@ -76,7 +76,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  			"/appesgoto/**",
  			"/appunidadesesgoto/**",
  			"/appclassificacoesesgoto/**",
-
+ 			
+ 			"/comprovacaoarquivos/**",
  			"/delibregulatorios/**",
  			"/zteste/**"
 	};

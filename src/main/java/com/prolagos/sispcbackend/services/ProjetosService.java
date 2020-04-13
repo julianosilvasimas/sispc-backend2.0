@@ -79,6 +79,8 @@ public class ProjetosService {
 		obj.setTerminoreplanejado(obj.getTerminoreplanejado().plusDays(1));
 		obj.setTerminorealizado(obj.getTerminorealizado().plusDays(1));*/
 		
+		//Datas das informações gerais de Projeto
+		
 		if(obj.getInicioprevisto() != null ){
 			obj.setInicioprevisto(obj.getInicioprevisto().plusDays(1)) ;	
 		}
@@ -96,6 +98,27 @@ public class ProjetosService {
 		}
 		if(obj.getTerminorealizado() != null ){
 			obj.setTerminorealizado(obj.getTerminorealizado().plusDays(1));	
+		}
+		
+		//Datas de comissionamentos de Projeto
+		
+		if(obj.getComissionamento().getInicioprevisto() != null ){
+			obj.getComissionamento().setInicioprevisto(obj.getComissionamento().getInicioprevisto().plusDays(1)) ;	
+		}
+		if(obj.getComissionamento().getTerminoprevisto() != null ){
+			obj.getComissionamento().setTerminoprevisto(obj.getComissionamento().getTerminoprevisto().plusDays(1));	
+		}
+		if(obj.getComissionamento().getInicioreplanejado() != null ){
+			obj.getComissionamento().setInicioreplanejado(obj.getComissionamento().getInicioreplanejado().plusDays(1)) ;	
+		}
+		if(obj.getComissionamento().getTerminoreplanejado() != null ){
+			obj.getComissionamento().setTerminoreplanejado(obj.getComissionamento().getTerminoreplanejado().plusDays(1));	
+		}
+		if(obj.getComissionamento().getIniciorealizado() != null ){
+			obj.getComissionamento().setIniciorealizado(obj.getComissionamento().getIniciorealizado().plusDays(1)) ;	
+		}
+		if(obj.getComissionamento().getTerminorealizado() != null ){
+			obj.getComissionamento().setTerminorealizado(obj.getComissionamento().getTerminorealizado().plusDays(1));	
 		}
 		
 		

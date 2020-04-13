@@ -31,6 +31,7 @@ public class Cad_Projetos_Engenharia {
 	@Getter @Setter private String empresa;
 	@Getter @Setter private String tipo;
 	@Getter @Setter private String responsavel;
+	@Getter @Setter private String representanteempresa;
 	@Getter @Setter private String status;
 	@Column(nullable=true)
 	@JsonDeserialize(using = LocalDateDeserializer.class) 
@@ -41,12 +42,9 @@ public class Cad_Projetos_Engenharia {
 	@Column(nullable=true)
 	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate realizado;
-	@Column(nullable=true)
-	@JsonDeserialize(using = LocalDateDeserializer.class) 
-	@Getter @Setter private LocalDate contsistemico;
-	@Column(nullable=true)
-	@JsonDeserialize(using = LocalDateDeserializer.class) 
-	@Getter @Setter private LocalDate contfisico;
+	@Getter @Setter private String contsistemico;
+	@Getter @Setter private String contfisico;
+	@Getter @Setter private String link;
 	
 	
 	@ManyToOne

@@ -2,7 +2,6 @@ package com.prolagos.sispcbackend.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -2,7 +2,6 @@ package com.prolagos.sispcbackend.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -32,11 +34,19 @@ public class Cad_Projetos_Contratacao implements Serializable {
 	@Getter @Setter private String contratofisico;
 	@Getter @Setter private String nomeempresa;
 	@Getter @Setter private String responsavel;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate inicio;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate termino;
 	@Column(scale=2,precision=12)
 	@Getter @Setter private Double valorcontratado;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate inicioaditivo;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate terminoaditivo;
 	@Column(scale=2,precision=12)
 	@Getter @Setter private Double valorcontratadoaditivo;

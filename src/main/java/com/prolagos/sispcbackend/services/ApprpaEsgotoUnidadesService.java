@@ -12,7 +12,9 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Unidades;
+import com.prolagos.sispcbackend.domain.Cad_SisPC_Usuarios;
 import com.prolagos.sispcbackend.repositories.ApprpaEsgotoUnidadesRepository;
+import com.prolagos.sispcbackend.repositories.UsuarioRepository;
 import com.prolagos.sispcbackend.services.exceptions.DataIntegrityException;
 
 @Service
@@ -36,6 +38,15 @@ public class ApprpaEsgotoUnidadesService {
 		Optional<Apprpa_Esgoto_Unidades> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " +
 		Apprpa_Esgoto_Unidades.class.getName(), null));
+	}
+
+	@Autowired
+	private UsuarioRepository repo2;
+	
+	public List<Apprpa_Esgoto_Unidades> findUsuario(String Usuario) {
+		Cad_SisPC_Usuarios obj = this.repo2.findByEmail(Usuario);
+		List<Apprpa_Esgoto_Unidades> lista = repo.findUsuario(obj);
+		return lista;
 	}
 	
 	public Apprpa_Esgoto_Unidades insert(Apprpa_Esgoto_Unidades obj) {

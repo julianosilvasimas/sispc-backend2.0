@@ -22,13 +22,38 @@ public interface ApprpaEsgotoRepository extends JpaRepository<Apprpa_Esgoto_Pree
     		+ "FROM Apprpa_Esgoto_Preenchimentos obj "
     		+ "WHERE obj.DataIndicador BETWEEN :de AND :ate "
     		+ "AND   obj.Unidade LIKE :Unidade "
-    		+ "AND 	 obj.Indicador IN :clas "
+    		+ "AND   obj.Usuario LIKE :usuario "
     		+ "ORDER BY obj.Indicador, obj.DataIndicador"
 		)
 	List<Apprpa_Esgoto_Preenchimentos> consultaPorData(
 			@Param("Unidade") final Apprpa_Esgoto_Unidades Unidade, 
 			@Param("de") final String de, 
-			@Param("ate") final String ate, 
-			@Param("clas") final List<Apprpa_Esgoto_Indicadores> clas
+			@Param("ate") final String ate,
+			@Param("usuario") final String usuario
 			);
+	
+
+
+	@Transactional(readOnly = true)
+    @Query( "SELECT "
+    		+ "obj "
+    		+ "FROM Apprpa_Esgoto_Preenchimentos obj "
+    		+ "WHERE obj.Aprovado = 0 "
+    		+ "ORDER BY obj.Indicador, obj.DataIndicador"
+		)
+	List<Apprpa_Esgoto_Preenchimentos> findByNaoAprovados();
+	
+
+	@Transactional(readOnly = true)
+    @Query( "SELECT "
+    		+ "obj "
+    		+ "FROM Apprpa_Esgoto_Preenchimentos obj "
+    		+ "WHERE   obj.Usuario LIKE :usuario "
+    		+ "AND   obj.Aprovado = 0 "
+    		+ "ORDER BY obj.Indicador, obj.DataIndicador"
+		)
+	List<Apprpa_Esgoto_Preenchimentos> findByNaoAprovadosUser(
+			@Param("usuario") final String usuario
+			);
+			
 }

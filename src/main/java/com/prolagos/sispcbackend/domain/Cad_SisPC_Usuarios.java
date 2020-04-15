@@ -72,6 +72,11 @@ public class Cad_SisPC_Usuarios implements UserDetails {
 	@Getter @Setter private List<Cad_Auth_Usuarios> usuarios= new ArrayList<>();
 
 
+	@JsonIgnore
+	@Fetch(FetchMode.SUBSELECT) 
+	@ManyToMany(mappedBy="Operadores", fetch = FetchType.EAGER)
+	@Setter private List<Apprpa_Esgoto_Unidades> Unidades;
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return this.perfis;

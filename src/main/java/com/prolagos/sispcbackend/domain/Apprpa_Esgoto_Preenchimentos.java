@@ -47,9 +47,8 @@ public class Apprpa_Esgoto_Preenchimentos implements Serializable{
 	@Getter @Setter private String DataIndicador;
 	
 	@Getter @Setter private String Usuario;
-	@Getter @Setter private String NCelular;
-	@Getter @Setter private String Observacao;
 	@Getter @Setter private Double Valor;
+	@Getter @Setter private Integer Aprovado;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="linhaLog")

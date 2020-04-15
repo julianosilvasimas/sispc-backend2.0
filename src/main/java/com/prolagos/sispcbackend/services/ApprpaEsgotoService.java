@@ -2,6 +2,7 @@ package com.prolagos.sispcbackend.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Indicadores;
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Preenchimentos;
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_PreenchimentosLog;
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Unidades;
+import com.prolagos.sispcbackend.dto.EsgotoPreenchimentosDTO;
+import com.prolagos.sispcbackend.dto.UsuarioDTO;
 import com.prolagos.sispcbackend.repositories.ApprpaEsgotoLogRepository;
 import com.prolagos.sispcbackend.repositories.ApprpaEsgotoRepository;
 import com.prolagos.sispcbackend.services.exceptions.DataIntegrityException;
@@ -75,19 +78,25 @@ public class ApprpaEsgotoService {
 	}
 	
 
-	@Autowired
-	private ApprpaEsgotoIndicadoresService service;
 
 
-	public List<Apprpa_Esgoto_Preenchimentos> findUnidadeRef(Apprpa_Esgoto_Unidades unidade, String de, String ate, List<Apprpa_Esgoto_Indicadores> ind) {
+	public List<Apprpa_Esgoto_Preenchimentos> findUnidadeRef(Apprpa_Esgoto_Unidades unidade, String de, String ate, String usuario) {
 		de = de + " 00:00:00";
 		ate = ate + " 23:59:59";
 		
-		return repo.consultaPorData(unidade,de, ate,ind);
+		return repo.consultaPorData(unidade,de, ate,usuario);
 	}
+	
+	public List<EsgotoPreenchimentosDTO> findByNaoAprovadosUser(String usuario) {
+		List<Apprpa_Esgoto_Preenchimentos> lista = repo.findByNaoAprovadosUser(usuario);
+		List<EsgotoPreenchimentosDTO> listDto = lista.stream().map(obj -> new EsgotoPreenchimentosDTO(obj)).collect(Collectors.toList());  
+		return listDto;
+	}
+	
 
-	
-	
-	
-
+	public List<EsgotoPreenchimentosDTO> findByNaoAprovados() {
+		List<Apprpa_Esgoto_Preenchimentos> lista =  repo.findByNaoAprovados();
+		List<EsgotoPreenchimentosDTO> listDto = lista.stream().map(obj -> new EsgotoPreenchimentosDTO(obj)).collect(Collectors.toList());  
+		return listDto;
+	}
 }

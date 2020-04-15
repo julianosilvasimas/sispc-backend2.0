@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Indicadores;
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Preenchimentos;
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Unidades;
+import com.prolagos.sispcbackend.dto.EsgotoPreenchimentosDTO;
 import com.prolagos.sispcbackend.services.ApprpaEsgotoIndicadoresService;
 import com.prolagos.sispcbackend.services.ApprpaEsgotoService;
 import com.prolagos.sispcbackend.services.ApprpaEsgotoUnidadesService;
@@ -47,12 +48,17 @@ public class ApprpaEsgotoResource {
         return (ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>>)ResponseEntity.ok().body(list);
     }
 
+	@Autowired
+    private ApprpaEsgotoIndicadoresService service2;
     
     @RequestMapping( method = { RequestMethod.POST })
     public ResponseEntity<Void> insert(@RequestBody Apprpa_Esgoto_Preenchimentos obj) throws UnsupportedEncodingException, EmailException {
+    	Apprpa_Esgoto_Unidades unidade = service3.find(obj.getUnidade().getId());
+        obj.setUnidade(unidade);
+        Apprpa_Esgoto_Indicadores indicador = service2.find(obj.getIndicador().getId());
+        obj.setIndicador(indicador);
         obj.setId(null);
         obj = this.service.insert(obj);
-    	
     	return ResponseEntity.noContent().build();
 
     }
@@ -61,8 +67,20 @@ public class ApprpaEsgotoResource {
     @RequestMapping(value = { "/{id}" }, method = { RequestMethod.PUT })
     public ResponseEntity<Void> update(@RequestBody Apprpa_Esgoto_Preenchimentos obj, @PathVariable final Integer id) throws UnsupportedEncodingException, EmailException {
         obj.setId(id);
+    	Apprpa_Esgoto_Unidades unidade = service3.find(obj.getUnidade().getId());
+        obj.setUnidade(unidade);
+        Apprpa_Esgoto_Indicadores indicador = service2.find(obj.getIndicador().getId());
+        obj.setIndicador(indicador);
         obj = this.service.update(obj,id);
     	
+    	return ResponseEntity.noContent().build();
+
+    }
+    @RequestMapping(value = { "/aprovarLancamento/{id}" }, method = { RequestMethod.PUT })
+    public ResponseEntity<Void> aprovar(@RequestBody Apprpa_Esgoto_Preenchimentos obj2, @PathVariable final Integer id) throws UnsupportedEncodingException, EmailException {
+    	Apprpa_Esgoto_Preenchimentos obj = service.find(id);
+    	obj.setAprovado(1);
+        obj = this.service.update(obj,id);
     	return ResponseEntity.noContent().build();
 
     }
@@ -75,21 +93,28 @@ public class ApprpaEsgotoResource {
     }
 
 
-	@Autowired
-    private ApprpaEsgotoIndicadoresService service2;
 
 	@Autowired
     private ApprpaEsgotoUnidadesService service3;
 	
-    @RequestMapping(value = { "/unidades/{unid}/{de}/{ate}/{clas}" },method = { RequestMethod.GET })
-    public ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>> findByUnidadesDeAte(@PathVariable final Integer unid, @PathVariable final String de, @PathVariable final String ate, @PathVariable final Integer clas) {
+    @RequestMapping(value = { "/unidades/{unid}/{de}/{ate}/{usuario}" },method = { RequestMethod.GET })
+    public ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>> findByUnidadesDeAte(@PathVariable final Integer unid, @PathVariable final String de, @PathVariable final String ate, @PathVariable final String usuario) {
         
 
-		List<Apprpa_Esgoto_Indicadores> ind = service2.findByClass(clas); 
     	Apprpa_Esgoto_Unidades unidade = service3.find(unid);
 //    	
-    	final List<Apprpa_Esgoto_Preenchimentos> list = this.service.findUnidadeRef(unidade, de, ate, ind);
+    	final List<Apprpa_Esgoto_Preenchimentos> list = this.service.findUnidadeRef(unidade, de, ate, usuario);
         return (ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>>)ResponseEntity.ok().body(list);
     }
 
+    @RequestMapping(value = { "/naoaprovados" },method = { RequestMethod.GET })
+    public ResponseEntity<List<EsgotoPreenchimentosDTO>> findByNaoAprovadosUsuario() {
+    	final List<EsgotoPreenchimentosDTO> list = this.service.findByNaoAprovados();
+        return (ResponseEntity<List<EsgotoPreenchimentosDTO>>)ResponseEntity.ok().body(list);
+    }
+    @RequestMapping(value = { "/naoaprovados/{usuario}" },method = { RequestMethod.GET })
+    public ResponseEntity<List<EsgotoPreenchimentosDTO>> findByNaoAprovadosUsuario(@PathVariable final String usuario) {
+    	final List<EsgotoPreenchimentosDTO> list = this.service.findByNaoAprovadosUser(usuario);
+        return (ResponseEntity<List<EsgotoPreenchimentosDTO>>)ResponseEntity.ok().body(list);
+    }
 }

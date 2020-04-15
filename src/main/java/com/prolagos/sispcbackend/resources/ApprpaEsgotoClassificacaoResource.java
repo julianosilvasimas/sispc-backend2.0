@@ -64,9 +64,14 @@ public class ApprpaEsgotoClassificacaoResource {
 
     @RequestMapping(value = { "/{id}" }, method = { RequestMethod.PUT })
     public ResponseEntity<Void> update(@RequestBody Apprpa_Esgoto_Classificacoes obj, @PathVariable final Integer id) throws UnsupportedEncodingException, EmailException {
-        obj.setId(id);
-        obj = this.service.update(obj,id);
     	
+    	if(id==0) {
+    		obj.setId(null);
+    		obj = this.service.insert(obj);
+    	}else {
+	        obj.setId(id);
+	        obj = this.service.update(obj,id);
+    	}
     	return ResponseEntity.noContent().build();
 
     }

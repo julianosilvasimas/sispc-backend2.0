@@ -29,6 +29,15 @@ public class Cad_Projetos_Obras implements Serializable {
 	@Getter @Setter private Integer obraId;
 	@Column(scale=2,precision=12)  
 	@Getter @Setter private Double avancofisico;
+	
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private LocalDate inicioprevisto;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private LocalDate inicioreplanejado;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private LocalDate iniciorealizado;
 	@Column(nullable=true)
 	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate previsto;
@@ -38,6 +47,7 @@ public class Cad_Projetos_Obras implements Serializable {
 	@Column(nullable=true)
 	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate realizado;
+	
 	@Getter @Setter private String execucao;
 	
 	@OneToOne

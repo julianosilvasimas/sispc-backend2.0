@@ -136,6 +136,15 @@ public class ProjetosService {
 		if(obj.getObra().getRealizado() != null ){
 			obj.getObra().setRealizado(obj.getObra().getRealizado().plusDays(1)) ;	
 		}
+		if(obj.getObra().getPrevisto() != null ){
+			obj.getObra().setPrevisto(obj.getObra().getInicioprevisto() .plusDays(1)) ;	
+		}
+		if(obj.getObra().getReplanejado() != null ){
+			obj.getObra().setReplanejado(obj.getObra().getInicioreplanejado().plusDays(1));	
+		}
+		if(obj.getObra().getRealizado() != null ){
+			obj.getObra().setRealizado(obj.getObra().getIniciorealizado().plusDays(1)) ;	
+		}
 		
 		//#####################################################################################################################//
 		//############################# * Datas de Contratação de Projeto * ###################################################//

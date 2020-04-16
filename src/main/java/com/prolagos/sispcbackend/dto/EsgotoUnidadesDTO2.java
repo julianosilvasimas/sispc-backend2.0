@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Indicadores;
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Unidades;
 import com.prolagos.sispcbackend.domain.Cad_SisPC_Usuarios;
 
@@ -13,7 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
-public class EsgotoUnidadesDTO implements Serializable {
+public class EsgotoUnidadesDTO2 implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Getter @Setter private Integer id;
@@ -21,11 +20,9 @@ public class EsgotoUnidadesDTO implements Serializable {
 	@Getter @Setter private String Unidade;
 	@Getter @Setter private Double Vazao;
 	@Getter @Setter private String TipoDeTratamento;
-	@Getter @Setter private List<Cad_SisPC_Usuarios> Operadores;
-	@Getter @Setter private List<Apprpa_Esgoto_Indicadores> Indicadores;
 	
 	
-	public EsgotoUnidadesDTO(Apprpa_Esgoto_Unidades obj){
+	public EsgotoUnidadesDTO2(Apprpa_Esgoto_Unidades obj){
 		id = obj.getId();
 		dataDaCriacao = obj.getDataDaCriacao();
 		Unidade = obj.getUnidade();

@@ -86,18 +86,18 @@ public class ApprpaEsgotoUnidadesResource {
     }
     
     @RequestMapping(value = { "/operadores/{id}" }, method = { RequestMethod.PUT })
-    public ResponseEntity<Void> updateOperadores(@RequestBody Apprpa_Esgoto_Unidades obj, @PathVariable final Integer id) throws UnsupportedEncodingException, EmailException {
+    public ResponseEntity<Void> updateOperadores(@RequestBody EsgotoUnidadesDTO obj, @PathVariable final Integer id) throws UnsupportedEncodingException, EmailException {
     	Apprpa_Esgoto_Unidades obj2 = this.service.find(id);
         obj2.setOperadores(obj.getOperadores());
-        obj = this.service.update(obj2,id);
+        obj2 = this.service.update(obj2,id);
     	return ResponseEntity.noContent().build();
     }
     
     @RequestMapping(value = { "/indicadores/{id}" }, method = { RequestMethod.PUT })
-    public ResponseEntity<Void> updateIndicadores(@RequestBody Apprpa_Esgoto_Unidades obj, @PathVariable final Integer id) throws UnsupportedEncodingException, EmailException {
+    public ResponseEntity<Void> updateIndicadores(@RequestBody EsgotoUnidadesDTO obj, @PathVariable final Integer id) throws UnsupportedEncodingException, EmailException {
     	Apprpa_Esgoto_Unidades obj2 = this.service.find(id);
         obj2.setIndicadores(obj.getIndicadores());
-        obj = this.service.update(obj2,id);
+        obj2 = this.service.update(obj2,id);
     	return ResponseEntity.noContent().build();
     }
     

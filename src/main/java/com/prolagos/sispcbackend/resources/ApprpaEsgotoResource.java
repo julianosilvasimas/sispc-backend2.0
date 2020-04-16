@@ -77,7 +77,7 @@ public class ApprpaEsgotoResource {
 
     }
     @RequestMapping(value = { "/aprovarLancamento/{id}" }, method = { RequestMethod.PUT })
-    public ResponseEntity<Void> aprovar(@RequestBody Apprpa_Esgoto_Preenchimentos obj2, @PathVariable final Integer id) throws UnsupportedEncodingException, EmailException {
+    public ResponseEntity<Void> aprovar(@PathVariable final Integer id) throws UnsupportedEncodingException, EmailException {
     	Apprpa_Esgoto_Preenchimentos obj = service.find(id);
     	obj.setAprovado(1);
         obj = this.service.update(obj,id);

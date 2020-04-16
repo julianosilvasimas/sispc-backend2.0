@@ -47,7 +47,7 @@ public class Cad_Projetos_Obras implements Serializable {
 	@Column(nullable=true)
 	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate realizado;
-	
+	@Getter @Setter private String status;
 	@Getter @Setter private String execucao;
 	
 	@OneToOne

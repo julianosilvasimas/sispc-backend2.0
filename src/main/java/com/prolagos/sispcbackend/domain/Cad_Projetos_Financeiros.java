@@ -46,7 +46,7 @@ public class Cad_Projetos_Financeiros implements Serializable {
 	@Getter @Setter private String prazopagprojcognos;
 	@Getter @Setter private String prazoamorprojcognos;
 	@Getter @Setter private String gerareceitaprojcognos;
-
+	
 	
 	@OneToOne
 	@JoinColumn(name="fk_projetoId" ,foreignKey = @ForeignKey(name="fk_projeto_financeiro"))

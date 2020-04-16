@@ -34,6 +34,7 @@ public class Cad_Projetos_Contratacao implements Serializable {
 	@Getter @Setter private String contratofisico;
 	@Getter @Setter private String nomeempresa;
 	@Getter @Setter private String responsavel;
+	@Getter @Setter private String status;
 	@Column(nullable=true)
 	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate inicio;

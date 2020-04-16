@@ -72,6 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  			"/engenharia/**",
  			"/energia/**",
  			"/cenariosenergia/**",
+ 			"/servgssonline/**",
 
  			"/appesgoto/**",
  			"/appunidadesesgoto/**",

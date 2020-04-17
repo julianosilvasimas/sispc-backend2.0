@@ -40,6 +40,13 @@ public class ApprpaEsgotoOcorrenciasService {
 		return repo.findLimit(new PageRequest(0, 25));
 	}
 	
+	public List<Apprpa_Esgoto_Ocorrencias> findRelatorio(String de, String ate) {
+		de = de + " 00:00:00";
+		ate = ate + " 23:59:59";
+		
+		return repo.findRelatorio(de, ate);
+	}
+	
 	public Apprpa_Esgoto_Ocorrencias insert(Apprpa_Esgoto_Ocorrencias obj) {
 		obj.setId(null);  //Utilizado em Entidade Com auto incremento
 		obj = repo.save(obj);

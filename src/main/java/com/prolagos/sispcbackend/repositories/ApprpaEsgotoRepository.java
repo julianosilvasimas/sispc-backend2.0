@@ -25,12 +25,17 @@ public interface ApprpaEsgotoRepository extends JpaRepository<Apprpa_Esgoto_Pree
     		+ "AND   obj.Usuario LIKE :usuario "
     		+ "ORDER BY obj.Indicador, obj.DataIndicador"
 		)
-	List<Apprpa_Esgoto_Preenchimentos> consultaPorData(
-			@Param("Unidade") final Apprpa_Esgoto_Unidades Unidade, 
-			@Param("de") final String de, 
-			@Param("ate") final String ate,
-			@Param("usuario") final String usuario
-			);
+	List<Apprpa_Esgoto_Preenchimentos> consultaPorDataUsuario(@Param("Unidade") final Apprpa_Esgoto_Unidades Unidade, @Param("de") final String de, @Param("ate") final String ate,	@Param("usuario") final String usuario);
+	
+	@Transactional(readOnly = true)
+    @Query( "SELECT "
+    		+ "obj "
+    		+ "FROM Apprpa_Esgoto_Preenchimentos obj "
+    		+ "WHERE obj.DataIndicador BETWEEN :de AND :ate "
+    		+ "AND   obj.Unidade LIKE :Unidade "
+    		+ "ORDER BY obj.Indicador, obj.DataIndicador"
+		)
+	List<Apprpa_Esgoto_Preenchimentos> consultaPorData(@Param("Unidade") final Apprpa_Esgoto_Unidades Unidade, @Param("de") final String de, @Param("ate") final String ate);
 	
 
 

@@ -68,6 +68,12 @@ public class ApprpaEsgotoOcorrenciasResource {
 		List<Apprpa_Esgoto_Ocorrencias> list = this.service.findLimit();
 		return ResponseEntity.ok().body(list);
 	}
+	
+	@RequestMapping(value="/relatorio/{de}/{ate}", method=RequestMethod.GET)
+	public ResponseEntity<List<Apprpa_Esgoto_Ocorrencias>> findrelatorio(@PathVariable String de,@PathVariable String ate) {
+		List<Apprpa_Esgoto_Ocorrencias> list = this.service.findRelatorio(de, ate);
+		return ResponseEntity.ok().body(list);
+	}
 
 	@RequestMapping(value="/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<Apprpa_Esgoto_Ocorrencias>> findPage(

@@ -92,18 +92,22 @@ public class ApprpaEsgotoResource {
         return ResponseEntity.noContent().build();
     }
 
+    @RequestMapping(value = { "/relatorio/{unid}/{de}/{ate}" },method = { RequestMethod.GET })
+    public ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>> findByUnidadesDeAte(@PathVariable final Integer unid, @PathVariable final String de, @PathVariable final String ate) {
+    	Apprpa_Esgoto_Unidades unidade = service3.find(unid);
+    	final List<Apprpa_Esgoto_Preenchimentos> list = this.service.findUnidadeRef(unidade, de, ate);
+        return (ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>>)ResponseEntity.ok().body(list);
+    }
+
 
 
 	@Autowired
     private ApprpaEsgotoUnidadesService service3;
 	
     @RequestMapping(value = { "/unidades/{unid}/{de}/{ate}/{usuario}" },method = { RequestMethod.GET })
-    public ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>> findByUnidadesDeAte(@PathVariable final Integer unid, @PathVariable final String de, @PathVariable final String ate, @PathVariable final String usuario) {
-        
-
+    public ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>> findByUnidadesDeAteUser(@PathVariable final Integer unid, @PathVariable final String de, @PathVariable final String ate, @PathVariable final String usuario) {
     	Apprpa_Esgoto_Unidades unidade = service3.find(unid);
-//    	
-    	final List<Apprpa_Esgoto_Preenchimentos> list = this.service.findUnidadeRef(unidade, de, ate, usuario);
+    	final List<Apprpa_Esgoto_Preenchimentos> list = this.service.findUnidadeRefUsuario(unidade, de, ate, usuario);
         return (ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>>)ResponseEntity.ok().body(list);
     }
 

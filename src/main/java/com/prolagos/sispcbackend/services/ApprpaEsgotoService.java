@@ -80,11 +80,18 @@ public class ApprpaEsgotoService {
 
 
 
-	public List<Apprpa_Esgoto_Preenchimentos> findUnidadeRef(Apprpa_Esgoto_Unidades unidade, String de, String ate, String usuario) {
+	public List<Apprpa_Esgoto_Preenchimentos> findUnidadeRef(Apprpa_Esgoto_Unidades unidade, String de, String ate) {
 		de = de + " 00:00:00";
 		ate = ate + " 23:59:59";
 		
-		return repo.consultaPorData(unidade,de, ate,usuario);
+		return repo.consultaPorData(unidade,de, ate);
+	}
+
+	public List<Apprpa_Esgoto_Preenchimentos> findUnidadeRefUsuario(Apprpa_Esgoto_Unidades unidade, String de, String ate, String usuario) {
+		de = de + " 00:00:00";
+		ate = ate + " 23:59:59";
+		
+		return repo.consultaPorDataUsuario(unidade,de, ate,usuario);
 	}
 	
 	public List<EsgotoPreenchimentosDTO> findByNaoAprovadosUser(String usuario) {

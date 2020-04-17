@@ -21,4 +21,13 @@ public interface ApprpaEsgotoOcorrenciasRepository extends JpaRepository<Apprpa_
     		+ "ORDER BY obj.id DESC"
 		)
 	List<Apprpa_Esgoto_Ocorrencias> findLimit(Pageable pageable);
+	
+	@Transactional(readOnly = true)
+    @Query( "SELECT "
+    		+ "obj "
+    		+ "FROM Apprpa_Esgoto_Ocorrencias obj "
+    		+ "WHERE obj.dataDaCriacao BETWEEN :de AND :ate "
+    		+ "ORDER BY obj.id DESC"
+		)
+	List<Apprpa_Esgoto_Ocorrencias> findRelatorio(String de, String ate	);
 }

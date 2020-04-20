@@ -2,6 +2,7 @@ package com.prolagos.sispcbackend.repositories;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -35,7 +36,19 @@ public interface ApprpaEsgotoRepository extends JpaRepository<Apprpa_Esgoto_Pree
     		+ "AND   obj.Unidade LIKE :Unidade "
     		+ "ORDER BY obj.Indicador, obj.DataIndicador"
 		)
-	List<Apprpa_Esgoto_Preenchimentos> consultaPorData(@Param("Unidade") final Apprpa_Esgoto_Unidades Unidade, @Param("de") final String de, @Param("ate") final String ate);
+	List<Apprpa_Esgoto_Preenchimentos> consultaPorData( @Param("Unidade") final Apprpa_Esgoto_Unidades Unidade, @Param("de") final String de, @Param("ate") final String ate);
+	
+	
+	@Transactional(readOnly = true)
+    @Query( "SELECT "
+    		+ "obj "
+    		+ "FROM Apprpa_Esgoto_Preenchimentos obj "
+    		+ "INNER JOIN obj.Unidade cad "
+    		+ "WHERE cad.id = :unidade "
+    		+ "AND obj.Indicador = :indicador "
+    		+ "ORDER BY obj.DataIndicador DESC"
+		)
+	List<Apprpa_Esgoto_Preenchimentos> findProdQuim(Pageable pageable, @Param("unidade") final Integer unidade, @Param("indicador") Apprpa_Esgoto_Indicadores indicador);
 	
 
 

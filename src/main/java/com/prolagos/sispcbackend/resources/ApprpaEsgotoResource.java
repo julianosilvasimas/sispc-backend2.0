@@ -53,10 +53,6 @@ public class ApprpaEsgotoResource {
     
     @RequestMapping( method = { RequestMethod.POST })
     public ResponseEntity<Void> insert(@RequestBody Apprpa_Esgoto_Preenchimentos obj) throws UnsupportedEncodingException, EmailException {
-    	Apprpa_Esgoto_Unidades unidade = service3.find(obj.getUnidade().getId());
-        obj.setUnidade(unidade);
-        Apprpa_Esgoto_Indicadores indicador = service2.find(obj.getIndicador().getId());
-        obj.setIndicador(indicador);
         obj.setId(null);
         obj = this.service.insert(obj);
     	return ResponseEntity.noContent().build();
@@ -99,7 +95,11 @@ public class ApprpaEsgotoResource {
         return (ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>>)ResponseEntity.ok().body(list);
     }
 
-
+    @RequestMapping(value = { "/produtoquimico/{unid}" },method = { RequestMethod.GET })
+    public ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>> findByUnidadesDeAte(@PathVariable final Integer unid) {
+    	final List<Apprpa_Esgoto_Preenchimentos> list = this.service.findProdQuim(unid);
+        return (ResponseEntity<List<Apprpa_Esgoto_Preenchimentos>>)ResponseEntity.ok().body(list);
+    }
 
 	@Autowired
     private ApprpaEsgotoUnidadesService service3;

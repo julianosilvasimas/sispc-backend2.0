@@ -1,9 +1,14 @@
 package com.prolagos.sispcbackend.domain;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -26,9 +31,17 @@ public class Base_GSSOnLine_ServicosTMA  implements Serializable {
 	@Getter @Setter private String servico;
 	@Getter @Setter private String descricao;
 	@Getter @Setter private String eqp;
-	@Getter @Setter private String dataemissao;
-	@Getter @Setter private String dataprogramacao;
-	@Getter @Setter private String datainicio;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private LocalDate dataemissao;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private LocalDate dataprogramacao;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private LocalDate datainicio;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private String dataconclusao;
 	@Getter @Setter private String status;
 	@Getter @Setter private String atraso;
@@ -70,15 +83,21 @@ public class Base_GSSOnLine_ServicosTMA  implements Serializable {
 	@Getter @Setter private String ds_servico_solicitado;
 	@Getter @Setter private String executado;
 	@Getter @Setter private String nm_tipo_execucao;
-	@Getter @Setter private String dtlimiteexecucao;
-	@Getter @Setter private String dtservico;
-	@Getter @Setter private String dtfechamento;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private LocalDate dtlimiteexecucao;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private LocalDate dtservico;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private LocalDate dtfechamento;
 	@Getter @Setter private String funcionarios;
 	@Getter @Setter private String descrsetorsolicitante;
 	@Getter @Setter private String terceironomeempresa;
 	@Getter @Setter private String terceironomefantasia;
 	@Getter @Setter private String terceirocnpj;
-	@Getter @Setter private String matrizdeserviços;
+	@Getter @Setter private String matrizdeservicos;
 
 
 }

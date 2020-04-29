@@ -10,6 +10,7 @@ C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\dto\InputDeliberacaoDTO.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\ApprpaEsgotoClassificacaoResource.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\UserService.java
+C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Apprpa_Transporte_Utilizacao.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\EntregaService.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\NotificacoesTemplatesRepository.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\PartesInteressadasRepository.java
@@ -19,6 +20,7 @@ C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_SisPC_Usuarios.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_Projetos_Sesuite_RiscosOperacionais.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_SisPC_Projetos.java
+C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\dto\UsuarioDTO2.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\CadindicadoresResource.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\models\Objeto_EmailInformativoSisPC.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Base_Correios_Logradouros.java
@@ -47,6 +49,7 @@ C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\ProjContratacaoRepository.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_SisPC_Taggerencias.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_Projetos_Engenharia.java
+C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Apprpa_Esgoto_Ocorrencias.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\ApprpaEsgotoResource.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\ProjDelibRegulatorioResource.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_Projetos_Financeiros.java
@@ -75,6 +78,7 @@ C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_SisPC_Empresas.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\IrregularidadesGSSRepository.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\EmpresasService.java
+C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\dto\EsgotoPreenchimentosDTO.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\ProjetosResource.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Apprpa_Energia_Gestal.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\CadindicadoresRepository.java
@@ -93,6 +97,7 @@ C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\exceptions\ResourceExceptionHandler.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\ApprpaEsgotoClassificacoesRepository.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\CadindicadoresGraficosRepository.java
+C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\ApprpaEsgotoIndicadoresResource.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\AppWeb_Ind_ExeIndicadores.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\UnidadesService.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\GerenciasRepository.java
@@ -144,6 +149,7 @@ C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\SupervisoesResource.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\ProjComissionamentoService.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\IndicadoresResource.java
+C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\ApprpaEsgotoOcorrenciasService.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_SisPC_Regionais.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\ProjObrasService.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\GestalResource.java
@@ -178,6 +184,7 @@ C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\AppRpaGestalLogRepository.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\ModulosRepository.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Cad_Projetos_FinanceiroAnos.java
+C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\ApprpaTransporteGolsat.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\ModulosService.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\SupervisoesRepository.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\CadindicadoresGraficosResource.java
@@ -214,6 +221,9 @@ C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Apprpa_Energia_GestalLog.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\EmpresasResource.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\IndicadoresRepository.java
+C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\repositories\ApprpaEsgotoOcorrenciasRepository.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\domain\Apprpa_Energia_cadCenarios.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\services\ProjRegulatorioService.java
+C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\ApprpaEsgotoOcorrenciasResource.java
+C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\dto\EsgotoUnidadesDTO.java
 C:\Users\vitor.heser\Documents\AngularProjects - PULL\sispc-backend2.0\src\main\java\com\prolagos\sispcbackend\resources\ApprpaEsgotoUnidadesResource.java

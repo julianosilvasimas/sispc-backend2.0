@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Unidades;
 import com.prolagos.sispcbackend.domain.Cad_SisPC_Usuarios;
+import com.prolagos.sispcbackend.dto.EsgotoUnidadesDTO;
 import com.prolagos.sispcbackend.repositories.ApprpaEsgotoUnidadesRepository;
 import com.prolagos.sispcbackend.repositories.UsuarioRepository;
 import com.prolagos.sispcbackend.services.exceptions.DataIntegrityException;
@@ -46,6 +47,11 @@ public class ApprpaEsgotoUnidadesService {
 	public List<Apprpa_Esgoto_Unidades> findUsuario(String Usuario) {
 		Cad_SisPC_Usuarios obj = this.repo2.findByEmail(Usuario);
 		List<Apprpa_Esgoto_Unidades> lista = repo.findUsuario(obj);
+		return lista;
+	}
+	
+	public List<EsgotoUnidadesDTO> findOperadores() {
+		List<EsgotoUnidadesDTO> lista = repo.findOperadores();
 		return lista;
 	}
 	

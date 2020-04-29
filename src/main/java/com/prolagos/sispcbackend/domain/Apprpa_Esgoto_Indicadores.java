@@ -49,7 +49,8 @@ public class Apprpa_Esgoto_Indicadores implements Serializable{
 	@Getter @Setter private Double minimo;
 	// 1 = SOMA // 2 = MÉDIA // 3 = ULTIMO // 4 = MAIOR // 5 = MENOR
 	@Getter @Setter private Integer calculo;
-	
+
+	@Getter @Setter private Integer IndicadoresDiarios;
 	
 
 	@JsonIgnore

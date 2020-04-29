@@ -93,6 +93,13 @@ public class ApprpaEsgotoUnidadesResource {
     	return ResponseEntity.noContent().build();
     }
     
+    @RequestMapping(value = { "/operadores" },method = { RequestMethod.GET })
+    public ResponseEntity<List<EsgotoUnidadesDTO>> findOperadores() {
+        List<EsgotoUnidadesDTO> list = this.service.findOperadores();
+        return (ResponseEntity<List<EsgotoUnidadesDTO>>)ResponseEntity.ok().body(list);
+    }
+    
+    
     @RequestMapping(value = { "/indicadores/{id}" }, method = { RequestMethod.PUT })
     public ResponseEntity<Void> updateIndicadores(@RequestBody EsgotoUnidadesDTO obj, @PathVariable final Integer id) throws UnsupportedEncodingException, EmailException {
     	Apprpa_Esgoto_Unidades obj2 = this.service.find(id);

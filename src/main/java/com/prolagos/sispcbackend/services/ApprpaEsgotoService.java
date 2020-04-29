@@ -52,6 +52,12 @@ public class ApprpaEsgotoService {
 		return obj;
 	}
 
+	public Apprpa_Esgoto_Preenchimentos updatePorDataEIndicador(Apprpa_Esgoto_Preenchimentos obj) {
+		
+		repo.updatePorDataEIndicador(obj.getId(),obj.getValor(),obj.getUsuario());
+		
+		return obj;
+	}
 	public Apprpa_Esgoto_Preenchimentos update(Apprpa_Esgoto_Preenchimentos obj, Integer id) {
 		obj.setId(id);
 		obj = repo.save(obj);
@@ -89,6 +95,15 @@ public class ApprpaEsgotoService {
 		return repo.consultaPorData(unidade,de, ate);
 	}
 
+
+	public List<Apprpa_Esgoto_Preenchimentos> findByUnidadesDeAteIndicUnidade(Apprpa_Esgoto_Unidades unidade,Apprpa_Esgoto_Indicadores indicador, String de, String ate) {
+		de = de + " 00:00:00";
+		ate = ate + " 23:59:59";
+		
+		return repo.findByUnidadesDeAteIndicUnidade(unidade,indicador,de, ate);
+	}
+	
+	
 	public List<Apprpa_Esgoto_Preenchimentos> findUnidadeRefUsuario(Apprpa_Esgoto_Unidades unidade, String de, String ate, String usuario) {
 		de = de + " 00:00:00";
 		ate = ate + " 23:59:59";

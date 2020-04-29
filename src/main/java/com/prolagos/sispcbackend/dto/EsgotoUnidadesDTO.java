@@ -1,10 +1,12 @@
 package com.prolagos.sispcbackend.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Indicadores;
+import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Preenchimentos;
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Unidades;
 import com.prolagos.sispcbackend.domain.Cad_SisPC_Usuarios;
 
@@ -31,6 +33,10 @@ public class EsgotoUnidadesDTO implements Serializable {
 		Unidade = obj.getUnidade();
 		Vazao = obj.getVazao();
 		TipoDeTratamento = obj.getTipoDeTratamento();
+	}
+	public EsgotoUnidadesDTO(String Unidade, List<Cad_SisPC_Usuarios> Operadoress){
+		this.Unidade = Unidade;
+		this.Operadores = Operadoress;
 	}
 }
 

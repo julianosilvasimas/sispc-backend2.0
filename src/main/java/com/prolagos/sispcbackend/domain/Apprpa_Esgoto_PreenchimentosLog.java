@@ -41,10 +41,7 @@ public class Apprpa_Esgoto_PreenchimentosLog implements Serializable{
 	@Column(name = "dataDaAlteracao", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	@Getter @Setter private String dataDaAlteracao;
 
-	@Column(name = "DataIndicador", nullable = true, updatable = true, insertable = true, columnDefinition = "TIMESTAMP")
-	@Getter @Setter private String DataIndicador;
 	@Getter @Setter private String Usuario;
-	@Getter @Setter private String Indicador;	
 	@Getter @Setter private Double ValorAntigo;
 	@Getter @Setter private Double ValorNovo;
 	

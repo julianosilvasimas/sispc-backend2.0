@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Classificacoes;
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Indicadores;
+import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Unidades;
 import com.prolagos.sispcbackend.repositories.ApprpaEsgotoIndicadoresRepository;
 import com.prolagos.sispcbackend.services.exceptions.DataIntegrityException;
 
@@ -38,6 +39,11 @@ public class ApprpaEsgotoIndicadoresService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " +
 		Apprpa_Esgoto_Indicadores.class.getName(), null));
 	}
+	
+	public List<Apprpa_Esgoto_Indicadores> findByUnidade(Integer unidade) {
+		return repo.findByUnidade(unidade);
+	}
+
 
 	@Autowired
     private ApprpaEsgotoClassificacaoService service2;

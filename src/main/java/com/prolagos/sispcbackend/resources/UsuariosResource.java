@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.prolagos.sispcbackend.domain.Apprpa_Rpa_Statusbots;
 import com.prolagos.sispcbackend.domain.Cad_SisPC_Usuarios;
 import com.prolagos.sispcbackend.dto.UsuarioDTO;
+import com.prolagos.sispcbackend.dto.UsuarioDTO2;
 import com.prolagos.sispcbackend.dto.UsuarioNewDTO;
 import com.prolagos.sispcbackend.services.UsuariosService;
 
@@ -90,6 +90,16 @@ public class UsuariosResource {
 			@RequestParam(value="direction", defaultValue="ASC") String direction) {
 		Page<Cad_SisPC_Usuarios> list = service.findPage(page, linesPerPage, orderBy, direction);
 		Page<UsuarioDTO> listDto = list.map(obj -> new UsuarioDTO(obj));  
+		return ResponseEntity.ok().body(listDto);
+	}
+	@RequestMapping(value="/page2", method=RequestMethod.GET)
+	public ResponseEntity<Page<UsuarioDTO2>> findPage2(
+			@RequestParam(value="page", defaultValue="0") Integer page, 
+			@RequestParam(value="linesPerPage", defaultValue="100000") Integer linesPerPage, 
+			@RequestParam(value="orderBy", defaultValue="nome") String orderBy, 
+			@RequestParam(value="direction", defaultValue="ASC") String direction) {
+		Page<Cad_SisPC_Usuarios> list = service.findPage(page, linesPerPage, orderBy, direction);
+		Page<UsuarioDTO2> listDto = list.map(obj -> new UsuarioDTO2(obj));  
 		return ResponseEntity.ok().body(listDto);
 	}
 	

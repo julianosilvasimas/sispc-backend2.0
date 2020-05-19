@@ -2,6 +2,7 @@ package com.prolagos.sispcbackend.resources;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.commons.mail.EmailException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Unidades;
+import com.prolagos.sispcbackend.dto.EsgotoUnidadesDTO;
 import com.prolagos.sispcbackend.services.ApprpaEsgotoUnidadesService;
 
 @RestController
@@ -32,7 +34,7 @@ public class ApprpaEsgotoUnidadesResource {
 
 //    @RequestMapping(value = { "/unidades" },method = { RequestMethod.GET })
 //    public ResponseEntity<List<Apprpa_Esgoto_Unidades>> findUnidades() {
-//        final List<Apprpa_Esgoto_Unidades> list = this.service.findUnidades();
+//        final List<Apprpa_EsgotoIndicadorsNomesDTO.java_Unidades> list = this.service.findUnidades();
 //        return (ResponseEntity<List<Apprpa_Esgoto_Unidades>>)ResponseEntity.ok().body(list);
 //    }
 //    
@@ -43,11 +45,18 @@ public class ApprpaEsgotoUnidadesResource {
 //    }
     
     @RequestMapping(method = { RequestMethod.GET })
-    public ResponseEntity<List<Apprpa_Esgoto_Unidades>> findAll() {
-        final List<Apprpa_Esgoto_Unidades> list = this.service.findAll();
-        return (ResponseEntity<List<Apprpa_Esgoto_Unidades>>)ResponseEntity.ok().body(list);
+    public ResponseEntity<List<EsgotoUnidadesDTO>> findAll() {
+        List<Apprpa_Esgoto_Unidades> list = this.service.findAll();
+		List<EsgotoUnidadesDTO> listDto = list.stream().map(obj -> new EsgotoUnidadesDTO(obj)).collect(Collectors.toList());  
+        return (ResponseEntity<List<EsgotoUnidadesDTO>>)ResponseEntity.ok().body(listDto);
     }
 
+    @RequestMapping(value = { "/porusuario/{usuario}" },method = { RequestMethod.GET })
+    public ResponseEntity<List<Apprpa_Esgoto_Unidades>> findUsuario(@PathVariable final String usuario) {
+        List<Apprpa_Esgoto_Unidades> list = this.service.findUsuario(usuario);
+//		List<EsgotoUnidadesDTO> listDto = list.stream().map(obj -> new EsgotoUnidadesDTO(obj)).collect(Collectors.toList());  
+        return (ResponseEntity<List<Apprpa_Esgoto_Unidades>>)ResponseEntity.ok().body(list);
+    }
     
     @RequestMapping( method = { RequestMethod.POST })
     public ResponseEntity<Void> insert(@RequestBody Apprpa_Esgoto_Unidades obj) throws UnsupportedEncodingException, EmailException {
@@ -61,11 +70,42 @@ public class ApprpaEsgotoUnidadesResource {
     
     @RequestMapping(value = { "/{id}" }, method = { RequestMethod.PUT })
     public ResponseEntity<Void> update(@RequestBody Apprpa_Esgoto_Unidades obj, @PathVariable final Integer id) throws UnsupportedEncodingException, EmailException {
-        obj.setId(id);
-        obj = this.service.update(obj,id);
     	
+    	if(obj.getId() == null) {
+    		obj.setId(null);
+    		obj = this.service.insert(obj);
+    	}else {
+	    	Apprpa_Esgoto_Unidades obj2 = this.service.find(id);
+	    	obj2.setUnidade(obj.getUnidade());
+	    	obj2.setVazao(obj.getVazao());
+	    	obj2.setTipoDeTratamento(obj.getTipoDeTratamento());
+	        obj = this.service.update(obj2,id);
+    	}
+        
     	return ResponseEntity.noContent().build();
-
+    }
+    
+    @RequestMapping(value = { "/operadores/{id}" }, method = { RequestMethod.PUT })
+    public ResponseEntity<Void> updateOperadores(@RequestBody EsgotoUnidadesDTO obj, @PathVariable final Integer id) throws UnsupportedEncodingException, EmailException {
+    	Apprpa_Esgoto_Unidades obj2 = this.service.find(id);
+        obj2.setOperadores(obj.getOperadores());
+        obj2 = this.service.update(obj2,id);
+    	return ResponseEntity.noContent().build();
+    }
+    
+    @RequestMapping(value = { "/operadores" },method = { RequestMethod.GET })
+    public ResponseEntity<List<EsgotoUnidadesDTO>> findOperadores() {
+        List<EsgotoUnidadesDTO> list = this.service.findOperadores();
+        return (ResponseEntity<List<EsgotoUnidadesDTO>>)ResponseEntity.ok().body(list);
+    }
+    
+    
+    @RequestMapping(value = { "/indicadores/{id}" }, method = { RequestMethod.PUT })
+    public ResponseEntity<Void> updateIndicadores(@RequestBody EsgotoUnidadesDTO obj, @PathVariable final Integer id) throws UnsupportedEncodingException, EmailException {
+    	Apprpa_Esgoto_Unidades obj2 = this.service.find(id);
+        obj2.setIndicadores(obj.getIndicadores());
+        obj2 = this.service.update(obj2,id);
+    	return ResponseEntity.noContent().build();
     }
     
     

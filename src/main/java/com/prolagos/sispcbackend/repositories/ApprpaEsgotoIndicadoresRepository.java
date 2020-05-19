@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Classificacoes;
 import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Indicadores;
-import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Preenchimentos;
+import com.prolagos.sispcbackend.domain.Apprpa_Esgoto_Unidades;
 
 
 @Repository
@@ -23,4 +23,24 @@ public interface ApprpaEsgotoIndicadoresRepository extends JpaRepository<Apprpa_
     		+ "WHERE obj.Classificacao = :clas "
 		)
 	List<Apprpa_Esgoto_Indicadores> findByClass(@Param("clas") final Apprpa_Esgoto_Classificacoes clas);
+	
+	@Transactional(readOnly = true)
+    @Query( "SELECT "
+    		+ "obj "
+    		+ "FROM Apprpa_Esgoto_Indicadores obj "
+    		+ "INNER JOIN obj.Unidades cad "
+    		+ "WHERE cad.id = :unidade "
+		)
+	List<Apprpa_Esgoto_Indicadores> findByUnidade(@Param("unidade") final Integer unidade);
+
+	@Transactional(readOnly = true)
+    @Query( "SELECT "
+    		+ "obj "
+    		+ "FROM Apprpa_Esgoto_Indicadores obj "
+    		+ "INNER JOIN obj.Unidades cad "
+    		+ "INNER JOIN obj.Classificacao classif "
+    		+ "WHERE cad.id = :unidade "
+    		+ "AND classif.id = :classif"
+		)
+	List<Apprpa_Esgoto_Indicadores> findProdQuim(@Param("unidade") final Integer unidade, @Param("classif") final Integer classif);
 }

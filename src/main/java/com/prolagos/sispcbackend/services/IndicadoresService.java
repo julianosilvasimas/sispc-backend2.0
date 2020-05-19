@@ -77,6 +77,11 @@ public class IndicadoresService {
 		obj.setDataindicador(obj.getDataindicador().plusDays(1));
 		return repo.save(obj);
 	}
+	public AppWeb_Ind_ExeIndicadores update2(AppWeb_Ind_ExeIndicadores obj) {
+		obj.setDatareferencia(obj.getDatareferencia().plusDays(1));
+		obj.setDataindicador(obj.getDataindicador().plusDays(1));
+		return repo.save(obj);
+	}
 	
 	public void delete(Integer id) {
 		find(id);

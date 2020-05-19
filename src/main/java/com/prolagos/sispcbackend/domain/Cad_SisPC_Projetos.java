@@ -61,6 +61,9 @@ public class Cad_SisPC_Projetos implements Serializable {
 	@Getter @Setter private String restricao;
 	@Getter @Setter private String riscos;
 	@Getter @Setter private String objetivo;
+	@Getter @Setter private String pepengenharia;
+	@Getter @Setter private String statusengenharia;
+	@Getter @Setter private String statuslicenciamentos;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="projetoId")

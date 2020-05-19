@@ -8,14 +8,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.prolagos.sispcbackend.domain.Cad_Projetos_Licenciamentos;
+import com.prolagos.sispcbackend.domain.Cad_Projetos_ComprovacaoArquivos;
 
 @Repository
-public interface ProjLicenciamentosRepository extends JpaRepository<Cad_Projetos_Licenciamentos, Integer> {
+public interface ProjComprovacaoArquivosRepository extends JpaRepository<Cad_Projetos_ComprovacaoArquivos, Integer> {
 	
 	@Transactional(readOnly=true)
-	@Query("SELECT obj FROM Cad_Projetos_Licenciamentos obj WHERE obj.projetoId.projetoId = :id ORDER BY obj.licencaId")
-	public List<Cad_Projetos_Licenciamentos> licenPorProjeto(@Param("id") Integer id);
+	@Query("SELECT obj FROM Cad_Projetos_ComprovacaoArquivos obj WHERE obj.comprovacaoId.comprovacaoId = :id" )
+	public List<Cad_Projetos_ComprovacaoArquivos> arquivoPorProjeto(@Param("id") Integer id);
 
-	
 }

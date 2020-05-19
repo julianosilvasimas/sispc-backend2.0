@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -33,7 +35,18 @@ public class Cad_Projetos_Financeiros implements Serializable {
 	@Getter @Setter private String descricao;
 	@Getter @Setter private String status;
 	@Column(scale=2,precision=12)  
-	@Getter @Setter private Double valortotal;	
+	@Getter @Setter private Double valortotal;
+	
+	@Getter @Setter private String considerarprojcog;
+	@Getter @Setter private String tipoprojcognos;
+	@Getter @Setter private String perpetuidadeprojcognos;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private String inicioprojcognos;
+	@Getter @Setter private String prazopagprojcognos;
+	@Getter @Setter private String prazoamorprojcognos;
+	@Getter @Setter private String gerareceitaprojcognos;
+	
 	
 	@OneToOne
 	@JoinColumn(name="fk_projetoId" ,foreignKey = @ForeignKey(name="fk_projeto_financeiro"))

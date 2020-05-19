@@ -3,6 +3,7 @@ package com.prolagos.sispcbackend.domain;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -32,8 +36,13 @@ public class Cad_Projetos_Licenciamentos implements Serializable {
 	@Getter @Setter private String orgao;
 	@Getter @Setter private String status;
 	@Getter @Setter private String protocolo;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate inicio;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
 	@Getter @Setter private LocalDate termino;
+	@Getter @Setter private String link;
 	
 	@ManyToOne
 	@JoinColumn(name="fk_projetoId",foreignKey = @ForeignKey(name="fk_projeto_licenciamentos"))

@@ -67,16 +67,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  			"/notificacao/**",
  			"/partesinteressadas/**",
  			"/regulatorios/**",
+ 			"/licenciamentos/**",
+ 			"/anoscapex/**",
+ 			"/engenharia/**",
  			"/energia/**",
  			"/cenariosenergia/**",
-
- 			"/appesgoto/**",
+			 "/servgssonline/**",
+			 "/appesgoto/**",
  			"/appunidadesesgoto/**",
  			"/appclassificacoesesgoto/**",
  			"/appindicadoresesgoto/**",
  			"/appesgotoocorrencias/**",
-
- 			"/delibregulatorios**",
+ 			"/comprovacaoarquivos/**",
+ 			"/delibregulatorios/**",
  			"/zteste/**"
 	};
 	

@@ -79,6 +79,8 @@ public class ProjetosService {
 		obj.setTerminoreplanejado(obj.getTerminoreplanejado().plusDays(1));
 		obj.setTerminorealizado(obj.getTerminorealizado().plusDays(1));*/
 		
+		//Datas das informações gerais de Projeto
+		
 		if(obj.getInicioprevisto() != null ){
 			obj.setInicioprevisto(obj.getInicioprevisto().plusDays(1)) ;	
 		}
@@ -98,6 +100,68 @@ public class ProjetosService {
 			obj.setTerminorealizado(obj.getTerminorealizado().plusDays(1));	
 		}
 		
+		//#####################################################################################################################//
+		//########################## * Datas de comissionamentos de Projeto * #################################################//
+		//#####################################################################################################################//
+		
+		if(obj.getComissionamento().getInicioprevisto() != null ){
+			obj.getComissionamento().setInicioprevisto(obj.getComissionamento().getInicioprevisto().plusDays(1)) ;	
+		}
+		if(obj.getComissionamento().getTerminoprevisto() != null ){
+			obj.getComissionamento().setTerminoprevisto(obj.getComissionamento().getTerminoprevisto().plusDays(1));	
+		}
+		if(obj.getComissionamento().getInicioreplanejado() != null ){
+			obj.getComissionamento().setInicioreplanejado(obj.getComissionamento().getInicioreplanejado().plusDays(1)) ;	
+		}
+		if(obj.getComissionamento().getTerminoreplanejado() != null ){
+			obj.getComissionamento().setTerminoreplanejado(obj.getComissionamento().getTerminoreplanejado().plusDays(1));	
+		}
+		if(obj.getComissionamento().getIniciorealizado() != null ){
+			obj.getComissionamento().setIniciorealizado(obj.getComissionamento().getIniciorealizado().plusDays(1)) ;	
+		}
+		if(obj.getComissionamento().getTerminorealizado() != null ){
+			obj.getComissionamento().setTerminorealizado(obj.getComissionamento().getTerminorealizado().plusDays(1));	
+		}
+		
+		//#####################################################################################################################//
+		//########################## * Datas de Engenharia(Obras) de Projeto * ################################################//
+		//#####################################################################################################################//
+		
+		if(obj.getObra().getPrevisto() != null ){
+			obj.getObra().setPrevisto(obj.getObra().getPrevisto() .plusDays(1)) ;	
+		}
+		if(obj.getObra().getReplanejado() != null ){
+			obj.getObra().setReplanejado(obj.getObra().getReplanejado().plusDays(1));	
+		}
+		if(obj.getObra().getRealizado() != null ){
+			obj.getObra().setRealizado(obj.getObra().getRealizado().plusDays(1)) ;	
+		}
+		if(obj.getObra().getPrevisto() != null ){
+			obj.getObra().setPrevisto(obj.getObra().getInicioprevisto() .plusDays(1)) ;	
+		}
+		if(obj.getObra().getReplanejado() != null ){
+			obj.getObra().setReplanejado(obj.getObra().getInicioreplanejado().plusDays(1));	
+		}
+		if(obj.getObra().getRealizado() != null ){
+			obj.getObra().setRealizado(obj.getObra().getIniciorealizado().plusDays(1)) ;	
+		}
+		
+		//#####################################################################################################################//
+		//############################# * Datas de Contratação de Projeto * ###################################################//
+		//#####################################################################################################################//
+		
+		if(obj.getContratacao().getInicio() != null ){
+			obj.getContratacao().setInicio(obj.getContratacao().getInicio().plusDays(1)) ;	
+		}
+		if(obj.getContratacao().getTermino() != null ){
+			obj.getContratacao().setTermino(obj.getContratacao().getTermino().plusDays(1));	
+		}
+		if(obj.getContratacao().getInicio() != null ){
+			obj.getContratacao().setInicio(obj.getContratacao().getInicio().plusDays(1)) ;	
+		}
+		if(obj.getContratacao().getTermino() != null ){
+			obj.getContratacao().setTermino(obj.getContratacao().getTermino().plusDays(1));	
+		}
 		
 		obj.getFinanceiro().setProjeto(obj);
 		obj.getContratacao().setProjeto(obj);

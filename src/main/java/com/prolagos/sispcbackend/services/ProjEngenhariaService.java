@@ -12,7 +12,9 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.prolagos.sispcbackend.domain.Cad_Projetos_Engenharia;
+import com.prolagos.sispcbackend.domain.Cad_Projetos_Regulatorio;
 import com.prolagos.sispcbackend.repositories.ProjEngenhariaRepository;
+import com.prolagos.sispcbackend.repositories.ProjetosRepository;
 import com.prolagos.sispcbackend.services.exceptions.DataIntegrityException;
 
 @Service
@@ -21,8 +23,15 @@ public class ProjEngenhariaService {
 	@Autowired
 	private ProjEngenhariaRepository repo;
 	
+	@Autowired
+	private ProjetosRepository repo2;
+	
 	public List<Cad_Projetos_Engenharia> findAll() {
 		return repo.findAll();
+	}
+	
+	public List<Cad_Projetos_Engenharia> findByProjeto(Integer projetoId) {
+		return repo.engPorProjeto(projetoId);
 	}
 
 	public Page<Cad_Projetos_Engenharia> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
@@ -38,12 +47,31 @@ public class ProjEngenhariaService {
 	
 	public Cad_Projetos_Engenharia insert(Cad_Projetos_Engenharia obj) {
 		obj.setEngenhariaId(null);  //Utilizado em Entidade Com auto incremento
+		if(obj.getPrevisto() != null ){
+			obj.setPrevisto(obj.getPrevisto() .plusDays(1)) ;	
+		}
+		if(obj.getReplanejado() != null ){
+			obj.setReplanejado(obj.getReplanejado().plusDays(1));	
+		}
+		if(obj.getRealizado() != null ){
+			obj.setRealizado(obj.getRealizado() .plusDays(1)) ;	
+		}
+		obj.setProjetoId(repo2.findById(obj.getProjetoId().getProjetoId()).orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado!", null)));
 		obj = repo.save(obj);
 		return obj;
 	}
 	
 	public Cad_Projetos_Engenharia update(Cad_Projetos_Engenharia obj) {
 		find(obj.getEngenhariaId());
+		if(obj.getPrevisto() != null ){
+			obj.setPrevisto(obj.getPrevisto() .plusDays(1)) ;	
+		}
+		if(obj.getReplanejado() != null ){
+			obj.setReplanejado(obj.getReplanejado().plusDays(1));	
+		}
+		if(obj.getRealizado() != null ){
+			obj.setRealizado(obj.getRealizado() .plusDays(1)) ;	
+		}
 		return repo.save(obj);
 	}
 	

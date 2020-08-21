@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.prolagos.sispcbackend.domain.Cad_SisPC_Usuarios;
 import com.prolagos.sispcbackend.dto.UsuarioDTO;
+import com.prolagos.sispcbackend.dto.UsuarioDTO2;
 import com.prolagos.sispcbackend.dto.UsuarioNewDTO;
 import com.prolagos.sispcbackend.services.UsuariosService;
 
@@ -42,7 +43,6 @@ public class UsuariosResource {
         return (ResponseEntity.ok().body(obj));
     }
 
-    
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody UsuarioNewDTO objDto) {
 		Cad_SisPC_Usuarios obj = service.fromDTO(objDto);
@@ -56,9 +56,17 @@ public class UsuariosResource {
 	public ResponseEntity<Void> update(@Valid @RequestBody UsuarioDTO objDto, @PathVariable Integer id) {
 		Cad_SisPC_Usuarios obj = service.fromDTO(objDto);
 		obj.setUsuarioId(id);
-		obj = service.update(obj);
+		obj = service.updateDTO(obj);
 		return ResponseEntity.noContent().build();
 	}
+	
+    @RequestMapping(value = { "/user/{id}" }, method = { RequestMethod.PUT })
+    public ResponseEntity<Void> update(@RequestBody Cad_SisPC_Usuarios obj, @PathVariable final Integer id) {
+        obj.setUsuarioId(id);
+        obj = this.service.update(obj);
+        return ResponseEntity.noContent().build();
+    }
+    
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
@@ -73,19 +81,40 @@ public class UsuariosResource {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
+	
 	@RequestMapping(value="/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<UsuarioDTO>> findPage(
 			@RequestParam(value="page", defaultValue="0") Integer page, 
-			@RequestParam(value="linesPerPage", defaultValue="24") Integer linesPerPage, 
+			@RequestParam(value="linesPerPage", defaultValue="100000") Integer linesPerPage, 
 			@RequestParam(value="orderBy", defaultValue="nome") String orderBy, 
 			@RequestParam(value="direction", defaultValue="ASC") String direction) {
 		Page<Cad_SisPC_Usuarios> list = service.findPage(page, linesPerPage, orderBy, direction);
 		Page<UsuarioDTO> listDto = list.map(obj -> new UsuarioDTO(obj));  
 		return ResponseEntity.ok().body(listDto);
 	}
+	@RequestMapping(value="/page2", method=RequestMethod.GET)
+	public ResponseEntity<Page<UsuarioDTO2>> findPage2(
+			@RequestParam(value="page", defaultValue="0") Integer page, 
+			@RequestParam(value="linesPerPage", defaultValue="100000") Integer linesPerPage, 
+			@RequestParam(value="orderBy", defaultValue="nome") String orderBy, 
+			@RequestParam(value="direction", defaultValue="ASC") String direction) {
+		Page<Cad_SisPC_Usuarios> list = service.findPage(page, linesPerPage, orderBy, direction);
+		Page<UsuarioDTO2> listDto = list.map(obj -> new UsuarioDTO2(obj));  
+		return ResponseEntity.ok().body(listDto);
+	}
 	
 	@RequestMapping(value="/attsenha/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> updateSenha(@Valid @RequestBody UsuarioDTO objDto, @PathVariable Integer id) {
+		Cad_SisPC_Usuarios obj = service.updateFromDTO(objDto);
+		obj.setUsuarioId(id);
+		obj = service.updateSenha(obj);
+		return ResponseEntity.noContent().build();
+	}
+	
+	
+	@RequestMapping(value="/recupereSenhaUser/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> recuperarSenha(@Valid @RequestBody UsuarioDTO objDto, @PathVariable Integer id) {
+		objDto.setSenha("123");
 		Cad_SisPC_Usuarios obj = service.updateFromDTO(objDto);
 		obj.setUsuarioId(id);
 		obj = service.updateSenha(obj);

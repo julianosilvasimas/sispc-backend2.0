@@ -14,7 +14,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.prolagos.sispcbackend.domain.Cad_Projetos_ComprovacaoArquivos;
+import com.prolagos.sispcbackend.domain.Cad_Projetos_Engenharia;
+import com.prolagos.sispcbackend.domain.Cad_Projetos_FinanceiroAnos;
+import com.prolagos.sispcbackend.domain.Cad_Projetos_Licenciamentos;
+import com.prolagos.sispcbackend.domain.Cad_Projetos_Regulatorio;
 import com.prolagos.sispcbackend.domain.Cad_SisPC_Projetos;
+import com.prolagos.sispcbackend.services.ProjComprovacaoArquivosService;
+import com.prolagos.sispcbackend.services.ProjEngenhariaService;
+import com.prolagos.sispcbackend.services.ProjFinanceiroAnosService;
+import com.prolagos.sispcbackend.services.ProjLicenciamentosService;
+import com.prolagos.sispcbackend.services.ProjRegulatorioService;
 import com.prolagos.sispcbackend.services.ProjetosService;
 
 @RestController
@@ -24,10 +34,62 @@ public class ProjetosResource {
 	@Autowired
 	private ProjetosService service;
 	
+	@Autowired
+	private ProjRegulatorioService regservice;
+	
+	@Autowired
+	private ProjEngenhariaService engservice;
+	
+	@Autowired
+	private ProjLicenciamentosService licenservice;
+	
+	@Autowired
+	private ProjComprovacaoArquivosService arqcompservice;
+	
+	@Autowired
+	private ProjFinanceiroAnosService anoscapexservice;
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Cad_SisPC_Projetos> find(@PathVariable Integer id) {
 		Cad_SisPC_Projetos obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
+	}
+	
+	
+	@RequestMapping(value="/{projetoId}/regulatorios", method=RequestMethod.GET)
+	public ResponseEntity<List<Cad_Projetos_Regulatorio>> findByProjeto(@PathVariable Integer projetoId) {
+		List<Cad_Projetos_Regulatorio> list = regservice.findByProjeto(projetoId);
+		
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@RequestMapping(value="/{projetoId}/comprovacaoarquivos", method=RequestMethod.GET)
+	public ResponseEntity<List<Cad_Projetos_ComprovacaoArquivos>> findByProjetoArqComprovacao(@PathVariable Integer projetoId) {
+		List<Cad_Projetos_ComprovacaoArquivos> list = arqcompservice.findByComprovacao(projetoId);
+		
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@RequestMapping(value="/{projetoId}/anoscapex", method=RequestMethod.GET)
+	public ResponseEntity<List<Cad_Projetos_FinanceiroAnos>> findByProjetoanoscapex(@PathVariable Integer projetoId) {
+		List<Cad_Projetos_FinanceiroAnos> list = anoscapexservice.findByCapex(projetoId);
+		
+		return ResponseEntity.ok().body(list);
+	}
+	
+	
+	@RequestMapping(value="/{projetoId}/engenharia", method=RequestMethod.GET)
+	public ResponseEntity<List<Cad_Projetos_Engenharia>> findByProjetoeng(@PathVariable Integer projetoId) {
+		List<Cad_Projetos_Engenharia> list = engservice.findByProjeto(projetoId);
+		
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@RequestMapping(value="/{projetoId}/licenciamentos", method=RequestMethod.GET)
+	public ResponseEntity<List<Cad_Projetos_Licenciamentos>> findByProjetolicen(@PathVariable Integer projetoId) {
+		List<Cad_Projetos_Licenciamentos> list = licenservice.findByProjeto(projetoId);
+		
+		return ResponseEntity.ok().body(list);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)

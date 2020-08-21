@@ -7,6 +7,9 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.prolagos.sispcbackend.domain.Cad_SisPC_Gerencias;
+import com.prolagos.sispcbackend.domain.Cad_SisPC_Supervisoes;
+import com.prolagos.sispcbackend.domain.Cad_SisPC_Unidades;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +30,10 @@ public class UsuarioNewDTO implements Serializable {
 	@Getter @Setter private String login;
 	@Getter @Setter private Boolean ativo;
 	@Getter @Setter private String senha;
+	@Getter @Setter private String cargo;
+	@Getter @Setter private String foto;
+	@Getter @Setter private Cad_SisPC_Gerencias  gerenciaId;
+	@Getter @Setter private Cad_SisPC_Supervisoes supervisaoId;
+	@Getter @Setter private Cad_SisPC_Unidades undcodigo;
 	
-
 }

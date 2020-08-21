@@ -1,0 +1,6 @@
+
+target/m2e-wtp/web-resources/META-INF/maven/com.prolagos.sispc-backend/sispc-backend/pom.properties
+target/classes/com/prolagos/sispcbackend/services/ProjDelibRegulatorioService.class
+target/classes/com/prolagos/sispcbackend/resources/ProjRegulatorioResource.class
+target/classes/com/prolagos/sispcbackend/domain/Cad_Projetos_DeliberacoesRegulatorios.class
+target/classes/com/prolagos/sispcbackend/config/SecurityConfig.class

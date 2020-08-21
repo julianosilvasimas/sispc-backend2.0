@@ -12,7 +12,9 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.prolagos.sispcbackend.domain.Cad_Projetos_Licenciamentos;
+import com.prolagos.sispcbackend.domain.Cad_Projetos_Regulatorio;
 import com.prolagos.sispcbackend.repositories.ProjLicenciamentosRepository;
+import com.prolagos.sispcbackend.repositories.ProjetosRepository;
 import com.prolagos.sispcbackend.services.exceptions.DataIntegrityException;
 
 @Service
@@ -21,8 +23,15 @@ public class ProjLicenciamentosService {
 	@Autowired
 	private ProjLicenciamentosRepository repo;
 	
+	@Autowired
+	private ProjetosRepository repo2;
+	
 	public List<Cad_Projetos_Licenciamentos> findAll() {
 		return repo.findAll();
+	}
+	
+	public List<Cad_Projetos_Licenciamentos> findByProjeto(Integer projetoId) {
+		return repo.licenPorProjeto(projetoId);
 	}
 
 	public Page<Cad_Projetos_Licenciamentos> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
@@ -38,12 +47,25 @@ public class ProjLicenciamentosService {
 	
 	public Cad_Projetos_Licenciamentos insert(Cad_Projetos_Licenciamentos obj) {
 		obj.setLicencaId(null);  //Utilizado em Entidade Com auto incremento
+		obj.setProjetoId(repo2.findById(obj.getProjetoId().getProjetoId()).orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado!", null)));
+		if(obj.getInicio() != null ){
+			obj.setInicio(obj.getInicio().plusDays(1)) ;	
+		}
+		if(obj.getTermino() != null ){
+			obj.setTermino(obj.getTermino().plusDays(1));	
+		}
 		obj = repo.save(obj);
 		return obj;
 	}
 	
 	public Cad_Projetos_Licenciamentos update(Cad_Projetos_Licenciamentos obj) {
 		find(obj.getLicencaId());
+		if(obj.getInicio() != null ){
+			obj.setInicio(obj.getInicio().plusDays(1)) ;	
+		}
+		if(obj.getTermino() != null ){
+			obj.setTermino(obj.getTermino().plusDays(1));	
+		}
 		return repo.save(obj);
 	}
 	

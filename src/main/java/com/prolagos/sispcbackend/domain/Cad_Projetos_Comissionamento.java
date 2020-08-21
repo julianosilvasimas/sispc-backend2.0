@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,14 +29,29 @@ public class Cad_Projetos_Comissionamento implements Serializable {
 	@Getter @Setter private Integer comissionamentoId;
 	@Column(scale=2,precision=12)  
 	@Getter @Setter private Double avancofisico;
-	@Getter @Setter private LocalDate previsto;
-	@Getter @Setter private LocalDate replanejado;
-	@Getter @Setter private LocalDate realizado;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private LocalDate inicioprevisto;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private LocalDate terminoprevisto;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private LocalDate inicioreplanejado;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private LocalDate terminoreplanejado;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private LocalDate iniciorealizado;
+	@Column(nullable=true)
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@Getter @Setter private LocalDate terminorealizado;
 	
 	@OneToOne
 	@JoinColumn(name="fk_projetoId" ,foreignKey = @ForeignKey(name="fk_projeto_obra"))
 	@MapsId
-	private Cad_SisPC_Projetos projeto;
+	@Setter private Cad_SisPC_Projetos projeto;
 
 
 }

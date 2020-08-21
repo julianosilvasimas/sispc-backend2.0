@@ -46,6 +46,22 @@ public class IndicadoresService {
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + indicador + ", Tipo: " +
         		AppWeb_Ind_ExeIndicadores.class.getName(), null));
     }
+
+	public AppWeb_Ind_ExeIndicadores findByDataInd(final Integer indicadorId, final LocalDate data) {
+        final AppWeb_Ind_ExeIndicadores obj = this.repo.findByDataInd(indicadorId, data.plusDays(1));
+        return obj;
+    }
+	
+
+	public List<AppWeb_Ind_ExeIndicadores>  findDiarioPorMes(final List<Cad_Ind_Indicadores> indicador, final LocalDate data) {
+		return this.repo.findIndDiariosPorMes(indicador, data.plusDays(1));
+        
+    }
+
+	public List<AppWeb_Ind_ExeIndicadores>  findDiarioPorRange(final List<Cad_Ind_Indicadores> indicador, final LocalDate data1, final LocalDate data2) {
+		return this.repo.findIndDiariosPorRange(indicador, data1.plusDays(1), data2.plusDays(1));
+        
+    }
 	
 	public AppWeb_Ind_ExeIndicadores insert(AppWeb_Ind_ExeIndicadores obj) {
 		obj.setExeindicadorId(null);  //Utilizado em Entidade Com auto incremento
@@ -57,6 +73,11 @@ public class IndicadoresService {
 	
 	public AppWeb_Ind_ExeIndicadores update(AppWeb_Ind_ExeIndicadores obj) {
 		find(obj.getExeindicadorId());
+		obj.setDatareferencia(obj.getDatareferencia().plusDays(1));
+		obj.setDataindicador(obj.getDataindicador().plusDays(1));
+		return repo.save(obj);
+	}
+	public AppWeb_Ind_ExeIndicadores update2(AppWeb_Ind_ExeIndicadores obj) {
 		obj.setDatareferencia(obj.getDatareferencia().plusDays(1));
 		obj.setDataindicador(obj.getDataindicador().plusDays(1));
 		return repo.save(obj);

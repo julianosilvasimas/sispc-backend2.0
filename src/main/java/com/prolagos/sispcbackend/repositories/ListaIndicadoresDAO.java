@@ -27,7 +27,7 @@ public class ListaIndicadoresDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<ListaIndicadores> findAllBygraficoResumo(String ref, Integer ind){
+	public List<ResumoIndicadores> findAllBygraficoResumo(String ref, Integer ind){
 			return em.createNamedStoredProcedureQuery("procedure2").setParameter("referencia", ref).setParameter("indicador", ind).getResultList();
 	}
 	

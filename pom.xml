@@ -10,7 +10,7 @@
 	<packaging>war</packaging>
 
 	<name>sispc-backend</name>
-	<description>Web Service  do app SisPC</description>
+	<description>Web Service do app SisPC</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -19,6 +19,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -26,13 +27,19 @@
 	</properties>
 
 	<dependencies>
-
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.7</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<version>2.1.7.RELEASE</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
+		
 
+ 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -51,7 +58,7 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<version>2.1.7.RELEASE</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
-
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -67,10 +74,10 @@
         </dependency>
         
 		<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-jpa</artifactId>
-    <version>2.1.7.RELEASE</version><!--$NO-MVN-MAN-VER$-->
-</dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-jpa</artifactId>
+		    <version>2.1.7.RELEASE</version><!--$NO-MVN-MAN-VER$-->
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -90,6 +97,11 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 
 	<build>
